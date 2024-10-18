@@ -23,11 +23,12 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelect } from "@angular/material/select";
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
+import { LibroComponent } from "./componentes/libro/libro.component";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
-  declarations: [AppComponent, InicioSesionComponent, PrincipalComponent],
+  declarations: [AppComponent, InicioSesionComponent, PrincipalComponent, LibroComponent],
   imports: [
     RouterOutlet,
     BrowserModule,

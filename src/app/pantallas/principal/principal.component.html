@@ -6,34 +6,7 @@
 </mat-toolbar>
 
 <div class="books">
-
     @for (book of books; track book.id) {
-		<div class="book-container">
-			<div class="book-img-container">
-				<img src="{{book.image}}" alt="Book cover" class="book-img">
-			</div>
-
-			<div class="book-details">
-				<h2 class="book-title">{{book.title}}</h2>
-				<h3 class="book-author">by {{book.author}}</h3>
-				<p class="book-synopsis">
-					{{book.content}}
-				</p>
-				
-				<div class="action-buttons">
-					<button class="want-to-read-btn">Want to Read</button>
-					<span class="rate-label">Rate it:</span>
-					<div class="star-rating">
-						<i *ngFor="let star of [].constructor(book.stars); let i = index" 
-							class="material-icons star-filled"
-							>star</i>
-						<i *ngFor="let star of [].constructor(5-book.stars); let i = index" 
-							class="material-icons star-empty"
-							>star</i>
-					</div>
-				</div>
-			</div>
-		</div>
+		<app-libro [book]="book"></app-libro>
 	}
-
 </div>
