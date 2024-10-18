@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Libro } from '../../types/libro';
 
-
-type Book = {
-	title: string;
-	content: string;
-	author: string;
-	image: string;
-	stars: number;
-	id: number;
-}
 
 @Component({
   selector: 'app-principal',
@@ -17,7 +9,7 @@ type Book = {
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent {
-	books: Book[] = [
+	books: Libro[] = [
 		{
 			id: 1,
 			title: "Unruly: The Ridiculous History of England's Kings and Queens",
