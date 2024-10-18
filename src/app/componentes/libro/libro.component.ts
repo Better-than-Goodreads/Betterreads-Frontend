@@ -15,4 +15,8 @@ export class LibroComponent {
 		author: "",
 		stars: 0
 	};
+
+	puntuar(i: number) {
+		this.book.stars = i;
+	}
 }
