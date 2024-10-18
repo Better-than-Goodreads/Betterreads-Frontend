@@ -14,12 +14,12 @@
 		<button class="want-to-read-btn">Want to Read</button>
 		<span class="rate-label">Rate it:</span>
 		<div class="star-rating">
-			<i *ngFor="let star of [].constructor(book.stars); let i = index" 
-				class="material-icons star-filled"
-				>star</i>
-			<i *ngFor="let star of [].constructor(5-book.stars); let i = index" 
-				class="material-icons star-empty"
-				>star</i>
+			<i *ngFor="let star of [].constructor(5); let i = index"
+			   (click)="puntuar(i + 1)"
+			   class="material-icons"
+			   [ngClass]="{'star-filled': i < book.stars, 'star-empty': i >= book.stars}">
+			   star
+			</i>
 		</div>
 	</div>
 </div>

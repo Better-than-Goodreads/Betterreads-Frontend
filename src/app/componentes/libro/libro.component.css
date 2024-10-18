@@ -65,6 +65,7 @@
 .star-rating i {
     font-size: 24px;
     cursor: pointer;
+	user-select: none;
 }
 
 .star-filled {
