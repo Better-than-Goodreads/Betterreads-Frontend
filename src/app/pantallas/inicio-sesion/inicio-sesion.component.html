@@ -1,6 +1,11 @@
 <div class="vertical-container container">
-  <div class="vertical-container inicioSesion">
-    <h2 style="align-self: center">Bienvenido a BetterReads</h2>
+  <!-- paso 1 -->
+  <form
+    *ngIf="paso1"
+    class="vertical-container inicioSesion"
+    [formGroup]="datosIniciales"
+  >
+    <h2>Bienvenido a BetterReads</h2>
     <p>
       Complete sus datos para
       {{
@@ -11,25 +16,30 @@
       }}
     </p>
     <div style="row-gap: 0.75em" class="vertical-container">
-      <mat-form-field>
+      <mat-form-field *ngIf="esSignIn">
         <mat-label>Usuario</mat-label>
-        <input matInput [(ngModel)]="usuario" placeholder="Nombre de usuario" />
+        <input
+          matInput
+          formControlName="usuario"
+          placeholder="Nombre de usuario"
+        />
+        <mat-error *ngIf="datosIniciales.get('usuario')?.hasError('required')"
+          >El usuario es obligatorio</mat-error
+        >
       </mat-form-field>
 
-      <mat-form-field *ngIf="esSignIn">
+      <mat-form-field>
         <mat-label>Email</mat-label>
         <input
           type="email"
           matInput
-          [(ngModel)]="email"
-          [formControl]="emailFormControl"
-          [errorStateMatcher]="matcher"
+          formControlName="email"
           placeholder="usuario@ejemplo.com"
         />
         <mat-error
           *ngIf="
-            emailFormControl.hasError('email') &&
-            !emailFormControl.hasError('required')
+            datosIniciales.get('email')?.hasError('email') &&
+            !datosIniciales.get('email')?.hasError('required')
           "
           >Email inválido</mat-error
         >
@@ -39,19 +49,91 @@
         <mat-label>Contraseña</mat-label>
         <input
           matInput
-          required
           type="password"
-          [(ngModel)]="password"
+          formControlName="password"
           [type]="hide ? 'password' : 'text'"
+          #password
         />
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
+        <mat-error
+          *ngIf="
+            datosIniciales.get('password')?.hasError('minlength') &&
+            !datosIniciales.get('password')?.hasError('required')
+          "
+          >Debe tener mínimo 8 caracteres</mat-error
+        >
+        <mat-error *ngIf="datosIniciales.get('password')?.hasError('required')"
+          >La contraseña es obligatoria</mat-error
+        >
       </mat-form-field>
 
-      <button mat-flat-button>
-        {{ esSignIn ? "Registrarse" : "Iniciar Sesión" }}
+      <button type="submit" (click)="submitDatosIniciales()" mat-flat-button>
+        {{ esSignIn ? "Siguiente" : "Iniciar Sesión" }}
       </button>
     </div>
-  </div>
+  </form>
+  <!-- paso 2 -->
+  <form
+    *ngIf="paso2"
+    class="vertical-container inicioSesion"
+    [formGroup]="infoPersonal"
+  >
+    <h2>Queremos conocerte más!</h2>
+    <p>
+      Complete los siguientes datos para que podamos generar una mejor
+      experiencia en la plataforma
+    </p>
+    <div style="row-gap: 0.75em" class="vertical-container">
+      <div style="column-gap: 2em" class="horizontal-container">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Nombre" />
+          <mat-error *ngIf="infoPersonal.get('nombre')?.hasError('required')"
+            >Es obligatorio</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" placeholder="Apellido" />
+          <mat-error *ngIf="infoPersonal.get('apellido')?.hasError('required')"
+            >Es obligatorio</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <mat-divider></mat-divider>
+      <div style="column-gap: 2em" class="horizontal-container">
+        <mat-form-field>
+          <mat-label>Género</mat-label>
+          <mat-select>
+            <mat-option value="Femenino">Femenino</mat-option>
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Otros">Otros</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Edad</mat-label>
+          <input
+            matInput
+            formControlName="edad"
+            placeholder="12"
+            type="number"
+          />
+          <mat-error *ngIf="infoPersonal.get('edad')?.hasError('min')"
+            >Debes tener mínimo 12 años</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Pais</mat-label>
+        <input matInput formControlName="pais" placeholder="Argentina" />
+      </mat-form-field>
+
+      <button type="submit" (submit)="submitInfoPersonal()" mat-flat-button>
+        Siguiente
+      </button>
+    </div>
+  </form>
 </div>

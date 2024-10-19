@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
+import { MatSelectModule } from "@angular/material/select";
+import { MatDividerModule } from "@angular/material/divider";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
@@ -43,6 +45,8 @@ registerLocaleData(localeEsAr, "es-Ar");
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatSelectModule,
+    MatDividerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-Ar" },
