@@ -1,0 +1,26 @@
+.inicioSesion {
+  width: fit-content;
+  max-width: 35vw;
+  background-color: white;
+  padding: 2em 2em 1em 2em;
+  border-radius: 30px;
+  overflow-x: scroll;
+}
+
+.container {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 92, 187, 0.5);
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+h2,
+p {
+  align-self: center;
+  text-align: center;
+}

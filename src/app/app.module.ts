@@ -23,11 +23,19 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatDividerModule } from "@angular/material/divider";
+import { MatStepperModule } from "@angular/material/stepper";
+import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.component";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
-  declarations: [AppComponent, InicioSesionComponent, PrincipalComponent],
+  declarations: [
+    AppComponent,
+    InicioSesionComponent,
+    PrincipalComponent,
+    RegistrarseComponent,
+  ],
   imports: [
     RouterOutlet,
     BrowserModule,
@@ -47,6 +55,8 @@ registerLocaleData(localeEsAr, "es-Ar");
     MatIconModule,
     MatSelectModule,
     MatDividerModule,
+    MatStepperModule,
+    MatCheckboxModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "es-Ar" },

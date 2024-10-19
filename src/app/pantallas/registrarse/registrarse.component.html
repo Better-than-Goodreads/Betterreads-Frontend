@@ -1,0 +1,183 @@
+<div class="vertical-container container">
+  <div class="inicioSesion">
+    <h2>Bienvenido a BetterReads</h2>
+    <p>Complete sus datos para crear una cuenta</p>
+    <mat-stepper [linear]="true" labelPosition="bottom" #stepper>
+      <mat-step [stepControl]="datosIniciales">
+        <form class="vertical-container" [formGroup]="datosIniciales">
+          <div
+            style="row-gap: 0.75em; padding-top: 0.5em"
+            class="vertical-container"
+          >
+            <mat-form-field>
+              <mat-label>Usuario</mat-label>
+              <input
+                matInput
+                formControlName="usuario"
+                placeholder="Nombre de usuario"
+              />
+              <mat-error
+                *ngIf="datosIniciales.get('usuario')?.hasError('required')"
+                >El usuario es obligatorio</mat-error
+              >
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="email"
+                placeholder="usuario@ejemplo.com"
+              />
+              <mat-error
+                *ngIf="
+                  datosIniciales.get('email')?.hasError('email') &&
+                  !datosIniciales.get('email')?.hasError('required')
+                "
+                >Email inválido</mat-error
+              >
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+                #password
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+              <mat-error
+                *ngIf="
+                  datosIniciales.get('password')?.hasError('minlength') &&
+                  !datosIniciales.get('password')?.hasError('required')
+                "
+                >Debe tener mínimo 8 caracteres</mat-error
+              >
+              <mat-error
+                *ngIf="datosIniciales.get('password')?.hasError('required')"
+                >La contraseña es obligatoria</mat-error
+              >
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="infoPersonal">
+        <form class="vertical-container" [formGroup]="infoPersonal">
+          <!-- <h2>Queremos conocerte más!</h2>
+          <p>
+            Complete los siguientes datos para que podamos generar una mejor
+            experiencia en la plataforma
+          </p> -->
+          <div
+            style="row-gap: 0.75em; padding-top: 0.5em"
+            class="vertical-container"
+          >
+            <div style="column-gap: 2em" class="horizontal-container">
+              <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" placeholder="Nombre" />
+                <mat-error
+                  *ngIf="infoPersonal.get('nombre')?.hasError('required')"
+                  >Es obligatorio</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input
+                  matInput
+                  formControlName="apellido"
+                  placeholder="Apellido"
+                />
+                <mat-error
+                  *ngIf="infoPersonal.get('apellido')?.hasError('required')"
+                  >Es obligatorio</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <mat-checkbox formControlName="esAutor">Soy autor</mat-checkbox>
+
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="infoPersonal" optional>
+        <form class="vertical-container" [formGroup]="infoOpcional">
+          <div style="column-gap: 2em" class="horizontal-container">
+            <mat-form-field>
+              <mat-label>Género</mat-label>
+              <mat-select>
+                <mat-option value="Femenino">Femenino</mat-option>
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Otros">Otros</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Edad</mat-label>
+              <input
+                matInput
+                formControlName="edad"
+                placeholder="12"
+                type="number"
+              />
+              <mat-error *ngIf="infoPersonal.get('edad')?.hasError('min')"
+                >Debes tener mínimo 12 años</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <mat-label>Pais</mat-label>
+            <input matInput formControlName="pais" placeholder="Argentina" />
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Anterior</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="aboutMe" optional>
+        <form [formGroup]="aboutMe" class="vertical-container">
+          <!-- <h2>Último paso!</h2>
+          <p>
+            Contanos un poco sobre vos, tus gustos, lo que quieras compartir con
+            la comunidad.
+          </p> -->
+          <div
+            style="row-gap: 0.75em; padding-top: 0.5em"
+            class="vertical-container"
+          >
+            <mat-form-field>
+              <mat-label>About Me</mat-label>
+              <textarea
+                matInput
+                formControlName="aboutMe"
+                placeholder="Ej. Me gusta leer sobre..."
+              ></textarea>
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button (click)="registrarse()">Registrarse</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
