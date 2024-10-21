@@ -27,6 +27,11 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
+import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
+import { UsuariosService } from './services/usuarios.service';
+
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
@@ -40,6 +45,7 @@ registerLocaleData(localeEsAr, "es-Ar");
     RouterOutlet,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     // Material
     FormsModule,
     ReactiveFormsModule,
@@ -64,6 +70,7 @@ registerLocaleData(localeEsAr, "es-Ar");
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: "outline" },
     },
+    UsuariosService
   ],
   bootstrap: [AppComponent],
 })

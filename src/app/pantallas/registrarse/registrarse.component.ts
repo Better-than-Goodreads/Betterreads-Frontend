@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { UsuariosService } from "../../services/usuarios.service";
+import { Usuario } from "../../entidades/usuario";
+
 
 @Component({
   selector: "app-registrarse",
@@ -8,7 +11,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrl: "./registrarse.component.css",
 })
 export class RegistrarseComponent {
-  constructor() {}
+  constructor(private usuarioService: UsuariosService) {}
 
   hide = true;
 
@@ -43,5 +46,21 @@ export class RegistrarseComponent {
 
   aboutMe = new FormGroup({ aboutMe: new FormControl("", []) });
 
-  registrarse() {}
+  registrarse() {
+    const usuario: Usuario = {
+      username: this.datosIniciales.value.usuario?? '',
+      email: this.datosIniciales.value.email?? '',
+      password: this.datosIniciales.value.password?? '',
+      first_name: this.infoPersonal.value.nombre?? '',
+      last_name: this.infoPersonal.value.apellido?? '',
+
+      gender: this.infoOpcional.value.genero?? '',
+
+      age: this.infoOpcional.value.edad ? +this.infoOpcional.value.edad : -1,
+      location: this.infoOpcional.value.pais?? '',
+      about_me: this.aboutMe.value.aboutMe?? '',
+      id:0
+    };
+    this.usuarioService.createUsuario(usuario).subscribe();
+  }
 }
