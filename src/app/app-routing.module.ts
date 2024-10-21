@@ -6,6 +6,7 @@ import {
   InicioSesionComponent,
 } from "./pantallas/inicio-sesion/inicio-sesion.component";
 import { PrincipalComponent } from "./pantallas/principal/principal.component";
+import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/registrarse", pathMatch: "full" },
@@ -19,8 +20,8 @@ const routes: Routes = [
     component: InicioSesionComponent,
     data: { accion: ACCION_LOG_IN },
   },
-
   { path: "home", component: PrincipalComponent },
+  { path: "publicar-libro", component: PublicarLibroComponent },
 ];
 
 @NgModule({
