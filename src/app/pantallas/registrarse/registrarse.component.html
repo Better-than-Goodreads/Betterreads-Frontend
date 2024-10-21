@@ -64,8 +64,8 @@
               >
             </mat-form-field>
 
-            <div>
-              <button mat-button matStepperNext>Siguiente</button>
+            <div class="botones">
+              <button mat-flat-button matStepperNext>Siguiente</button>
             </div>
           </div>
         </form>
@@ -106,9 +106,9 @@
             </div>
             <mat-checkbox formControlName="esAutor">Soy autor</mat-checkbox>
 
-            <div>
+            <div class="botones">
               <button mat-button matStepperPrevious>Anterior</button>
-              <button mat-button matStepperNext>Siguiente</button>
+              <button mat-flat-button matStepperNext>Siguiente</button>
             </div>
           </div>
         </form>
@@ -144,9 +144,9 @@
             <input matInput formControlName="pais" placeholder="Argentina" />
           </mat-form-field>
 
-          <div>
+          <div class="botones">
             <button mat-button matStepperPrevious>Anterior</button>
-            <button mat-button matStepperNext>Siguiente/Omitir</button>
+            <button mat-flat-button matStepperNext>Siguiente/Omitir</button>
           </div>
         </form>
       </mat-step>
@@ -171,9 +171,9 @@
               ></textarea>
             </mat-form-field>
 
-            <div>
+            <div class="botones">
               <button mat-button matStepperPrevious>Anterior</button>
-              <button mat-button (click)="registrarse()">Registrarse</button>
+              <button mat-flat-button (click)="registrarse()">Registrarse</button>
             </div>
           </div>
         </form>
