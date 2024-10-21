@@ -9,4 +9,9 @@ export class Usuario {
 	location: string = '';
 	username: string = '';
 	password: string = '';
+	is_author: boolean = false;
+
+	constructor(usuario: Partial<Usuario>) {
+		Object.assign(this, usuario)
+	}
 }

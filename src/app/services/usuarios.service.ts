@@ -11,20 +11,28 @@ import { Usuario } from "../entidades/usuario";
 export class UsuariosService {
 
   constructor(private http: HttpClient) { }
-  private url = environment.apiUrl + '/users'; 
+  private urlUsuarios = environment.apiUrl + '/users'; 
 
 
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.url);
+    return this.http.get<Usuario[]>(this.urlUsuarios);
   }
   
   getUsuario(id: number): Observable<Usuario> {
-    const url = `${this.url}/${id}`;
+    const url = `${this.urlUsuarios}/${id}`;
     return this.http.get<Usuario>(url);
   }
 
   createUsuario(usuario: Usuario): Observable<Usuario> {
-    console.log(usuario);
-    return of(usuario);
+    const url = `${this.urlUsuarios}/register-first`;
+    const primerPaso = {
+      "email": usuario.email,
+      "first_name": usuario.first_name,
+      "is_author": usuario.is_author,
+      "last_name": usuario.last_name,
+      "password": usuario.password,
+      "username": usuario.username
+    };
+    return this.http.post<Usuario>(url, primerPaso)
   }
 }
