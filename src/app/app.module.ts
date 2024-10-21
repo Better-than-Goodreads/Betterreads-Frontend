@@ -32,6 +32,7 @@ import { UsuariosService } from './services/usuarios.service';
 import { MatSelect } from "@angular/material/select";
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
 import { LibroComponent } from "./componentes/libro/libro.component";
+import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
