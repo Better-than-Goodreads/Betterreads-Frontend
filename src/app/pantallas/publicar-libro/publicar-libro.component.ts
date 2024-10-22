@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Libro } from '../../entidades/Libro';
-
-
+import { BookService } from '../../services/servicio-libros.service';
 
 @Component({
   selector: 'app-publicacion-libro',
@@ -15,6 +14,8 @@ export class PublicarLibroComponent {
   selectedFile: File | null = null;
 
   error: string = '';
+
+  constructor(private bookService: BookService) { }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -50,27 +51,13 @@ export class PublicarLibroComponent {
 		"photo_id": "?"
 	};
 
-    fetch('http://localhost:8080/books', {
-      method: 'POST',
-	  headers: {
-		  contentType: 'application/json',
-	  },
-      body: JSON.stringify(bookToPublish),
-	  "mode": "no-cors",
-    })
-      .then((res) => { 
-		  if (res.ok) {
-			  return res.json()
-		  }
-		  throw new Error(`Status code not OK ${res.status}`);
-	  })
-      .then((data) => {
-        console.log('Libro publicado exitosamente:', data);
-		window.location.href = '/home';
-      })
-      .catch((error) => {
-		  console.error('Error al publicar el libro:', error);
-		  this.error = 'Hubo un error al publicar el libro. Intentelo nuevamente.';
-      });
+    this.bookService.postBook(bookToPublish).subscribe({
+      next: () => {
+        window.location.href = '/home'; // tambn podria ir a /libros/{nombre libro}
+      },
+      error: () => {
+        this.error = 'Hubo un error al publicar el libro. Intentelo nuevamente.';
+      }
+    });
   }
 }
