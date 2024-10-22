@@ -3,7 +3,14 @@ import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { UsuariosService } from "../../services/usuarios.service";
 import { Usuario } from "../../entidades/usuario";
-
+import { catchError } from 'rxjs/operators';
+import { Observable, of } from "rxjs";
+import { Router } from '@angular/router';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-registrarse",
@@ -11,7 +18,9 @@ import { Usuario } from "../../entidades/usuario";
   styleUrl: "./registrarse.component.css",
 })
 export class RegistrarseComponent {
-  constructor(private usuarioService: UsuariosService) {}
+  constructor(private usuarioService: UsuariosService, 
+    private router: Router,
+    private _snackBar: MatSnackBar) {}
 
   hide = true;
 
@@ -61,6 +70,15 @@ export class RegistrarseComponent {
       location: this.infoOpcional.value.pais?? '',
       about_me: this.aboutMe.value.aboutMe?? ''
     });
-    this.usuarioService.createUsuario(usuario).subscribe(resultado => console.log(resultado));
+    // TODO: ver el tema de guardar el usuario/ sesion
+    this.usuarioService.createUsuario(usuario).pipe(catchError(error => {
+      this._snackBar.open(error.error.detail, 'X', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      return of(null);
+    })).subscribe(usuario => {
+      if (usuario) this.router.navigate(['/home'])
+    });
   }
 }

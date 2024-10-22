@@ -43,16 +43,10 @@ export class UsuariosService {
 
     return this.http.post<any>(urlPrimerPaso, primerPaso).pipe(switchMap( (usuarioParcial: {user: UsuarioRegister}) => {
       const usuarioRegister: UsuarioRegister = usuarioParcial.user; 
-      console.log(usuarioRegister);
-      console.log(usuarioRegister.id_register);
       const urlSegundoPaso = `${this.urlUsuarios}/register/${usuarioRegister.id_register}/additional-info`;
       return this.http.post<any>(urlSegundoPaso, segundoPaso);
     }),
     map((usuarioCreado: {user: Usuario}) => usuarioCreado.user),
-    catchError(e => {
-      console.log(e);
-      return of(usuario);
-    }
-    ));
+    );
   }
 }
