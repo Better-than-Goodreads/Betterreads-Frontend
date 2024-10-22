@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Libro } from '../../types/libro';
+import { Libro } from '../../entidades/Libro';
 
 @Component({
   selector: 'app-libro',
@@ -7,14 +7,7 @@ import { Libro } from '../../types/libro';
   styleUrl: './libro.component.css'
 })
 export class LibroComponent {
-	@Input() book: Libro = {
-		id: 1,
-		title: "",
-		content: "",
-		image: "",
-		author: "",
-		stars: 0
-	};
+	@Input() book: Libro = new Libro();
 
 	puntuar(i: number) {
 		this.book.stars = i;
