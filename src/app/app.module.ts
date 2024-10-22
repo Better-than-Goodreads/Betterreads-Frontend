@@ -33,6 +33,7 @@ import { MatSelect } from "@angular/material/select";
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
+import { MatDatepicker, MatDatepickerModule } from "@angular/material/datepicker";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
@@ -74,6 +75,8 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatCardTitle,
 		MatCardContent,
 		MatCardActions,
+		MatDatepicker,
+		MatDatepickerModule,
 	],
 	providers: [
 		{ provide: LOCALE_ID, useValue: "es-Ar" },
