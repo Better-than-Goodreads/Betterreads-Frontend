@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from "rxjs";
 import { environment } from '../../environments/environment';
-import { Usuario } from "../entidades/usuario";
-
+import { Usuario, UsuarioRegister } from "../entidades/usuario";
+import { catchError, switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,8 @@ export class UsuariosService {
   }
 
   createUsuario(usuario: Usuario): Observable<Usuario> {
-    const url = `${this.urlUsuarios}/register-first`;
+    const urlPrimerPaso = `${this.urlUsuarios}/register/basic`;
+
     const primerPaso = {
       "email": usuario.email,
       "first_name": usuario.first_name,
@@ -33,6 +34,25 @@ export class UsuariosService {
       "password": usuario.password,
       "username": usuario.username
     };
-    return this.http.post<Usuario>(url, primerPaso)
+    const segundoPaso = {
+      "about_me": usuario.about_me,
+      "age": usuario.age,
+      "gender": usuario.gender,
+      "location": usuario.location
+    };
+
+    return this.http.post<any>(urlPrimerPaso, primerPaso).pipe(switchMap( (usuarioParcial: {user: UsuarioRegister}) => {
+      const usuarioRegister: UsuarioRegister = usuarioParcial.user; 
+      console.log(usuarioRegister);
+      console.log(usuarioRegister.id_register);
+      const urlSegundoPaso = `${this.urlUsuarios}/register/${usuarioRegister.id_register}/additional-info`;
+      return this.http.post<any>(urlSegundoPaso, segundoPaso);
+    }),
+    map((usuarioCreado: {user: Usuario}) => usuarioCreado.user),
+    catchError(e => {
+      console.log(e);
+      return of(usuario);
+    }
+    ));
   }
 }

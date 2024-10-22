@@ -15,3 +15,12 @@ export class Usuario {
 		Object.assign(this, usuario)
 	}
 }
+
+export class UsuarioRegister extends Usuario {
+	id_register: string = '';
+	constructor(usuario: Partial<UsuarioRegister>) {
+		super(usuario);
+		Object.assign(this, usuario);
+
+	}
+}
