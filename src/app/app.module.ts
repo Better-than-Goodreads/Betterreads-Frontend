@@ -35,6 +35,8 @@ import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepicker, MatDatepickerModule } from "@angular/material/datepicker";
 
+import { HttpClientModule } from '@angular/common/http';
+import { MatSpinner } from "@angular/material/progress-spinner";
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
@@ -77,6 +79,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatCardActions,
 		MatDatepicker,
 		MatDatepickerModule,
+		MatSpinner
 	],
 	providers: [
 		{ provide: LOCALE_ID, useValue: "es-Ar" },

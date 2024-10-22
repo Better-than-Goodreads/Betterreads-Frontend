@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Libro } from '../../entidades/Libro';
-
+import { BookService } from '../../servicios/servicio-libros.service';
 
 @Component({
-  selector: 'app-principal',
-  templateUrl: './principal.component.html',
-  styleUrl: './principal.component.css'
+	selector: 'app-principal',
+	templateUrl: './principal.component.html',
+	styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent {
-
+export class PrincipalComponent implements OnInit {
 	books: Libro[] = [
 		{
 			id: "aa",
@@ -23,7 +21,7 @@ export class PrincipalComponent {
 			photo_id: 0,
 			stars: 4,
 			image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1684764813i/152034931._SY180_.jpg"
-		}, 
+		},
 		{
 			id: "dd",
 			title: "Behind Every Good Man ",
@@ -37,5 +35,25 @@ export class PrincipalComponent {
 			photo_id: 0,
 			stars: 4
 		}
-	]
+	];
+	loading = true;
+
+	constructor(private bookService: BookService) { }
+
+	ngOnInit(): void {
+		this.fetchBooks();
+	}
+
+	fetchBooks(): void {
+		this.bookService.getBooks().subscribe({
+			next: (data) => {
+				this.books = data;
+				this.loading = false;
+			},
+			error: (error) => {
+				console.error('Error fetching books', error);
+				this.loading = false;
+			}
+		});
+	}
 }

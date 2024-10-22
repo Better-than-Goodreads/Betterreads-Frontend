@@ -6,7 +6,11 @@
 </mat-toolbar>
 
 <div class="books">
-    @for (book of books; track book.id) {
-		<app-libro [book]="book"></app-libro>
+	@if (loading) {
+		<mat-spinner></mat-spinner>
+	} @else {
+		@for (book of books; track book.id) {
+			<app-libro [book]="book"></app-libro>
+		}
 	}
 </div>
