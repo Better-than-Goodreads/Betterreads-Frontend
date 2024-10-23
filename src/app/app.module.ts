@@ -27,11 +27,11 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
-import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 import { UsuariosService } from './services/usuarios.service';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './interceptors/jwtInterceptor';
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
@@ -70,7 +70,12 @@ registerLocaleData(localeEsAr, "es-Ar");
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: "outline" },
     },
-    UsuariosService
+    UsuariosService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

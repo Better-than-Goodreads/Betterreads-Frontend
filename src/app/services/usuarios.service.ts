@@ -23,6 +23,11 @@ export class UsuariosService {
     return this.http.get<Usuario>(url);
   }
 
+  logIn(username: string, password: string): Observable<Usuario> {
+    const url = this.urlUsuarios + '/login';
+    return this.http.post<Usuario>(url, {'password': password, 'username': username});
+  }
+
   createUsuario(usuario: Usuario): Observable<Usuario> {
     const urlPrimerPaso = `${this.urlUsuarios}/register/basic`;
 
