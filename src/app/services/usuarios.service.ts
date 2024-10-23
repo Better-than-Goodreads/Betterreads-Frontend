@@ -23,6 +23,14 @@ export class UsuariosService {
     return this.http.get<Usuario>(url);
   }
 
+  logIn(username: string, password: string): Observable<Usuario> {
+    const url = this.urlUsuarios + '/login';
+    return this.http.post<any>(url, {'password': password, 'username': username}).pipe(map((result: {user: Usuario, token:string}) => {
+      sessionStorage.setItem('access_token', result.token);
+      return result.user;
+    }));
+  }
+
   createUsuario(usuario: Usuario): Observable<Usuario> {
     const urlPrimerPaso = `${this.urlUsuarios}/register/basic`;
 

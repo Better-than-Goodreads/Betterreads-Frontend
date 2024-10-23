@@ -82,7 +82,7 @@ export class PublicarLibroComponent {
 
     this.bookService.postBook(bookToPublish, this.selectedFile).subscribe({
       next: () => {
-        // window.location.href = '/home'; // tambn podria ir a /libros/{nombre libro}
+        window.location.href = '/home/'; // tambn podria ir a /libros/{nombre libro}
 		console.log('Libro publicado correctamente');
       },
       error: () => {

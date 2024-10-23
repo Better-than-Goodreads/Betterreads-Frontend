@@ -4,7 +4,7 @@ export class Usuario {
 	email: string = '';
 	first_name: string = '';
 	gender: string = '';
-	id: number = 0;
+	id: string = '';
 	last_name: string = '';
 	location: string = '';
 	username: string = '';

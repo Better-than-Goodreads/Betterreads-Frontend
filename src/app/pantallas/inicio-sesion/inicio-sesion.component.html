@@ -4,19 +4,15 @@
     <p>Complete sus datos para ingresar a su cuenta</p>
     <div style="row-gap: 0.75em" class="vertical-container">
       <mat-form-field>
-        <mat-label>Email</mat-label>
+        <mat-label>Usuario</mat-label>
         <input
-          type="email"
           matInput
-          formControlName="email"
-          placeholder="usuario@ejemplo.com"
+          formControlName="usuario"
+          placeholder="Nombre de usuario"
         />
         <mat-error
-          *ngIf="
-            datosIniciales.get('email')?.hasError('email') &&
-            !datosIniciales.get('email')?.hasError('required')
-          "
-          >Email inválido</mat-error
+          *ngIf="datosIniciales.get('usuario')?.hasError('required')"
+          >El usuario es obligatorio</mat-error
         >
       </mat-form-field>
 

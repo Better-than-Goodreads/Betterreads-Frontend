@@ -12,31 +12,29 @@ export class BookService {
 	constructor(private http: HttpClient) { }
 
 	getToken() {
-		return sessionStorage.getItem('token');
+		return sessionStorage.getItem('access_token');
 	}
 
 	getBooks(): Observable<Libro[]> {
-		const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.getToken() });
-		return this.http.get<Libro[]>(this.apiUrl, { headers });
+		return this.http.get<Libro[]>(this.apiUrl + "info");
 	}
 
 	postBook(book: any, file: File): Observable<any> {
-		const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.getToken() });
+		// const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.getToken() });
 
 		let form = new FormData();
 		form.append('data', JSON.stringify(book));
 		form.append('file', file);
 
-		return this.http.post(this.apiUrl, form, { headers });
+		return this.http.post(this.apiUrl, form);
 	}
 
 	rateBook(bookId: string, rating: number): Observable<any> {
-		const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.getToken() });
-		return this.http.post(this.apiUrl + `/${bookId}/rating/`, JSON.stringify({ rating: rating }), { headers });
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		return this.http.post(this.apiUrl + `${bookId}/rating`, JSON.stringify({ rating: rating }), { headers });
 	}
 
 	getRating(bookId: string): Observable<any> {
-		const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.getToken() });
-		return this.http.post(this.apiUrl + `${bookId}/rating/`, { headers });
+		return this.http.get(this.apiUrl + `${bookId}/rating`);
 	}
 }

@@ -26,7 +26,6 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatStepperModule } from "@angular/material/stepper";
 import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { UsuariosService } from './services/usuarios.service';
 import { MatSelect } from "@angular/material/select";
@@ -35,8 +34,10 @@ import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepicker, MatDatepickerModule } from "@angular/material/datepicker";
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
+import { JwtInterceptor } from "./interceptors/jwtInterceptor";
+
 registerLocaleData(localeEsAr, "es-Ar");
 
 @NgModule({
@@ -45,7 +46,8 @@ registerLocaleData(localeEsAr, "es-Ar");
 		InicioSesionComponent,
 		PrincipalComponent,
 		RegistrarseComponent,
-		LibroComponent
+		LibroComponent,
+		PublicarLibroComponent,
 	],
 	imports: [
 		RouterOutlet,
@@ -61,6 +63,8 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatSidenavModule,
 		MatLabel,
 		MatFormFieldModule,
+		MatOption,
+		MatSelect,
 		MatInputModule,
 		MatButtonModule,
 		MatToolbarModule,
@@ -69,8 +73,6 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatDividerModule,
 		MatStepperModule,
 		MatCheckboxModule,
-		MatOption,
-		MatSelect,
 		MatCard,
 		MatCardHeader,
 		MatCardSubtitle,
@@ -87,7 +89,12 @@ registerLocaleData(localeEsAr, "es-Ar");
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 			useValue: { appearance: "outline" },
 		},
-		UsuariosService
+		UsuariosService,
+		{
+		  provide: HTTP_INTERCEPTORS,
+		  useClass: JwtInterceptor,
+		  multi: true
+		}
 	],
 	bootstrap: [AppComponent],
 })

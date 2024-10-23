@@ -78,7 +78,7 @@ export class RegistrarseComponent {
       });
       return of(null);
     })).subscribe(usuario => {
-      if (usuario) this.router.navigate(['/home'])
+      if (usuario) this.router.navigate(['/log-in'])
     });
   }
 }
