@@ -15,9 +15,9 @@ export class BookService {
     return this.http.get<Libro[]>(this.apiUrl);
   }
 
-  postBook(libro: any): Observable<any> {
+  postBook(b: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     
-    return this.http.post(this.apiUrl, JSON.stringify(libro), { headers });
+    return this.http.post(this.apiUrl, JSON.stringify(b), { headers });
   }
 }

@@ -38,9 +38,13 @@
 				<input matInput [(ngModel)]="libro.language" placeholder="Español" />
 			</mat-form-field>
 
-			<mat-form-field>
-				<mat-label>Géneros</mat-label>
-				<input required matInput [(ngModel)]="genresString" placeholder="Ciencia Ficción, Aventura" />
+			<mat-form-field appearance="fill">
+			  <mat-label>Géneros</mat-label>
+			  <mat-select [(ngModel)]="libro.genres" multiple>
+				<mat-option *ngFor="let genre of genresList" [value]="genre">
+				  {{ genre }}
+				</mat-option>
+			  </mat-select>
 			</mat-form-field>
 
 			<input type="file" (change)="onFileSelected($event)" />
