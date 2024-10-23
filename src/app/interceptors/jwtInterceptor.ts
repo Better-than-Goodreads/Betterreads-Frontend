@@ -7,11 +7,7 @@ export class JwtInterceptor implements HttpInterceptor
 {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> 
   {
-    let token = request.headers.get('Authorization');
-    console.log('token: ' + token);
-    console.log(request.headers);
-    console.log("request: ");
-    console.log(request);
+    let token = sessionStorage.getItem('access_token');
     if (token) {
       request = request.clone({
         setHeaders: {
