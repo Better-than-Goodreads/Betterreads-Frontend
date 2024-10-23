@@ -60,6 +60,16 @@ export class PublicarLibroComponent {
 		return
 	}
 
+	if (!this.selectedFile) {
+		this.error = 'Debe seleccionar una imagen para el libro';
+		return
+	}
+
+	if (this.selectedFile.type !== 'image/jpeg' && this.selectedFile.type !== 'image/png') {
+		this.error = 'La imagen debe ser de tipo .jpg o .png';
+		return
+	}
+
 	let bookToPublish = {
 		"title": this.libro.title,
 		"amount_of_pages": this.libro.amount_of_pages,
@@ -70,7 +80,7 @@ export class PublicarLibroComponent {
 		"author": this.libro.author,
 	};
 
-    this.bookService.postBook(bookToPublish).subscribe({
+    this.bookService.postBook(bookToPublish, this.selectedFile).subscribe({
       next: () => {
         // window.location.href = '/home'; // tambn podria ir a /libros/{nombre libro}
 		console.log('Libro publicado correctamente');
