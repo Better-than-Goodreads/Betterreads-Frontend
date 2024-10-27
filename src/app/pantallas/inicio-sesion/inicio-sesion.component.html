@@ -1,37 +1,18 @@
 <div class="vertical-container container">
-  <div class="vertical-container inicioSesion">
-    <h2 style="align-self: center">Bienvenido a BetterReads</h2>
-    <p>
-      Complete sus datos para
-      {{
-        esSignIn
-          ? "crear una cuenta"
-          : "ingresar a su
-      cuenta"
-      }}
-    </p>
+  <form class="vertical-container inicioSesion" [formGroup]="datosIniciales">
+    <h2>Bienvenido a BetterReads</h2>
+    <p>Complete sus datos para ingresar a su cuenta</p>
     <div style="row-gap: 0.75em" class="vertical-container">
       <mat-form-field>
         <mat-label>Usuario</mat-label>
-        <input matInput [(ngModel)]="usuario" placeholder="Nombre de usuario" />
-      </mat-form-field>
-
-      <mat-form-field *ngIf="esSignIn">
-        <mat-label>Email</mat-label>
         <input
-          type="email"
           matInput
-          [(ngModel)]="email"
-          [formControl]="emailFormControl"
-          [errorStateMatcher]="matcher"
-          placeholder="usuario@ejemplo.com"
+          formControlName="usuario"
+          placeholder="Nombre de usuario"
         />
         <mat-error
-          *ngIf="
-            emailFormControl.hasError('email') &&
-            !emailFormControl.hasError('required')
-          "
-          >Email inválido</mat-error
+          *ngIf="datosIniciales.get('usuario')?.hasError('required')"
+          >El usuario es obligatorio</mat-error
         >
       </mat-form-field>
 
@@ -39,19 +20,29 @@
         <mat-label>Contraseña</mat-label>
         <input
           matInput
-          required
           type="password"
-          [(ngModel)]="password"
+          formControlName="password"
           [type]="hide ? 'password' : 'text'"
+          #password
         />
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? "visibility_off" : "visibility"
         }}</mat-icon>
+        <mat-error
+          *ngIf="
+            datosIniciales.get('password')?.hasError('minlength') &&
+            !datosIniciales.get('password')?.hasError('required')
+          "
+          >Debe tener mínimo 8 caracteres</mat-error
+        >
+        <mat-error *ngIf="datosIniciales.get('password')?.hasError('required')"
+          >La contraseña es obligatoria</mat-error
+        >
       </mat-form-field>
 
-      <button mat-flat-button>
-        {{ esSignIn ? "Registrarse" : "Iniciar Sesión" }}
+      <button type="submit" (click)="submitLogin()" mat-flat-button>
+        Iniciar Sesión
       </button>
     </div>
-  </div>
+  </form>
 </div>

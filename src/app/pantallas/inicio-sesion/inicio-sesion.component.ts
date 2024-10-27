@@ -1,55 +1,53 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
+import { Observable, of } from "rxjs";
+import { catchError } from 'rxjs/operators';
+import { UsuariosService } from "../../services/usuarios.service";
+import { Usuario } from "../../entidades/usuario";
 import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from "@angular/forms";
-import { ErrorStateMatcher } from "@angular/material/core";
-import { ActivatedRoute } from "@angular/router";
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
-export const ACCION_SIGN_IN = "signIn";
-export const ACCION_LOG_IN = "logIn";
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
-}
 
 @Component({
   selector: "app-inicio-sesion",
   templateUrl: "./inicio-sesion.component.html",
   styleUrl: "./inicio-sesion.component.css",
 })
-export class InicioSesionComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+export class InicioSesionComponent {
+  constructor(private usuarioService: UsuariosService, 
+    private router: Router,
+    private _snackBar: MatSnackBar) {}
 
   hide = true;
 
-  esSignIn = false;
-  ngOnInit(): void {
-    this.route.data.subscribe((params) => {
-      this.esSignIn = params["accion"] === ACCION_SIGN_IN;
-    });
+  datosIniciales = new FormGroup({
+    usuario: new FormControl("", [Validators.required]),
+    password: new FormControl("", [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+  });
+
+  submitLogin() {
+    const usuario = this.datosIniciales.value.usuario ?? '';
+    const password = this.datosIniciales.value.password ?? '';
+    this.usuarioService.logIn(usuario, password).pipe(catchError(error => {
+      this._snackBar.open(error.error.detail, 'X', {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+      });
+      return of(null);
+    })).subscribe( resultado => {
+      if (resultado) {
+        //setJWt
+        console.log(resultado);
+        this.router.navigate(['/home']);
+
+      }
+    })
   }
-
-  emailFormControl = new FormControl("", [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  matcher = new MyErrorStateMatcher();
-
-  usuario = "";
-  email = "";
-  password = "";
 }

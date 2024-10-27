@@ -2,9 +2,14 @@
   width: fit-content;
   max-width: 35vw;
   background-color: white;
-  padding: 3em;
+  padding: 2em 2em 1em 2em;
   border-radius: 30px;
-  /* row-gap: 0.75em; */
+  overflow-x: scroll;
+  height: 90vh;
+}
+
+mat-stepper {
+  background-color: white;
 }
 
 .container {
@@ -23,4 +28,8 @@ h2,
 p {
   align-self: center;
   text-align: center;
+}
+
+.botones {
+  align-self: end;
 }
