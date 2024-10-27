@@ -28,18 +28,15 @@ import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.compon
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { environment } from '../environments/environment';
 import { UsuariosService } from './services/usuarios.service';
-import { MatSelect } from "@angular/material/select";
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
+//import { MatSelect } from "@angular/material/select";
+import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
-import { MatDatepicker, MatDatepickerModule } from "@angular/material/datepicker";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
 import { JwtInterceptor } from "./interceptors/jwtInterceptor";
-import { MatSelect } from "@angular/material/select";
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
-import { LibroComponent } from "./componentes/libro/libro.component";
 
 registerLocaleData(localeEsAr, "es-Ar");
 
@@ -67,7 +64,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatLabel,
 		MatFormFieldModule,
 		MatOption,
-		MatSelect,
+		//MatSelect,
 		MatInputModule,
 		MatButtonModule,
 		MatToolbarModule,
@@ -76,13 +73,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatDividerModule,
 		MatStepperModule,
 		MatCheckboxModule,
-		MatCard,
-		MatCardHeader,
-		MatCardSubtitle,
-		MatCardTitle,
-		MatCardContent,
-		MatCardActions,
-		MatDatepicker,
+		MatCardModule,
 		MatDatepickerModule,
 		MatSpinner
 	],
