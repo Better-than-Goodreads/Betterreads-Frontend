@@ -10,10 +10,27 @@ import { BookService } from '../../services/servicio-libros.service';
 export class PrincipalComponent implements OnInit {
 	books: Libro[] = [];
 	loading = true;
+
+	searchText = '';
 	constructor(private bookService: BookService) { }
 
 	ngOnInit(): void {
 		this.fetchBooks();
+	}
+
+	onSearch() {
+		this.loading = true;
+		this.bookService.searchBooks(this.searchText).subscribe({
+			next: (data: any) => {
+				console.log('Books fetched', data);
+				this.loading = false;
+				this.books = data.books as Libro[];
+			},
+			error: (error: any) => {
+				console.error('Error fetching books', error);
+			}
+
+		})
 	}
 
 	fetchBooks(): void {

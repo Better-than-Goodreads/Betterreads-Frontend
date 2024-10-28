@@ -38,4 +38,8 @@ export class BookService {
 	getRating(bookId: string): Observable<any> {
 		return this.http.get(this.apiUrl + `${bookId}/rating`);
 	}
+
+	searchBooks(searchText: string): Observable<Libro[]> {
+		return this.http.get<Libro[]>(this.apiUrl + `info/search?name=${searchText}`);
+	}
 }

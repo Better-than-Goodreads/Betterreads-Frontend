@@ -1,9 +1,15 @@
 <div class="books">
+	<mat-form-field appearance="outline" class="search-bar">
+		<input matInput placeholder="Type to search..." [(ngModel)]="searchText" (change)="onSearch()"/>
+		<button mat-icon-button matSuffix (click)="onSearch()">
+			<mat-icon>search</mat-icon>
+		</button>
+	</mat-form-field>
 	@if (loading) {
-		<mat-spinner></mat-spinner>
+	<mat-spinner></mat-spinner>
 	} @else {
-		@for (book of books; track book.id) {
-			<app-libro [book]="book"></app-libro>
-		}
+	@for (book of books; track book.id) {
+	<app-libro [book]="book"></app-libro>
+	}
 	}
 </div>
