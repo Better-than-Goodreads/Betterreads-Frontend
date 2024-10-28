@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   { path: "home", component: PrincipalComponent },
   { path: "publicar-libro", component: PublicarLibroComponent },
-  { path: "libro/:{id}", component: VistaLibroComponent },
+  { path: "libro/:id", component: VistaLibroComponent },
 ];
 
 @NgModule({

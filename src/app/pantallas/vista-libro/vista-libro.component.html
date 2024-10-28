@@ -1,21 +1,16 @@
 <div class=horizontal-container>
 
-<div class="vertical-container">
-	<img src="http://localhost:8080/books/{{book.id}}/picture" alt="Book cover" style="height: 70vh">
-	<button mat-button-flat>Want to Read</button>
-</div>
+	<div class="vertical-container" style="padding-left: 1em;">
+		<img [src]="urlFoto" alt="Book cover" style="height: 70vh; padding-bottom: 2em;">
+		<button mat-flat-button>Want to Read</button>
+	</div>
 
-<div class="vertical-container" style="overflow-x: scroll">
-	<h2>{{book.title}}</h2>
-	<h4>{{book.author}}</h4>
-	<p class="book-synopsis">
-		{{book.description}}
-	</p>
+<div class="vertical-container content">
+	<h1>{{book.title}}</h1>
+	<h3>{{book.author}}</h3>
 	
-	<!--<div class="action-buttons">
-		
-		<p>{{book.avg_rating}}</p>
-		<div class="star-rating">
+	<div class="horizontal-container" style="align-items: center">
+		<div style="align-content: center">
 			<i *ngFor="let star of [].constructor(5); let i = index"
 			   (click)="puntuar(i + 1)"
 			   class="material-icons"
@@ -23,7 +18,19 @@
 			   star
 			</i>
 		</div>
-		<span>({{book.total_ratings}})</span>
-	</div>-->
+		<h2 style="padding: 0em 0.5em">{{book.avg_rating}}</h2>
+
+		<p style="color: #616161">({{book.total_ratings}})</p>
+	</div>
+
+	<p>{{book.description}}</p>
+
+	<div class="horizontal-container" style="align-items: center;">
+		<h4>Genres</h4>
+		<button *ngFor="let genero of book.genres" mat-stroked-button class="genero">{{genero}}</button>
+	</div>
+
+	<p  style="color: #616161">{{book.amount_of_pages}} pages </p>
+	<p  style="color: #616161">First published {{book.publication_date | date:'longDate'}}</p>
 </div>
 </div>
