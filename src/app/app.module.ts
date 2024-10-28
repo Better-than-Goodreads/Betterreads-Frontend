@@ -37,6 +37,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
 import { JwtInterceptor } from "./interceptors/jwtInterceptor";
+import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
 
 registerLocaleData(localeEsAr, "es-Ar");
 
@@ -48,6 +49,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		RegistrarseComponent,
 		LibroComponent,
 		PublicarLibroComponent,
+  VistaLibroComponent,
 	],
 	imports: [
 		RouterOutlet,

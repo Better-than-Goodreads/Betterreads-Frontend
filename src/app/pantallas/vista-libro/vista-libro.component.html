@@ -1,0 +1,29 @@
+<div class=horizontal-container>
+
+<div class="vertical-container">
+	<img src="http://localhost:8080/books/{{book.id}}/picture" alt="Book cover" style="height: 70vh">
+	<button mat-button-flat>Want to Read</button>
+</div>
+
+<div class="vertical-container" style="overflow-x: scroll">
+	<h2>{{book.title}}</h2>
+	<h4>{{book.author}}</h4>
+	<p class="book-synopsis">
+		{{book.description}}
+	</p>
+	
+	<!--<div class="action-buttons">
+		
+		<p>{{book.avg_rating}}</p>
+		<div class="star-rating">
+			<i *ngFor="let star of [].constructor(5); let i = index"
+			   (click)="puntuar(i + 1)"
+			   class="material-icons"
+			   [ngClass]="{'star-filled': i < book.stars, 'star-empty': i >= book.stars}">
+			   star
+			</i>
+		</div>
+		<span>({{book.total_ratings}})</span>
+	</div>-->
+</div>
+</div>

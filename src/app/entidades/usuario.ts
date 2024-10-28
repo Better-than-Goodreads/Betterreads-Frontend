@@ -10,6 +10,7 @@ export class Usuario {
 	username: string = '';
 	password: string = '';
 	is_author: boolean = false;
+	profile_picture: string = "";
 
 	constructor(usuario: Partial<Usuario>) {
 		Object.assign(this, usuario)
