@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef} from '@angular/core';
+import { Component } from '@angular/core';
 import { Libro } from '../../entidades/Libro';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../services/servicio-libros.service';
@@ -11,13 +11,12 @@ import { BookService } from '../../services/servicio-libros.service';
 })
 export class VistaLibroComponent {
 
-  constructor(private route: ActivatedRoute, private bookService: BookService, private _cdr: ChangeDetectorRef){}
+  constructor(private route: ActivatedRoute, private bookService: BookService){}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')?? '';
     this.bookService.getBook(id).subscribe(book => {
       this.book = book;
-      console.log(this.book);
       this.urlFoto = `http://localhost:8080/books/${book.id}/picture`;
     });
   }

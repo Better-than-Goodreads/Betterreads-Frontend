@@ -27,8 +27,14 @@ export class UsuariosService {
     const url = this.urlUsuarios + '/login';
     return this.http.post<any>(url, {'password': password, 'username': username}).pipe(map((result: {user: Usuario, token:string}) => {
       sessionStorage.setItem('access_token', result.token);
+      sessionStorage.setItem('username', result.user.username);
+      sessionStorage.setItem('id', result.user.id);
       return result.user;
     }));
+  }
+
+  getUsuarioActual() {
+    return sessionStorage.getItem('username');
   }
 
   createUsuario(usuario: Usuario, fotoUsuario: File | null): Observable<Usuario> {
