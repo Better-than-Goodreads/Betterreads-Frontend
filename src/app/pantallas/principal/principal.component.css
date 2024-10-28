@@ -8,8 +8,16 @@
 }
 
 .search-bar {
-	width: 50%;
 	display: flex;
 	margin: 0;
 	justify-content: center;
+	flex-grow: 1;
+}
+
+.tool-tab {
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	max-width: 50rem;
+	gap: 1em;
 }
