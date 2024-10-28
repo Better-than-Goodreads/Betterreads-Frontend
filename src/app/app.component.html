@@ -1,1 +1,26 @@
-<router-outlet></router-outlet>
+@if (showSidenav) {
+  <mat-toolbar class="celeste">
+	<button mat-icon-button aria-label="menu icon">
+		<mat-icon (click)="menu.toggle()">menu</mat-icon>
+	</button>
+	<span>BetterReads</span>
+</mat-toolbar>
+
+<mat-sidenav-container style="height: 100%;">
+  <mat-sidenav #menu mode="side" class="menu celeste">
+    <mat-nav-list>
+      <a mat-list-item>
+          <span>Home</span>
+      </a>
+      <a mat-list-item>
+          <span>Books</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="padding-top: 0.5em;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+} @else {
+  <router-outlet></router-outlet>
+}

@@ -3,6 +3,12 @@
     padding-left: 2em;
 }
 
+.imagen {
+    height: 70vh; 
+    margin-bottom: 2em;
+    border-radius: 10px;
+}
+
 .star-rating i {
     cursor: pointer;
     user-select: none;

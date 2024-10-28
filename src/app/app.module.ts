@@ -32,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import {MatListModule} from '@angular/material/list'; 
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -62,6 +63,7 @@ import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.compone
 		MatNativeDateModule,
 		// Componentes
 		MatSidenavModule,
+    MatListModule,
 		MatLabel,
 		MatFormFieldModule,
 		MatOption,
