@@ -39,8 +39,11 @@ export class PrincipalComponent implements OnInit {
 			next: (data: any) => {
 				console.log('Books fetched', data);
 				this.loading = false;
-				this.books = data.books as Libro[];
+				this.books = data.books.map((book: any) => { 
+					return book.book 
+				}) as Libro[];
 				this.filteredBooks = this.books;
+				this.filterBooks();
 			},
 			error: (error: any) => {
 				console.error('Error fetching books', error);
@@ -53,8 +56,10 @@ export class PrincipalComponent implements OnInit {
 		this.bookService.getBooks().subscribe({
 			next: (data: any) => {
 				console.log('Books fetched', data);
-				this.books = data.books as Libro[];
-				this.filteredBooks = data.books as Libro[];
+				this.books = data.books.map((book: any) => { 
+					return book.book 
+				}) as Libro[];
+				this.filteredBooks = this.books as Libro[];
 				this.loading = false;
 			},
 			error: (error) => {

@@ -14,6 +14,7 @@ export class LibroComponent {
 	constructor(private bookService: BookService, private router: Router) { }
 	
 	ngOnInit() {
+		console.log('Book:', this.book.author);
 		// this.bookService.getRating(this.book.id).subscribe((data: any) => {
 		// 	this.book.stars = data.rating;
 		// });
