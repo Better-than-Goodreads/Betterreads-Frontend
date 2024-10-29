@@ -3,8 +3,16 @@
 		<img [src]="urlFoto" alt="Profile picture" class="imagen-perfil">
 	</div>
 	<div class="vertical-container contenido">
-		<h1 style="border-bottom: solid 1px black">{{usuario.username}}</h1>
-		<button mat-flat-button>Follow</button>
+		<div class="horizontal-container titulo">
+			<h1>{{usuario.username}}</h1>
+			<mat-icon *ngIf="usuario.is_author" aria-hidden="false" aria-label="Is author" fontIcon="draw" class="icono-autor"></mat-icon>
+		</div>
+		
+		<div class="horizontal-container friends">
+			<button mat-flat-button style="width: 50%;">Follow</button>
+			<p>23 Friends</p>
+		</div>
+		
 		<div class="horizontal-container datos">
 			<h3>Details</h3>
 			<p>Age {{usuario.age}}, {{usuario.location}}</p>
@@ -15,5 +23,7 @@
 		</div>
 		<h3>About me:</h3>
 		<p>{{usuario.about_me}}</p>
+		<h2>Reviews</h2>
 	</div>
+
 </div>
