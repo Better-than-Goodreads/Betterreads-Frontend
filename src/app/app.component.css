@@ -9,9 +9,14 @@
 
 .photo {
 	height: 2em;
-	object-fit: cover;
-	border-radius: 50%;
 	width: 2em;
-	overflow: hidden;
 	margin-right: 0.25em;
+}
+
+.zona-usuario {
+	align-items: center;
+}
+
+.zona-usuario:hover {
+	cursor: pointer;
 }
