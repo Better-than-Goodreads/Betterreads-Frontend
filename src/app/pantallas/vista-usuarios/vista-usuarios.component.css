@@ -1,0 +1,6 @@
+.imagen {
+    height: 35vh; 
+    object-fit: scale-down;
+    margin-bottom: 2em;
+    border-radius: 50%;
+}

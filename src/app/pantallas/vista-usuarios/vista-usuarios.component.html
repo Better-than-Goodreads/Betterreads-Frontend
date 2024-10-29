@@ -1,0 +1,21 @@
+<div class="horizontal-container">
+	<div class="vertical-container">
+		<img [src]="urlFoto" alt="Profile picture" class="imagen">
+	</div>
+	<div class="vertical-container">
+		<h1 style="border-bottom: solid 1px black">{{usuario.username}}</h1>
+		<button mat-raised-button>Follow</button>
+		<div class="horizontal-container">
+			<h3>Details</h3>
+			<p>Age {{usuario.age}}, {{usuario.location}}</p>
+		</div>
+		<div class="horizontal-container">
+			<h3>Gender</h3>
+			<p>{{usuario.gender}}</p>
+		</div>
+		<div class="horizontal-container">
+			<h3>About me</h3>
+			<p>{{usuario.about_me}}</p>
+		</div>
+	</div>
+</div>

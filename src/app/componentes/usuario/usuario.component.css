@@ -1,0 +1,25 @@
+.user-container {
+    height: 20vh; 
+    width: 70vw;
+    border: solid 1px black;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.container-foto {
+	width: 20vh;
+  	height: 20vh;
+}
+
+.contenido {
+	margin-left: 2em;
+}
+
+.contenido p {
+	margin: 0;
+}
+
+.icono-autor {
+	align-self: center;
+	padding-left: 0.25em;
+}

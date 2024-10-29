@@ -1,0 +1,9 @@
+<div class="vertical-container" style="align-items: center;">
+	@if (loading) {
+		<mat-spinner></mat-spinner>
+	} @else {
+		@for (usuario of usuarios; track usuario.id) {
+			<app-usuario [usuario]="usuario"></app-usuario>
+		}
+	}
+</div>
