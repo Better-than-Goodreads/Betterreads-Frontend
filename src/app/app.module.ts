@@ -41,6 +41,7 @@ import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.compone
 import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
 import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { ReviewComponent } from "./componentes/review/review.component";
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -56,6 +57,7 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
   VistaUsuariosComponent,
   UsuariosComponent,
   UsuarioComponent,
+		ReviewComponent,
 	],
 	imports: [
 		RouterOutlet,
