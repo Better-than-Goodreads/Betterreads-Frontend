@@ -4,6 +4,9 @@ import { InicioSesionComponent } from "./pantallas/inicio-sesion/inicio-sesion.c
 import { PrincipalComponent } from "./pantallas/principal/principal.component";
 import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
+import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
+import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
+import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/registrarse", pathMatch: "full" },
@@ -17,6 +20,9 @@ const routes: Routes = [
   },
   { path: "home", component: PrincipalComponent },
   { path: "publicar-libro", component: PublicarLibroComponent },
+  { path: "libro/:id", component: VistaLibroComponent },
+  { path: "user/:id", component: VistaUsuariosComponent },
+  { path: "users", component: UsuariosComponent },
 ];
 
 @NgModule({

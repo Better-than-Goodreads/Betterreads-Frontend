@@ -55,6 +55,15 @@ export class RegistrarseComponent {
 
   aboutMe = new FormGroup({ aboutMe: new FormControl("", []) });
 
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      console.log('File selected:', file);
+    }
+  }
+
   registrarse() {
     const usuario = new Usuario({
       username: this.datosIniciales.value.usuario?? '',
@@ -71,14 +80,14 @@ export class RegistrarseComponent {
       about_me: this.aboutMe.value.aboutMe?? ''
     });
     // TODO: ver el tema de guardar el usuario/ sesion
-    this.usuarioService.createUsuario(usuario).pipe(catchError(error => {
+    this.usuarioService.createUsuario(usuario, this.selectedFile).pipe(catchError(error => {
       this._snackBar.open(error.error.detail, 'X', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
       });
       return of(null);
     })).subscribe(usuario => {
-      if (usuario) this.router.navigate(['/log-in'])
+      if (usuario) this.router.navigate(['/home'])
     });
   }
 }

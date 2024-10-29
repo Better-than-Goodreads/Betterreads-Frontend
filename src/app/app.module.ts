@@ -6,7 +6,7 @@ import { InicioSesionComponent } from "./pantallas/inicio-sesion/inicio-sesion.c
 import { PrincipalComponent } from "./pantallas/principal/principal.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { registerLocaleData } from "@angular/common";
-import localeEsAr from "@angular/common/locales/es-AR";
+//import localeEn from '@angular/common/locales/en-US';
 import { RouterOutlet } from "@angular/router";
 import {
 	MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -28,17 +28,22 @@ import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.compon
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { environment } from '../environments/environment';
 import { UsuariosService } from './services/usuarios.service';
-//import { MatSelect } from "@angular/material/select";
 import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import {MatListModule} from '@angular/material/list'; 
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
 import { JwtInterceptor } from "./interceptors/jwtInterceptor";
+import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
+import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
+import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
+import { ReviewComponent } from "./componentes/review/review.component";
 
-registerLocaleData(localeEsAr, "es-Ar");
+//registerLocaleData(localeEn, 'en-US');
 
 @NgModule({
 	declarations: [
@@ -48,6 +53,11 @@ registerLocaleData(localeEsAr, "es-Ar");
 		RegistrarseComponent,
 		LibroComponent,
 		PublicarLibroComponent,
+  VistaLibroComponent,
+  VistaUsuariosComponent,
+  UsuariosComponent,
+  UsuarioComponent,
+		ReviewComponent,
 	],
 	imports: [
 		RouterOutlet,
@@ -61,6 +71,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatNativeDateModule,
 		// Componentes
 		MatSidenavModule,
+    MatListModule,
 		MatLabel,
 		MatFormFieldModule,
 		MatOption,
@@ -78,7 +89,7 @@ registerLocaleData(localeEsAr, "es-Ar");
 		MatSpinner
 	],
 	providers: [
-		{ provide: LOCALE_ID, useValue: "es-Ar" },
+		//{ provide: LOCALE_ID, useValue: "en-US" },
 		{
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 			useValue: { appearance: "outline" },

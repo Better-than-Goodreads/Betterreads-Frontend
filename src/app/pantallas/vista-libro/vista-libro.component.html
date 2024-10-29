@@ -1,0 +1,65 @@
+<div class="main">
+	<div class="book-container horizontal-container">
+
+		<div class="vertical-container" style="padding-left: 1em;">
+			<img [src]="urlFoto" alt="Book cover" class="imagen">
+			<button mat-flat-button>Want to Read</button>
+		</div>
+
+		<div class="vertical-container content">
+			<h1>{{book.title}}</h1>
+			<h3>{{book.author}}</h3>
+
+			<div class="horizontal-container" style="align-items: center">
+				<div style="align-content: center">
+					<i *ngFor="let star of [].constructor(5); let i = index" (click)="puntuar(i + 1)"
+						class="material-icons"
+						[ngClass]="{'star-filled': i < book.stars, 'star-empty': i >= book.stars}">
+						star
+					</i>
+				</div>
+				<h2 style="padding: 0em 0.5em">{{book.avg_rating}}</h2>
+
+				<p style="color: #616161">({{book.total_ratings}})</p>
+			</div>
+
+			<p>{{book.description}}</p>
+
+			<div class="horizontal-container" style="align-items: center;">
+				<h4>Genres</h4>
+				<button *ngFor="let genero of book.genres" mat-stroked-button class="genero">{{genero}}</button>
+			</div>
+
+			<p style="color: #616161">{{book.amount_of_pages}} pages </p>
+			<p style="color: #616161">First published {{book.publication_date | date:'longDate'}}</p>
+		</div>
+	</div>
+
+
+	<div class="publicar-review-container">
+		<h2>Publicar una Review</h2>
+		<div class="star-rating">
+			<i *ngFor="let star of [].constructor(5); let i = index"
+			   (click)="puntuar(i + 1)"
+			   class="material-icons"
+			   [ngClass]="{'star-filled': i < publishReview.rating, 'star-empty': i >= publishReview.rating}">
+			   star
+			</i>
+		</div>
+		<mat-form-field appearance="outline" class="search-bar">
+			<input matInput placeholder="Type to search..." [(ngModel)]="publishReview.review"
+				(change)="publicarReview()" />
+			<button mat-icon-button matSuffix (click)="publicarReview()">
+				<mat-icon>send</mat-icon>
+			</button>
+		</mat-form-field>
+	</div>
+
+
+	<div class="reviews-container">
+		<h2>Reviews</h2>
+		@for (r of reviews; track r.review) {
+			<app-review [review]="r" />
+		}
+	</div>
+</div>

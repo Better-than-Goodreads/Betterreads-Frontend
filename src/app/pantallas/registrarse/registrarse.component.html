@@ -170,6 +170,7 @@
                 placeholder="Ej. Me gusta leer sobre..."
               ></textarea>
             </mat-form-field>
+            <input type="file" (change)="onFileSelected($event)" />
 
             <div class="botones">
               <button mat-button matStepperPrevious>Anterior</button>

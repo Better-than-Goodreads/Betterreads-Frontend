@@ -1,56 +1,53 @@
 .book-container {
-    display: flex;
-    align-items: flex-start;
-    padding: 16px;
-	max-width: 600px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: white;
+    height: 30vh; 
+    width: 70vw;
+    border: solid 1px black;
+    padding: 1em;
+    border-radius: 10px;
+	max-width: 50rem;
+	cursor: pointer;
+	gap: 1em;
 }
 
-.book-img-container {
-    margin-right: 16px;
+.rate-container {
+	display: flex;
+	align-items: center;
+}
+
+.end-container {
+	display: flex;
+	flex-direction: column;
+	gap: .5em;
+	justify-content: space-between;
 }
 
 .book-img {
-    object-fit: cover;
     border-radius: 4px;
+    height: 100%;
+	width: 100%;
+	object-fit: cover;
+	max-width: 250px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-.book-details {
-    flex-grow: 1;
+.vertical-container h2, h3, p {
+    margin: 0.25em;
 }
 
-.book-title {
-    font-size: 24px;
-    margin: 0;
+.vertical-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.book-author {
-    font-size: 18px;
-    color: #666;
-    margin: 8px 0;
-}
-
-.book-synopsis {
-    font-size: 16px;
-    color: #333;
-    margin: 16px 0;
-}
 
 .action-buttons {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-
-.want-to-read-btn {
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .rate-label {

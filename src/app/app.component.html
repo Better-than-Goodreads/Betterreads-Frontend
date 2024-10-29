@@ -1,1 +1,40 @@
-<router-outlet></router-outlet>
+@if (showSidenav) {
+  <mat-toolbar class="celeste" style="justify-content: space-between;">
+  	<div class="horizontal-container" style="align-items: center;">
+		<button mat-icon-button aria-label="menu icon">
+			<mat-icon (click)="menu.toggle()">menu</mat-icon>
+		</button>
+		<span>BetterReads</span>
+	</div>
+	<div class="horizontal-container" style="align-items: center;">
+    <div class="img-container-perfil photo">
+      <img [src]="urlFotoPerfil" alt="Profile picture" class="imagen-perfil">
+    </div>
+		
+		<p style="font-size: large">{{usuarioActual}}</p>
+	</div>
+	
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #menu mode="side" class="menu celeste">
+    <mat-nav-list>
+      <a mat-list-item>
+          <span routerLink="/home">Home</span>
+      </a>
+      <a mat-list-item routerLink="/publicar-libro"> Publicar Libro </a>
+      <a mat-list-item>
+          <span>Books</span>
+      </a>
+      <a mat-list-item>
+          <span routerLink="/users">Users</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="padding-top: 0.5em;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+} @else {
+  <router-outlet></router-outlet>
+}
