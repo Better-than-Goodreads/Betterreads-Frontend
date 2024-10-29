@@ -1,6 +1,18 @@
-.imagen {
-    height: 35vh; 
-    object-fit: scale-down;
-    margin-bottom: 2em;
-    border-radius: 50%;
+.perfil {
+    height: 30vh; 
+    width: 30vh;
+}
+
+.contenido {
+    width: 50%;
+    padding-left: 2em;
+}
+
+.datos {
+    align-items: center;
+    column-gap: 2em;
+}
+
+h3, p {
+    margin: 0.2em;
 }

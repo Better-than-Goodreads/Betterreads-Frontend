@@ -14,7 +14,8 @@ export class VistaUsuariosComponent {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')?? '';
     this.usuarioService.getUsuario(id).subscribe(usuario => {
-      this.usuario = usuario as Usuario;
+      this.usuario = usuario;
+      console.log(usuario);
       this.urlFoto = `http://localhost:8080/users/${usuario.id}/picture`;
     });
   }
