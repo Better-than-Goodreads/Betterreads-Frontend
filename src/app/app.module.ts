@@ -38,6 +38,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
 import { JwtInterceptor } from "./interceptors/jwtInterceptor";
 import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
+import { ReviewComponent } from "./componentes/review/review.component";
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -49,7 +50,8 @@ import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.compone
 		RegistrarseComponent,
 		LibroComponent,
 		PublicarLibroComponent,
-  VistaLibroComponent,
+		VistaLibroComponent,
+		ReviewComponent,
 	],
 	imports: [
 		RouterOutlet,
