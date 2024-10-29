@@ -4,16 +4,43 @@
     border: solid 1px black;
     padding: 1em;
     border-radius: 10px;
+	max-width: 50rem;
+	cursor: pointer;
+	gap: 1em;
+}
+
+.rate-container {
+	display: flex;
+	align-items: center;
+}
+
+.end-container {
+	display: flex;
+	flex-direction: column;
+	gap: .5em;
+	justify-content: space-between;
 }
 
 .book-img {
     border-radius: 4px;
     height: 100%;
-    width: fit-content;
+	width: 100%;
+	object-fit: cover;
+	max-width: 250px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .vertical-container h2, h3, p {
     margin: 0.25em;
+}
+
+.vertical-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 
