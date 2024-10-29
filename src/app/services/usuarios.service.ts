@@ -15,12 +15,12 @@ export class UsuariosService {
 
 
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.urlUsuarios);
+    return this.http.get<any>(this.urlUsuarios+'/').pipe(map((res: {users: Usuario[]}) => res.users as Usuario[]));
   }
   
-  getUsuario(id: number): Observable<Usuario> {
+  getUsuario(id: string): Observable<Usuario> {
     const url = `${this.urlUsuarios}/${id}`;
-    return this.http.get<Usuario>(url);
+    return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
   }
 
   logIn(username: string, password: string): Observable<Usuario> {

@@ -38,6 +38,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
 import { JwtInterceptor } from "./interceptors/jwtInterceptor";
 import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
+import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
+import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
+import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { ReviewComponent } from "./componentes/review/review.component";
 
 //registerLocaleData(localeEn, 'en-US');
@@ -50,7 +53,10 @@ import { ReviewComponent } from "./componentes/review/review.component";
 		RegistrarseComponent,
 		LibroComponent,
 		PublicarLibroComponent,
-		VistaLibroComponent,
+  VistaLibroComponent,
+  VistaUsuariosComponent,
+  UsuariosComponent,
+  UsuarioComponent,
 		ReviewComponent,
 	],
 	imports: [

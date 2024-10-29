@@ -1,0 +1,21 @@
+<div class="horizontal-container user-container" (click)="verLibro()">
+	<div class="img-container-perfil container-foto">
+		<img src="http://localhost:8080/users/{{usuario.id}}/picture" alt="Profile picture" class="imagen-perfil">
+	</div>
+	<div class="vertical-container contenido">
+		<div class="horizontal-container">
+			<h2>{{usuario.username}}</h2>
+			<mat-icon *ngIf="usuario.is_author" aria-hidden="false" aria-label="Is author" fontIcon="draw" class="icono-autor"></mat-icon>
+		</div>
+		
+		<div class="horizontal-container" style="column-gap: 1em;">
+			<button mat-flat-button>Follow</button>
+			<div>
+				<p>2 friends</p>
+				<p>43 books read</p>
+			</div>
+		</div>
+		
+	</div>
+	
+</div>
