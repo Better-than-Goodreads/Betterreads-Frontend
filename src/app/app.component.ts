@@ -18,12 +18,12 @@ export class AppComponent {
         this.showSidenav = !this.muestraSidenav(currentUrl);
         this.usuarioActual = sessionStorage.getItem('username')?? 'Log In';
         this.id = sessionStorage.getItem('id')?? '';
-        this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : './default-profile.png';
+        this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : this.defaultImage;
       }
     });
 
   }
-
+  defaultImage = './default-profile.png';
   id = '';
   linkZonaUsuario() {
     if (this.id) {

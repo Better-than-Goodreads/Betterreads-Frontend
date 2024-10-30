@@ -8,7 +8,7 @@
   </div>
   <div class="horizontal-container zona-usuario" (click)="linkZonaUsuario()">
     <div class="img-container-perfil photo">
-      <img [src]="urlFotoPerfil" alt="Profile picture" class="imagen-perfil">
+      <img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil">
     </div>
     
     <p style="font-size: large">{{usuarioActual}}</p>
