@@ -12,7 +12,8 @@ export class UsuarioComponent {
   @Input() usuario: Usuario = new Usuario({});
   constructor(private usuarioService: UsuariosService, private router: Router) { }
   
-
+  urlFotoPerfil = `http://localhost:8080/users/${this.usuario.id}/picture`;
+  defaultImage = './default-profile.png';
   verLibro() {
     this.router.navigate(['/user', this.usuario.id])
   } 

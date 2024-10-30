@@ -35,32 +35,32 @@
 		
 
 
-	<div class="publicar-review-container">
-		<h2>Publicar una Review</h2>
-		<div class="star-rating">
-			<i *ngFor="let star of [].constructor(5); let i = index"
-			   (click)="puntuar(i + 1)"
-			   class="material-icons"
-			   [ngClass]="{'star-filled': i < publishReview.rating, 'star-empty': i >= publishReview.rating}">
-			   star
-			</i>
+			<div class="publicar-review-container">
+				<h2>Publicar una Review</h2>
+				<div class="star-rating">
+					<i *ngFor="let star of [].constructor(5); let i = index"
+					   (click)="puntuar(i + 1)"
+					   class="material-icons"
+					   [ngClass]="{'star-filled': i < publishReview.rating, 'star-empty': i >= publishReview.rating}">
+					   star
+					</i>
+				</div>
+				<mat-form-field appearance="outline" class="search-bar">
+					<input matInput placeholder="Type to search..." [(ngModel)]="publishReview.review"
+						(change)="publicarReview()" />
+					<button mat-icon-button matSuffix (click)="publicarReview()">
+						<mat-icon>send</mat-icon>
+					</button>
+				</mat-form-field>
+			</div>
+
+
+			<div class="reviews-container">
+				<h2>Reviews</h2>
+				@for (r of reviews; track r.review) {
+					<app-review [review]="r" />
+				}
+			</div>
 		</div>
-		<mat-form-field appearance="outline" class="search-bar">
-			<input matInput placeholder="Type to search..." [(ngModel)]="publishReview.review"
-				(change)="publicarReview()" />
-			<button mat-icon-button matSuffix (click)="publicarReview()">
-				<mat-icon>send</mat-icon>
-			</button>
-		</mat-form-field>
-	</div>
-
-
-	<div class="reviews-container">
-		<h2>Reviews</h2>
-		@for (r of reviews; track r.review) {
-			<app-review [review]="r" />
-		}
-	</div>
-	</div>
 	</div>
 </div>

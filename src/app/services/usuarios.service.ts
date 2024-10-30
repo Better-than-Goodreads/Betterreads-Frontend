@@ -4,6 +4,8 @@ import { Observable, of } from "rxjs";
 import { environment } from '../../environments/environment';
 import { Usuario, UsuarioRegister } from "../entidades/usuario";
 import { catchError, switchMap, map, tap } from 'rxjs/operators';
+import { Review } from "../entidades/Review";
+import { Libro } from "../entidades/Libro";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,16 @@ export class UsuariosService {
   getUsuario(id: string): Observable<Usuario> {
     const url = `${this.urlUsuarios}/${id}`;
     return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
+  }
+
+  getReviewsUsuario(id: string): Observable<Review[]> {
+    const url = environment.apiUrl + `/books/user/${id}/reviews`;
+    return this.http.get<any>(url).pipe(map((res: {reviews: Review[]}) => res.reviews));
+  }
+
+  getBooksUsuario(id:string): Observable<Libro[]>{
+    const url = environment.apiUrl + `/books/author/${id}`;
+    return this.http.get<any>(url).pipe(map((res: {book: Libro, review:Review}[]) => res.map(data => data.book))); 
   }
 
   logIn(username: string, password: string): Observable<Usuario> {

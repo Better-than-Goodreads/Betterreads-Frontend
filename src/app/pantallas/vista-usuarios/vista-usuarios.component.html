@@ -1,6 +1,6 @@
 <div class="horizontal-container" style="padding-left: 1em; width: 100%;">
 	<div class="vertical-container img-container-perfil perfil">
-		<img [src]="urlFoto" alt="Profile picture" class="imagen-perfil">
+		<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
 	</div>
 	<div class="vertical-container contenido">
 		<div class="horizontal-container titulo">
@@ -23,7 +23,16 @@
 		</div>
 		<h3>About me:</h3>
 		<p>{{usuario.about_me}}</p>
+		<div *ngIf="usuario.is_author">
+			<h2>Libros publicados</h2>
+			@for (book of books; track book.id) {
+			<app-libro [book]="book"></app-libro>
+			}
+		</div>
 		<h2>Reviews</h2>
+		@for (r of reviews; track r.review) {
+			<app-review [review]="r" />
+		}
 	</div>
 
 </div>

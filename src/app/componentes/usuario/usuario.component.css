@@ -5,6 +5,9 @@
     padding: 1em;
     border-radius: 10px;
 }
+.user-container:hover {
+	cursor: pointer;
+}
 
 .container-foto {
 	width: 20vh;

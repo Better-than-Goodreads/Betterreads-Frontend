@@ -1,6 +1,6 @@
 <div class="horizontal-container user-container" (click)="verLibro()">
 	<div class="img-container-perfil container-foto">
-		<img src="http://localhost:8080/users/{{usuario.id}}/picture" alt="Profile picture" class="imagen-perfil">
+		<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil">
 	</div>
 	<div class="vertical-container contenido">
 		<div class="horizontal-container">
