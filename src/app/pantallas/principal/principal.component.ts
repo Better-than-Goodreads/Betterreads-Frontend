@@ -56,9 +56,10 @@ export class PrincipalComponent implements OnInit {
 		this.bookService.getBooks().subscribe({
 			next: (data: any) => {
 				console.log('Books fetched', data);
-				this.books = data?.books?.map((book: any) => { 
+				this.books = data?.map((book: any) => { 
 					return book.book 
 				}) as Libro[];
+				console.log(data.books);
 				this.filteredBooks = this.books as Libro[];
 				this.loading = false;
 			},

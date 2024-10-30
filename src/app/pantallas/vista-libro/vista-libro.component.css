@@ -25,12 +25,14 @@
 }
 
 .book-container {
-	height: 50vh;
+	height: 100%;
 }
 
 .content {
-    overflow-x: hidden;
-    padding-left: 2em;
+    overflow: scroll;
+	padding-left: 2em;
+	width: 100%;
+	height: 100%;
 }
 
 .imagen {

@@ -32,8 +32,7 @@
 
 			<p style="color: #616161">{{book.amount_of_pages}} pages </p>
 			<p style="color: #616161">First published {{book.publication_date | date:'longDate'}}</p>
-		</div>
-	</div>
+		
 
 
 	<div class="publicar-review-container">
@@ -61,5 +60,7 @@
 		@for (r of reviews; track r.review) {
 			<app-review [review]="r" />
 		}
+	</div>
+	</div>
 	</div>
 </div>

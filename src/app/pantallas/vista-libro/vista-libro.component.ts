@@ -22,7 +22,7 @@ export class VistaLibroComponent {
 	ngOnInit() {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
-			this.book = book.book.book;
+			this.book = book.book;
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
 		});
