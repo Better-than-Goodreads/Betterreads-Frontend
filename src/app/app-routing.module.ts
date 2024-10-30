@@ -19,8 +19,8 @@ const routes: Routes = [
     component: InicioSesionComponent,
   },
   { path: "home", component: PrincipalComponent },
-  { path: "publicar-libro", component: PublicarLibroComponent },
-  { path: "libro/:id", component: VistaLibroComponent },
+  { path: "post-book", component: PublicarLibroComponent },
+  { path: "book/:id", component: VistaLibroComponent },
   { path: "user/:id", component: VistaUsuariosComponent },
   { path: "users", component: UsuariosComponent },
 ];

@@ -1,10 +1,10 @@
 <div class="vertical-container container">
   <form class="vertical-container inicioSesion" [formGroup]="datosIniciales">
-    <h2>Bienvenido a BetterReads</h2>
-    <p>Complete sus datos para ingresar a su cuenta</p>
+    <h2>Welcome to BetterReads</h2>
+    <p>Fill in your details to log in to your account</p>
     <div style="row-gap: 0.75em" class="vertical-container">
       <mat-form-field>
-        <mat-label>Usuario</mat-label>
+        <mat-label>Username</mat-label>
         <input
           matInput
           formControlName="usuario"
@@ -12,12 +12,12 @@
         />
         <mat-error
           *ngIf="datosIniciales.get('usuario')?.hasError('required')"
-          >El usuario es obligatorio</mat-error
+          >The username is required</mat-error
         >
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Contraseña</mat-label>
+        <mat-label>Password</mat-label>
         <input
           matInput
           type="password"
@@ -33,15 +33,15 @@
             datosIniciales.get('password')?.hasError('minlength') &&
             !datosIniciales.get('password')?.hasError('required')
           "
-          >Debe tener mínimo 8 caracteres</mat-error
+          >Must be at least 8 characters</mat-error
         >
         <mat-error *ngIf="datosIniciales.get('password')?.hasError('required')"
-          >La contraseña es obligatoria</mat-error
+          >The password is required</mat-error
         >
       </mat-form-field>
 
       <button type="submit" (click)="submitLogin()" mat-flat-button>
-        Iniciar Sesión
+        Log In
       </button>
     </div>
   </form>

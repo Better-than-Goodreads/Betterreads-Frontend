@@ -1,7 +1,7 @@
 <div class="vertical-container container">
   <div class="inicioSesion">
-    <h2>Bienvenido a BetterReads!</h2>
-    <p>Complete sus datos para crear una cuenta</p>
+    <h2>Welcome to BetterReads!</h2>
+    <p>Fill in your details to create an account</p>
     <mat-stepper [linear]="true" labelPosition="bottom" #stepper>
       <mat-step [stepControl]="datosIniciales">
         <form class="vertical-container" [formGroup]="datosIniciales">
@@ -10,7 +10,7 @@
             class="vertical-container"
           >
             <mat-form-field>
-              <mat-label>Usuario</mat-label>
+              <mat-label>Username</mat-label>
               <input
                 matInput
                 formControlName="usuario"
@@ -18,7 +18,7 @@
               />
               <mat-error
                 *ngIf="datosIniciales.get('usuario')?.hasError('required')"
-                >El usuario es obligatorio</mat-error
+                >The username is required</mat-error
               >
             </mat-form-field>
 
@@ -35,12 +35,12 @@
                   datosIniciales.get('email')?.hasError('email') &&
                   !datosIniciales.get('email')?.hasError('required')
                 "
-                >Email inválido</mat-error
+                >Invalid email</mat-error
               >
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Contraseña</mat-label>
+              <mat-label>Password</mat-label>
               <input
                 matInput
                 type="password"
@@ -56,16 +56,16 @@
                   datosIniciales.get('password')?.hasError('minlength') &&
                   !datosIniciales.get('password')?.hasError('required')
                 "
-                >Debe tener mínimo 8 caracteres</mat-error
+                >Must be at least 8 characters</mat-error
               >
               <mat-error
                 *ngIf="datosIniciales.get('password')?.hasError('required')"
-                >La contraseña es obligatoria</mat-error
+                >The password is required</mat-error
               >
             </mat-form-field>
 
             <div class="botones">
-              <button mat-flat-button matStepperNext>Siguiente</button>
+              <button mat-flat-button matStepperNext>Next</button>
             </div>
           </div>
         </form>
@@ -84,15 +84,15 @@
           >
             <div style="column-gap: 2em" class="horizontal-container">
               <mat-form-field>
-                <mat-label>Nombre</mat-label>
+                <mat-label>Name</mat-label>
                 <input matInput formControlName="nombre" placeholder="Nombre" />
                 <mat-error
                   *ngIf="infoPersonal.get('nombre')?.hasError('required')"
-                  >Es obligatorio</mat-error
+                  >The name is required</mat-error
                 >
               </mat-form-field>
               <mat-form-field>
-                <mat-label>Apellido</mat-label>
+                <mat-label>Surname</mat-label>
                 <input
                   matInput
                   formControlName="apellido"
@@ -100,15 +100,15 @@
                 />
                 <mat-error
                   *ngIf="infoPersonal.get('apellido')?.hasError('required')"
-                  >Es obligatorio</mat-error
+                  >The surname is required</mat-error
                 >
               </mat-form-field>
             </div>
-            <mat-checkbox formControlName="esAutor">Soy autor</mat-checkbox>
+            <mat-checkbox formControlName="esAutor">I am an author</mat-checkbox>
 
             <div class="botones">
-              <button mat-button matStepperPrevious>Anterior</button>
-              <button mat-flat-button matStepperNext>Siguiente</button>
+              <button mat-button matStepperPrevious>Previous</button>
+              <button mat-flat-button matStepperNext>Next</button>
             </div>
           </div>
         </form>
@@ -118,16 +118,16 @@
         <form class="vertical-container" [formGroup]="infoOpcional">
           <div style="row-gap: 0.75em; padding-top: 0.5em" class="horizontal-container">
             <mat-form-field>
-              <mat-label>Género</mat-label>
+              <mat-label>Gender</mat-label>
               <mat-select formControlName="genero">
-                <mat-option value="Femenino">Femenino</mat-option>
-                <mat-option value="Masculino">Masculino</mat-option>
-                <mat-option value="Otros">Otros</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Other">Other</mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Edad</mat-label>
+              <mat-label>Age</mat-label>
               <input
                 matInput
                 formControlName="edad"
@@ -135,18 +135,18 @@
                 type="number"
               />
               <mat-error *ngIf="infoPersonal.get('edad')?.hasError('min')"
-                >Debes tener mínimo 12 años</mat-error
+                >You have to be at least 12 years old</mat-error
               >
             </mat-form-field>
           </div>
           <mat-form-field>
-            <mat-label>Pais</mat-label>
+            <mat-label>Country</mat-label>
             <input matInput formControlName="pais" placeholder="Argentina" />
           </mat-form-field>
 
           <div class="botones">
-            <button mat-button matStepperPrevious>Anterior</button>
-            <button mat-flat-button matStepperNext>Siguiente/Omitir</button>
+            <button mat-button matStepperPrevious>Previous</button>
+            <button mat-flat-button matStepperNext>Next/Skip</button>
           </div>
         </form>
       </mat-step>
@@ -170,11 +170,12 @@
                 placeholder="Ej. Me gusta leer sobre..."
               ></textarea>
             </mat-form-field>
+            <p>Profile picture:</p>
             <input type="file" (change)="onFileSelected($event)" />
 
             <div class="botones">
-              <button mat-button matStepperPrevious>Anterior</button>
-              <button mat-flat-button (click)="registrarse()">Registrarse</button>
+              <button mat-button matStepperPrevious>Previous</button>
+              <button mat-flat-button (click)="registrarse()">Register</button>
             </div>
           </div>
         </form>

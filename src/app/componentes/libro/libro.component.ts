@@ -26,6 +26,6 @@ export class LibroComponent {
 	}
 
 	verLibro() {
-		this.router.navigate(['/libro', this.book.id])
+		this.router.navigate(['/book', this.book.id])
 	} 
 }
