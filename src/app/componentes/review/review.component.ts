@@ -8,4 +8,7 @@ import { Review } from '../../entidades/Review';
 })
 export class ReviewComponent {
 	@Input() review: Review = new Review();
+
+	urlFotoPerfil = `http://localhost:8080/users/${this.review.user_id}/picture`;
+	defaultImage = './default-profile.png';
 }

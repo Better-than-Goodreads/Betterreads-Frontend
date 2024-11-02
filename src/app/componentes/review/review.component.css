@@ -1,7 +1,10 @@
 .main {
 	display: flex;
-	align-items: center;
-	gap: 1em;
+	flex-direction: column;
+	background-color: #ffff;
+	border-radius: 10px;
+	padding: 1em;
+	max-width: 25rem;
 }
 
 .star-rating {
@@ -19,4 +22,21 @@
 
 .star-empty {
     color: #ddd;
+}
+
+img {
+	border-radius: 50%;
+	width: 4rem;
+	height: 4rem;
+	border: 2px solid #ddd;
+}
+
+.container1 {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+p{
+	font-size: 1.2em;
 }

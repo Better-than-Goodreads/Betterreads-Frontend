@@ -1,10 +1,14 @@
 <div class="main">
-	<p>{{review.review}}</p>
-	<div class="star-rating">
-		<i *ngFor="let star of [].constructor(5); let i = index"
-		   class="material-icons"
-		   [ngClass]="{'star-filled': i < review.rating, 'star-empty': i >= review.rating}">
-		   star
-		</i>
+	<div class="container1">
+		<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" />
+		<h3>{{review.username}}</h3>
+		<div class="star-rating">
+			<i *ngFor="let star of [].constructor(5); let i = index"
+			   class="material-icons"
+			   [ngClass]="{'star-filled': i < review.rating, 'star-empty': i >= review.rating}">
+			   star
+			</i>
+		</div>
 	</div>
+	<p>{{review.review}}</p>
 </div>
