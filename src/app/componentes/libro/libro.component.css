@@ -1,5 +1,5 @@
 .book-container {
-    height: 30vh; 
+    height: 30vh;
     width: 70vw;
     border: solid 1px black;
     padding: 1em;
@@ -25,7 +25,7 @@
     border-radius: 4px;
     height: 100%;
 	width: 100%;
-	object-fit: scale-down;
+	object-fit: cover;
 	max-width: 250px;
 	position: absolute;
 	top: 0;

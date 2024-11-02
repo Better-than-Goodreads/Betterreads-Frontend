@@ -16,6 +16,10 @@
 	@if (loading) {
 	<mat-spinner></mat-spinner>
 	} @else {
+
+	@if (filteredBooks.length === 0) {
+	<h2>No books found 😭</h2>
+	}
 	@for (book of filteredBooks; track book.id) {
 	<app-libro [book]="book"></app-libro>
 	}

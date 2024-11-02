@@ -25,7 +25,7 @@ export class PublicarLibroComponent {
   }
 
   publicarLibro() {
-	if (!this.libro.title || !this.libro.author || !this.libro.publication_date || !this.libro.publication_date) {
+	if (!this.libro.title || !this.libro.publication_date || !this.libro.publication_date) {
 		this.error = 'Complete todos los campos requeridos.';
 		return
 	}
