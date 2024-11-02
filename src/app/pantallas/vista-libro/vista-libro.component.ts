@@ -38,6 +38,13 @@ export class VistaLibroComponent {
 	}
 
 	publicarReview() {
-		this.bookService.postReview(this.book.id, this.publishReview).subscribe();
+		this.bookService.postReview(this.book.id, this.publishReview).subscribe({
+			next: () => {
+				window.location.reload();
+			},
+			error: (error: any) => {
+				console.error('Error publishing review', error); // Cuando este el edit esto no pasa
+			}
+		});
 	}
 }
