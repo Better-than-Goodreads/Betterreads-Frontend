@@ -10,7 +10,6 @@
 
 .star-rating i {
     font-size: 24px;
-    cursor: pointer;
 	user-select: none;
 }
 
@@ -20,12 +19,4 @@
 
 .star-empty {
     color: #ddd;
-}
-
-.star-empty:hover {
-	color: #FFD700;
-}
-
-.star-filled:hover {
-	color: #ddd;
 }

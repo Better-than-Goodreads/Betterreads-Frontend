@@ -43,7 +43,7 @@
 }
 
 .imagen {
-    height: 70vh; 
+    height: 70vh;
     margin-bottom: 2em;
     border-radius: 10px;
 	max-width: 35rem;
@@ -64,6 +64,15 @@
     cursor: pointer;
 	user-select: none;
 }
+
+.star-filled-static {
+    color: #FFD700;
+}
+
+.star-empty-static {
+    color: #ddd;
+}
+
 
 .star-filled {
     color: #FFD700;

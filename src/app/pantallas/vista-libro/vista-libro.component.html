@@ -32,15 +32,15 @@
 
 			<div class="horizontal-container" style="align-items: center">
 				<div style="align-content: center">
-					<i *ngFor="let star of [].constructor(5); let i = index" (click)="puntuar(i + 1)"
+					<i *ngFor="let star of [].constructor(5); let i = index"
 						class="material-icons"
-						[ngClass]="{'star-filled': i < book.stars, 'star-empty': i >= book.stars}">
+						[ngClass]="{'star-filled-static': i < book.avg_rating, 'star-empty-static': i >= book.avg_rating}">
 						star
 					</i>
 				</div>
 				<h2 style="padding: 0em 0.5em">{{book.avg_rating}}</h2>
 
-				<p style="color: #616161">({{book.total_ratings}})</p>
+				<p style="color: #616161">Total Ratings: ({{book.total_ratings}})</p>
 			</div>
 
 			<p>{{book.description}}</p>
