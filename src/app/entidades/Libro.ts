@@ -1,7 +1,7 @@
 export class Libro {
   id: string = "";
   title: string = "";
-  author: string = "";
+  author_name: string = "";
   description: string = "";
   avg_rating: number = 0;
   total_ratings: number = 0;

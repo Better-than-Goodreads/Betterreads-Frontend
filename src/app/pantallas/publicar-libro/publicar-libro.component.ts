@@ -52,7 +52,6 @@ export class PublicarLibroComponent {
 		"genres": this.libro.genres,
 		"language": this.libro.language,
 		"publication_date": this.libro.publication_date,
-		"author": this.libro.author,
 	};
 
     this.bookService.postBook(bookToPublish, this.selectedFile).subscribe({

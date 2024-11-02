@@ -12,9 +12,9 @@ export class LibroComponent {
 	@Input() book: Libro = new Libro();
 
 	constructor(private bookService: BookService, private router: Router) { }
-	
+
 	ngOnInit() {
-		console.log('Book:', this.book.author);
+		console.log('Book:', this.book.author_name);
 		// this.bookService.getRating(this.book.id).subscribe((data: any) => {
 		// 	this.book.stars = data.rating;
 		// });
@@ -27,5 +27,5 @@ export class LibroComponent {
 
 	verLibro() {
 		this.router.navigate(['/book', this.book.id])
-	} 
+	}
 }
