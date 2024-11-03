@@ -5,6 +5,7 @@ import { BookService } from '../../services/servicio-libros.service';
 import { Review } from '../../entidades/Review';
 import { BibliotecaService } from '../../services/biblioteca.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { STATUS_BOOKSHELF } from '../../entidades/StatusBiblioteca';
 
 @Component({
 	selector: 'app-vista-libro',
@@ -18,6 +19,10 @@ export class VistaLibroComponent {
 	urlFoto = '';
 	book = new Libro();
 	puntuarReview = 0;
+	statusBookshelf = STATUS_BOOKSHELF
+
+	currentStatus: string | null = null;
+	selectedStatus: string = '';
 
 	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
@@ -27,6 +32,8 @@ export class VistaLibroComponent {
 			this.book = book.book;
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
+			this.currentStatus = book.status;
+			console.log('STATUS:', this.currentStatus);
 		});
 
 		this.bookService.getReviews(id).subscribe(reviews => {
@@ -50,14 +57,32 @@ export class VistaLibroComponent {
 		});
 	}
 
-	agregarBiblioteca() {
-		this.bibliotecaService.addToBookshelf(this.book.id, 'Read').subscribe({
-			next: () => {
-				this._snackBar.open('Libro agregado a la biblioteca', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
-			},
-			error: (error: any) => {
-				this._snackBar.open('Error al agregar libro a la biblioteca', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
-			}
-		});
+	agregarBiblioteca(event: any) {
+		let status = event.value;
+		if (this.currentStatus == status) {
+			this._snackBar.open('Este libro ya esta en ese estado', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+			return
+		}
+
+		if (this.currentStatus == null) {
+			this.bibliotecaService.addToBookshelf(this.book.id, status).subscribe({
+				next: () => {
+					this._snackBar.open(`Libro agregado a ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				},
+				error: (error: any) => {
+					this._snackBar.open(`Error al agregar libro ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				}
+			});
+		} else {
+			this.bibliotecaService.editToBookshelf(this.book.id, status).subscribe({
+				next: () => {
+					this._snackBar.open(`Libro agregado a ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				},
+				error: (error: any) => {
+					this._snackBar.open(`Error al agregar libro ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				}
+			});
+		}
+		this.currentStatus = status;
 	}
 }

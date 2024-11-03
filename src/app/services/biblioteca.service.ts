@@ -16,6 +16,10 @@ export class BibliotecaService {
 		return this.http.post(this.apiUrl, { book_id: bookId, status });
 	}
 
+	editToBookshelf(bookId: string, status: string): Observable<any> {
+		return this.http.put(this.apiUrl, { book_id: bookId, status });
+	}
+
 	getBookshelf(status: string): Observable<Libro[]> {
 		if (status == '') {
 			status = 'Read';

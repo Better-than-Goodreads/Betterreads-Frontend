@@ -3,7 +3,10 @@
 
 		<div class="vertical-container" style="padding-left: 1em;">
 			<img [src]="urlFoto" alt="Book cover" class="imagen">
-			<button mat-flat-button (click)="agregarBiblioteca()">Want to Read</button>
+
+			<mat-select placeholder="Book status" (selectionChange)="agregarBiblioteca($event)">
+				<mat-option *ngFor="let status of statusBookshelf" [value]="status">{{ status }}</mat-option>
+			</mat-select>
 
 
 			<div class="publicar-review-container">
