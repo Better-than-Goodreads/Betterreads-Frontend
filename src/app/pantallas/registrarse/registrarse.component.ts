@@ -18,7 +18,7 @@ import {
   styleUrl: "./registrarse.component.css",
 })
 export class RegistrarseComponent {
-  constructor(private usuarioService: UsuariosService, 
+  constructor(private usuarioService: UsuariosService,
     private router: Router,
     private _snackBar: MatSnackBar) {}
 

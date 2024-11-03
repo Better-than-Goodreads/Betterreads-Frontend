@@ -3,6 +3,8 @@ import { Libro } from '../../entidades/Libro';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../services/servicio-libros.service';
 import { Review } from '../../entidades/Review';
+import { BibliotecaService } from '../../services/biblioteca.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-vista-libro',
@@ -17,7 +19,7 @@ export class VistaLibroComponent {
 	book = new Libro();
 	puntuarReview = 0;
 
-	constructor(private route: ActivatedRoute, private bookService: BookService) { }
+	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
 	ngOnInit() {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
@@ -44,6 +46,17 @@ export class VistaLibroComponent {
 			},
 			error: (error: any) => {
 				console.error('Error publishing review', error); // Cuando este el edit esto no pasa
+			}
+		});
+	}
+
+	agregarBiblioteca() {
+		this.bibliotecaService.addToBookshelf(this.book.id, 'Read').subscribe({
+			next: () => {
+				this._snackBar.open('Libro agregado a la biblioteca', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+			},
+			error: (error: any) => {
+				this._snackBar.open('Error al agregar libro a la biblioteca', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			}
 		});
 	}
