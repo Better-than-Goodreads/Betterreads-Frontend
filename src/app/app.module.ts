@@ -32,7 +32,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import {MatListModule} from '@angular/material/list'; 
+import {MatListModule} from '@angular/material/list';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -42,6 +42,7 @@ import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuario
 import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { ReviewComponent } from "./componentes/review/review.component";
+import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -58,6 +59,7 @@ import { ReviewComponent } from "./componentes/review/review.component";
   UsuariosComponent,
   UsuarioComponent,
 		ReviewComponent,
+  BibliotecaComponent,
 	],
 	imports: [
 		RouterOutlet,

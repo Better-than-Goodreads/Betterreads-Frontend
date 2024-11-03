@@ -7,6 +7,7 @@ import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libr
 import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.component';
 import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
 import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
+import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/registrarse", pathMatch: "full" },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "book/:id", component: VistaLibroComponent },
   { path: "user/:id", component: VistaUsuariosComponent },
   { path: "users", component: UsuariosComponent },
+  { path: "biblioteca/:id", component: BibliotecaComponent },
 ];
 
 @NgModule({

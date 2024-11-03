@@ -1,0 +1,19 @@
+
+<div class="main">
+	<div class="container1">
+		<div *ngFor="let state of states" class="stateSelector"
+			(click)="selectState(state)"
+		   [ngClass]="{'selected': state == selectedState, 'not-selected': selectedState}">
+			{{state}}
+		</div>
+	</div>
+
+
+	@if (loading) {
+		<mat-spinner></mat-spinner>
+	} @else {
+		@for (book of books; track book.id) {
+			<app-libro [book]="book"></app-libro>
+		}
+	}
+</div>

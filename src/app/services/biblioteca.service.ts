@@ -8,22 +8,22 @@ import { Libro } from '../entidades/Libro';
 	providedIn: 'root'
 })
 export class BibliotecaService {
-	private apiUrl = environment.apiUrl + '/shelf/';
+	private apiUrl = environment.apiUrl + '/users';
 
 	constructor(private http: HttpClient) { }
 
 	addToBookshelf(bookId: string, status: string): Observable<any> {
-		return this.http.post(this.apiUrl, { book_id: bookId, status });
+		return this.http.post(this.apiUrl + '/shelf/', { book_id: bookId, status });
 	}
 
 	editToBookshelf(bookId: string, status: string): Observable<any> {
-		return this.http.put(this.apiUrl, { book_id: bookId, status });
+		return this.http.put(this.apiUrl + '/shelf/', { book_id: bookId, status });
 	}
 
-	getBookshelf(status: string): Observable<Libro[]> {
+	getBookshelf(userId: string, status: string): Observable<Libro[]> {
 		if (status == '') {
 			status = 'Read';
 		}
-		return this.http.get<Libro[]>(this.apiUrl, { params: { status } });
+		return this.http.get<Libro[]>(this.apiUrl + `/${userId}` + '/shelf', { params: { type: status } });
 	}
 }

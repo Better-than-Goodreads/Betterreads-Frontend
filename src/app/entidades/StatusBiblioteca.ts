@@ -1,6 +1,5 @@
 export const STATUS_BOOKSHELF = [
-	"Read",
-	"All",
-	"Reading",
-	"Plan-to-read"
+	"read",
+	"reading",
+	"plan-to-read"
 ]
