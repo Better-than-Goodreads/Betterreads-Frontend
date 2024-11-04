@@ -1,6 +1,8 @@
 <div class="main">
 	<div class="container1">
-		<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" />
+		<div class="img-container-perfil">
+			<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil" />
+		</div>
 		<h3>{{review.username}}</h3>
 		<div class="star-rating">
 			<i *ngFor="let star of [].constructor(5); let i = index"

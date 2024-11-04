@@ -22,17 +22,17 @@ export class VistaLibroComponent {
 	statusBookshelf = STATUS_BOOKSHELF
 
 	currentStatus: string | null = null;
-	selectedStatus: string = '';
 
 	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
 	ngOnInit() {
+		this.currentStatus = STATUS_BOOKSHELF[2];
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
 			this.book = book.book;
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
-			this.currentStatus = book.status;
+			this.currentStatus = book.status ?? STATUS_BOOKSHELF[2];
 			console.log('STATUS:', this.currentStatus);
 		});
 
@@ -49,9 +49,17 @@ export class VistaLibroComponent {
 	publicarReview() {
 		this.bookService.postReview(this.book.id, this.publishReview).subscribe({
 			next: () => {
+				this._snackBar.open('Review published', 'X', {
+			        horizontalPosition: 'center',
+			        verticalPosition: 'top',
+			      });
 				window.location.reload();
 			},
 			error: (error: any) => {
+				this._snackBar.open('Error publishing review', 'X', {
+			        horizontalPosition: 'center',
+			        verticalPosition: 'top',
+			      });
 				console.error('Error publishing review', error); // Cuando este el edit esto no pasa
 			}
 		});

@@ -18,7 +18,7 @@
 
 			<div class="rate-container">
 				<span>Rate</span>
-				<p>{{book.avg_rating}}</p>
+				<p>{{book.avg_rating | number : '1.2-2'}}</p>
 				<div class="star-rating">
 					<i *ngFor="let star of [].constructor(5); let i = index"
 					   (click)="puntuar(i + 1)"

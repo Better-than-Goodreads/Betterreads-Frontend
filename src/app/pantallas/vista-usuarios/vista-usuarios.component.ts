@@ -23,8 +23,11 @@ export class VistaUsuariosComponent {
       return forkJoin([this.usuarioService.getReviewsUsuario(this.usuario.id), this.usuarioService.getBooksUsuario(this.usuario.id)]);
     }))
     .subscribe(([reviews, books]) => {
-      this.reviews = reviews;
-      console.log(books);
+      this.reviews = reviews.map(review => {
+        review.user_id = id;
+        review.username = this.usuario.username;
+        return review;
+      });
       this.books = books;
 
     })

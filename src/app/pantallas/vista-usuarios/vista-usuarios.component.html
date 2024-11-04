@@ -23,7 +23,7 @@
 		</div>
 		<h3>About me:</h3>
 		<p>{{usuario.about_me}}</p>
-		<a href="/biblioteca/{{usuario.id}}">Bookshelf</a>
+		<a href="/bookshelf/{{usuario.id}}">Bookshelf</a>
 		<div *ngIf="usuario.is_author">
 			<h2>Libros publicados</h2>
 			@for (book of books; track book.id) {

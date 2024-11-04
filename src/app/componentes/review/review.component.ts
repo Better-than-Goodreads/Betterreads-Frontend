@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 import { Review } from '../../entidades/Review';
 
 @Component({
@@ -6,9 +6,12 @@ import { Review } from '../../entidades/Review';
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
-export class ReviewComponent {
+export class ReviewComponent implements AfterViewInit {
 	@Input() review: Review = new Review();
 
-	urlFotoPerfil = `http://localhost:8080/users/${this.review.user_id}/picture`;
+	ngAfterViewInit() {
+		this.urlFotoPerfil = `http://localhost:8080/users/${this.review.user_id}/picture`;
+	}
+	urlFotoPerfil = '';
 	defaultImage = './default-profile.png';
 }
