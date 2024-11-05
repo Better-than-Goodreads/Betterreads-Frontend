@@ -10,8 +10,7 @@
 }
 
 .datos {
-    align-items: center;
-    column-gap: 2em;
+    justify-content: space-around;
 }
 
 h3, p {

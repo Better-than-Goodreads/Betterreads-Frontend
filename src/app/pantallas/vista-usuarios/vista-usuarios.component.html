@@ -1,4 +1,4 @@
-<div class="horizontal-container" style="padding-left: 1em; width: 100%;">
+<div class="horizontal-container" style="padding-left: 1em;">
 	<div class="vertical-container img-container-perfil perfil">
 		<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
 	</div>
@@ -12,14 +12,20 @@
 			<button mat-flat-button style="width: 50%;">Follow</button>
 			<p>23 Friends</p>
 		</div>
-
-		<div class="horizontal-container datos">
-			<h3>Details</h3>
-			<p>Age {{usuario.age}}, {{usuario.location}}</p>
-		</div>
-		<div class="horizontal-container datos">
-			<h3>Gender</h3>
-			<p>{{usuario.gender}}</p>
+		<h2>Details</h2>
+		<div class="horizontal-container" style="width: fit-content; column-gap: 1em;">
+			<div class="vertical-container datos">
+				<h3>Name</h3>
+				<h3 *ngIf="usuario.age">Age</h3>
+				<h3 *ngIf="usuario.location">Location</h3>
+				<h3 *ngIf="usuario.gender">Gender</h3>
+			</div>
+			<div class="vertical-container datos">
+				<p>{{usuario.last_name}}, {{usuario.first_name}}</p>
+				<p *ngIf="usuario.age">{{usuario.age}}</p>
+				<p *ngIf="usuario.location">{{usuario.location}}</p>
+				<p *ngIf="usuario.gender">{{usuario.gender}}</p>
+			</div>
 		</div>
 		<h3>About me:</h3>
 		<p>{{usuario.about_me}}</p>
