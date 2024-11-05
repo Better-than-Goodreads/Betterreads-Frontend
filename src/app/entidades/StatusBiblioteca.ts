@@ -3,3 +3,9 @@ export const STATUS_BOOKSHELF = [
 	"reading",
 	"plan-to-read"
 ]
+
+export const STATUS_BOOKSHELF_LABELS = [
+	"Read",
+	"Reading",
+	"Plan to read"
+]

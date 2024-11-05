@@ -4,8 +4,8 @@
 		<div class="vertical-container" style="padding-left: 1em;">
 			<img [src]="urlFoto" alt="Book cover" class="imagen">
 
-			<mat-select #selectStatus [(value)]="currentStatus" (selectionChange)="agregarBiblioteca($event)">
-				<mat-option *ngFor="let status of statusBookshelf" [value]="status">{{ status }}</mat-option>
+			<mat-select #selectStatus [(value)]="selectedStatus" (selectionChange)="agregarBiblioteca($event)">
+				<mat-option *ngFor="let status of statusBookshelf; let i = index" [value]="status">{{ statusLabels[i] }}</mat-option>
 			</mat-select>
 
 
@@ -41,7 +41,7 @@
 						star
 					</i>
 				</div>
-				<h2 style="padding: 0em 0.5em">{{book.avg_rating | number : '1.2-2'}}</h2>
+				<h2 style="padding: 0em 0.5em">{{book.avg_rating | number : '1.1'}}</h2>
 
 				<p style="color: #616161">Total Ratings: ({{book.total_ratings}})</p>
 			</div>

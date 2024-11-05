@@ -5,7 +5,7 @@ import { BookService } from '../../services/servicio-libros.service';
 import { Review } from '../../entidades/Review';
 import { BibliotecaService } from '../../services/biblioteca.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { STATUS_BOOKSHELF } from '../../entidades/StatusBiblioteca';
+import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
 
 @Component({
 	selector: 'app-vista-libro',
@@ -19,9 +19,11 @@ export class VistaLibroComponent {
 	urlFoto = '';
 	book = new Libro();
 	puntuarReview = 0;
-	statusBookshelf = STATUS_BOOKSHELF
+	statusBookshelf = STATUS_BOOKSHELF;
+	statusLabels = STATUS_BOOKSHELF_LABELS;
+	selectedStatus = STATUS_BOOKSHELF[2];
 
-	currentStatus: string | null = null;
+	currentStatus: string = '';
 
 	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
@@ -32,7 +34,8 @@ export class VistaLibroComponent {
 			this.book = book.book;
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
-			this.currentStatus = book.status ?? STATUS_BOOKSHELF[2];
+			this.currentStatus = book.status;
+			this.selectedStatus = this.currentStatus ?? STATUS_BOOKSHELF[2];
 			console.log('STATUS:', this.currentStatus);
 		});
 
@@ -67,6 +70,8 @@ export class VistaLibroComponent {
 
 	agregarBiblioteca(event: any) {
 		let status = event.value;
+		console.log(this.currentStatus);
+		console.log(status);
 		if (this.currentStatus == status) {
 			this._snackBar.open('Este libro ya esta en ese estado', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			return

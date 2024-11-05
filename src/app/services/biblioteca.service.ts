@@ -13,11 +13,11 @@ export class BibliotecaService {
 	constructor(private http: HttpClient) { }
 
 	addToBookshelf(bookId: string, status: string): Observable<any> {
-		return this.http.post(this.apiUrl + '/shelf/', { book_id: bookId, status });
+		return this.http.post(this.apiUrl + '/shelf/', { book_id: bookId, status: status });
 	}
 
 	editToBookshelf(bookId: string, status: string): Observable<any> {
-		return this.http.put(this.apiUrl + '/shelf/', { book_id: bookId, status });
+		return this.http.put(this.apiUrl + '/shelf/', { book_id: bookId, status: status });
 	}
 
 	getBookshelf(userId: string, status: string): Observable<Libro[]> {
