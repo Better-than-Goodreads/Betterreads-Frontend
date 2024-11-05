@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BibliotecaService } from '../../services/biblioteca.service';
 import { Libro } from '../../entidades/Libro';
-import { STATUS_BOOKSHELF } from '../../entidades/StatusBiblioteca';
+import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
 
 @Component({
 	selector: 'app-biblioteca',
@@ -12,10 +12,8 @@ import { STATUS_BOOKSHELF } from '../../entidades/StatusBiblioteca';
 export class BibliotecaComponent {
 	books: Libro[] = [];
 	states = [
-		"reading",
-		"read",
-		"plan-to-read",
-		"all",
+		...STATUS_BOOKSHELF_LABELS,
+		"All",
 	]
 	userId = '';
 	loading = true;
