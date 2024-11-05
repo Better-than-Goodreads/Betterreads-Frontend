@@ -44,7 +44,7 @@ export class AppComponent {
   urlFotoPerfil = '';
 
   muestraSidenav(url: string) {
-    return url === '/registrarse' || url === '/log-in' || url == '/'
+    return url === '/registrarse' || url === '/log-in'
   }
 
   showSidenav = false;

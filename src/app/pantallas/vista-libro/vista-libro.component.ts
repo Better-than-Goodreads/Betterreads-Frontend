@@ -32,6 +32,8 @@ export class VistaLibroComponent {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
 			this.book = book.book;
+			this.publishReview = book.review;
+			console.log(this.publishReview);
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
 			this.currentStatus = book.status;
@@ -73,26 +75,26 @@ export class VistaLibroComponent {
 		console.log(this.currentStatus);
 		console.log(status);
 		if (this.currentStatus == status) {
-			this._snackBar.open('Este libro ya esta en ese estado', 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+			this._snackBar.open('This book is already in that state', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			return
 		}
 
 		if (this.currentStatus == null) {
 			this.bibliotecaService.addToBookshelf(this.book.id, status).subscribe({
 				next: () => {
-					this._snackBar.open(`Libro agregado a ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+					this._snackBar.open(`Book added to ${status}`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 				},
 				error: (error: any) => {
-					this._snackBar.open(`Error al agregar libro ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+					this._snackBar.open(`Error adding the book to ${status}`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 				}
 			});
 		} else {
 			this.bibliotecaService.editToBookshelf(this.book.id, status).subscribe({
 				next: () => {
-					this._snackBar.open(`Libro agregado a ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+					this._snackBar.open(`Book added to ${status}`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 				},
 				error: (error: any) => {
-					this._snackBar.open(`Error al agregar libro ${status}`, 'Cerrar', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+					this._snackBar.open(`Error adding the book to ${status}`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 				}
 			});
 		}

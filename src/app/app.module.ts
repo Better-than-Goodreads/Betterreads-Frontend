@@ -61,7 +61,7 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
   UsuariosComponent,
   UsuarioComponent,
 		ReviewComponent,
-  BibliotecaComponent,
+  BibliotecaComponent
 	],
 	imports: [
 		RouterOutlet,

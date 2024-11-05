@@ -14,7 +14,7 @@ export class PrincipalComponent implements OnInit {
 	searchText = '';
 	filteredBooks: Libro[] = [];
 	selectedGenres: string[] = [];
-	genres = GENRES
+	genres = GENRES;
 
 	constructor(private bookService: BookService) { }
 
@@ -53,6 +53,7 @@ export class PrincipalComponent implements OnInit {
 		})
 	}
 
+	mapStatus = new Map<string, string>();
 	fetchBooks(): void {
 		this.bookService.getBooks().subscribe({
 			next: (data: any) => {
@@ -61,6 +62,15 @@ export class PrincipalComponent implements OnInit {
 					return book.book
 				}) as Libro[];
 				console.log(data.books);
+
+				data.forEach((book: any) => {
+					if (book.status) {
+						this.mapStatus.set(book.book.id, book.status);
+					}
+					
+				})
+
+				console.log(this.mapStatus);
 				this.filteredBooks = this.books as Libro[];
 				this.loading = false;
 			},
