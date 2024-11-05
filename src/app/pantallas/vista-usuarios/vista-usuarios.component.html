@@ -31,6 +31,9 @@
 			}
 		</div>
 		<h2>Reviews</h2>
+		@if (reviews.length === 0) {
+			<h2>No reviews found 😭</h2>
+		}
 		@for (r of reviews; track r.review) {
 			<app-review [review]="r" />
 		}

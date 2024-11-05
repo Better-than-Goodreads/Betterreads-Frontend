@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from "rxjs";
 import { environment } from '../../environments/environment';
 import { Usuario, UsuarioRegister } from "../entidades/usuario";
+import { UsuarioActualService } from "../services/usuario-actual.service";
 import { catchError, switchMap, map, tap } from 'rxjs/operators';
 import { Review } from "../entidades/Review";
 import { Libro } from "../entidades/Libro";
@@ -12,7 +13,8 @@ import { Libro } from "../entidades/Libro";
 })
 export class UsuariosService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private usuarioActualService: UsuarioActualService) { }
   private urlUsuarios = environment.apiUrl + '/users'; 
 
 
@@ -39,8 +41,7 @@ export class UsuariosService {
     const url = this.urlUsuarios + '/login';
     return this.http.post<any>(url, {'password': password, 'username': username}).pipe(map((result: {user: Usuario, token:string}) => {
       sessionStorage.setItem('access_token', result.token);
-      sessionStorage.setItem('username', result.user.username);
-      sessionStorage.setItem('id', result.user.id);
+      this.usuarioActualService.usuarioActual = result.user;
       return result.user;
     }));
   }

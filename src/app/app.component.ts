@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { Router, NavigationEnd } from '@angular/router';
+import { UsuarioActualService } from './services/usuario-actual.service';
+import { Usuario } from './entidades/usuario';
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -8,7 +11,8 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = "betterReads";
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, 
+    private usuarioActualService: UsuarioActualService) {}
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -16,13 +20,15 @@ export class AppComponent {
         const currentUrl = event.url;
         // Check the URL to determine if the sidenav should be visible
         this.showSidenav = !this.muestraSidenav(currentUrl);
-        this.usuarioActual = sessionStorage.getItem('username')?? 'Log In';
-        this.id = sessionStorage.getItem('id')?? '';
+        this.usuarioActual = this.usuarioActualService.usuarioActual?.username ?? 'Log In';
+        this.esAutor = this.usuarioActualService.usuarioActual?.is_author ?? false;
+        this.id = this.usuarioActualService.usuarioActual?.id ?? '';
         this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : this.defaultImage;
       }
     });
 
   }
+  esAutor = false;
   defaultImage = './default-profile.png';
   id = '';
   linkZonaUsuario() {

@@ -28,6 +28,7 @@ import { RegistrarseComponent } from "./pantallas/registrarse/registrarse.compon
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { environment } from '../environments/environment';
 import { UsuariosService } from './services/usuarios.service';
+import { UsuarioActualService } from './services/usuario-actual.service';
 import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
@@ -97,6 +98,7 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
 			useValue: { appearance: "outline" },
 		},
 		UsuariosService,
+		UsuarioActualService,
 		{
 		  provide: HTTP_INTERCEPTORS,
 		  useClass: JwtInterceptor,
