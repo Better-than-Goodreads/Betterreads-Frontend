@@ -8,7 +8,7 @@
         <input
           matInput
           formControlName="usuario"
-          placeholder="Nombre de usuario"
+          placeholder="Username"
         />
         <mat-error
           *ngIf="datosIniciales.get('usuario')?.hasError('required')"
@@ -42,6 +42,9 @@
 
       <button type="submit" (click)="submitLogin()" mat-flat-button>
         Log In
+      </button>
+      <button (click)="irARegister()" mat-stroked-button>
+        Register
       </button>
     </div>
   </form>

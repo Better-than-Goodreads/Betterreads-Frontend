@@ -24,6 +24,10 @@ export class InicioSesionComponent {
 
   hide = true;
 
+  irARegister() {
+    this.router.navigate(['/register']);
+  }
+
   datosIniciales = new FormGroup({
     usuario: new FormControl("", [Validators.required]),
     password: new FormControl("", [

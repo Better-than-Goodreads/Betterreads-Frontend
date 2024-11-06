@@ -14,7 +14,7 @@
               <input
                 matInput
                 formControlName="usuario"
-                placeholder="Nombre de usuario"
+                placeholder="Username"
               />
               <mat-error
                 *ngIf="datosIniciales.get('usuario')?.hasError('required')"
@@ -28,7 +28,7 @@
                 type="email"
                 matInput
                 formControlName="email"
-                placeholder="usuario@ejemplo.com"
+                placeholder="user@example.com"
               />
               <mat-error
                 *ngIf="
@@ -73,11 +73,6 @@
 
       <mat-step [stepControl]="infoPersonal">
         <form class="vertical-container" [formGroup]="infoPersonal">
-          <!-- <h2>Queremos conocerte más!</h2>
-          <p>
-            Complete los siguientes datos para que podamos generar una mejor
-            experiencia en la plataforma
-          </p> -->
           <div
             style="row-gap: 0.75em; padding-top: 0.5em"
             class="vertical-container"
@@ -85,7 +80,7 @@
             <div style="column-gap: 2em" class="horizontal-container">
               <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput formControlName="nombre" placeholder="Nombre" />
+                <input matInput formControlName="nombre" placeholder="Name" />
                 <mat-error
                   *ngIf="infoPersonal.get('nombre')?.hasError('required')"
                   >The name is required</mat-error
@@ -96,7 +91,7 @@
                 <input
                   matInput
                   formControlName="apellido"
-                  placeholder="Apellido"
+                  placeholder="Surname"
                 />
                 <mat-error
                   *ngIf="infoPersonal.get('apellido')?.hasError('required')"
@@ -153,11 +148,6 @@
 
       <mat-step [stepControl]="aboutMe" optional>
         <form [formGroup]="aboutMe" class="vertical-container">
-          <!-- <h2>Último paso!</h2>
-          <p>
-            Contanos un poco sobre vos, tus gustos, lo que quieras compartir con
-            la comunidad.
-          </p> -->
           <div
             style="row-gap: 0.75em; padding-top: 0.5em"
             class="vertical-container"
@@ -167,7 +157,7 @@
               <textarea
                 matInput
                 formControlName="aboutMe"
-                placeholder="Ej. Me gusta leer sobre..."
+                placeholder="Ex. I like to read about..."
               ></textarea>
             </mat-form-field>
             <p>Profile picture:</p>
