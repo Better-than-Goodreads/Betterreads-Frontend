@@ -4,7 +4,11 @@
 	} @else {
 		<h1>Top 3 genres</h1>
 		@for (recomendacion of recomendaciones; track recomendacion.genre) {
-			<h2 style="border-bottom: 1px solid black;">{{recomendacion.genre}}</h2>
+			<div class="horizontal-container titulo">
+				<h2>{{recomendacion.genre}}</h2>
+				<button mat-flat-button (click)="addRecommendation(recomendacion.genre)">More</button>
+			</div>
+			
 			@for (book of recomendacion.books; track book.id) {
 				<app-libro [book]="book"></app-libro>
 			}

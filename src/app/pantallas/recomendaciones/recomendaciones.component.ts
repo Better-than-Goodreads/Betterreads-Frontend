@@ -18,4 +18,12 @@ export class RecomendacionesComponent implements OnInit  {
     this.recomendacionService.getRecomendaciones().subscribe(recomendaciones => {this.recomendaciones = recomendaciones;
       this.loading = false;});
   }
+
+  addRecommendation(genre: string) {
+    this.recomendacionService.getMore(genre).subscribe(moreBooks => {
+      let recomendacion = this.recomendaciones.find(recomendacion => recomendacion.genre === genre);
+      if (recomendacion)
+        recomendacion.books = moreBooks;
+    })
+  }
 }
