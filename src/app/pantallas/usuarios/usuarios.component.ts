@@ -32,4 +32,6 @@ export class UsuariosComponent {
 
     })
   }
+  
+  searchAuthor = false;
 }

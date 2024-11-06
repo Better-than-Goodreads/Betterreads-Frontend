@@ -35,6 +35,7 @@ import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libr
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatListModule} from '@angular/material/list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -91,7 +92,8 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
 		MatCardModule,
 		MatDatepickerModule,
 		MatSpinner,
-		MatButtonToggleModule
+		MatButtonToggleModule,
+		MatSlideToggleModule
 	],
 	providers: [
 		//{ provide: LOCALE_ID, useValue: "en-US" },

@@ -1,8 +1,7 @@
 .search-bar {
 	display: flex;
 	margin: 0;
-	justify-content: center;
-	flex-grow: 1;
+	width: 75%;
 }
 
 .tool-tab {
@@ -10,4 +9,14 @@
 	justify-content: space-between;
 	width: 100%;
 	gap: 1em;
+}
+
+.author-toggle {
+	display: flex;
+  	align-items: baseline;
+  	width: 18%;
+  	justify-content: space-between;
+  	border-left: 1px black solid;
+  	padding-left: 1em;
+  	height: 100%;
 }

@@ -7,6 +7,11 @@
 				<mat-icon>search</mat-icon>
 			</button>
 		</mat-form-field>
+		<p class="author-toggle">
+			{{searchAuthor? 'Author' : 'User'}}
+			<mat-slide-toggle labelPosition="before" [(ngModel)]="searchAuthor">
+
+			</mat-slide-toggle></p>
 	</div>
 	@if (loading) {
 		<mat-spinner></mat-spinner>
