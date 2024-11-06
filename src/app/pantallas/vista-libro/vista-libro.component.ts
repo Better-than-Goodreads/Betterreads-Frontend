@@ -25,6 +25,11 @@ export class VistaLibroComponent {
 
 	currentStatus: string = '';
 
+	hoverEstrellas = 0;
+	estrellas(cantidad: number) {
+		this.hoverEstrellas = cantidad;
+	}
+
 	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
 	ngOnInit() {
@@ -36,6 +41,7 @@ export class VistaLibroComponent {
 		this.bookService.getBook(id).subscribe(book => {
 			this.book = book.book;
 			this.publishReview = book.review?? new Review();
+			this.hoverEstrellas = this.publishReview.rating;
 			console.log(this.publishReview);
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;

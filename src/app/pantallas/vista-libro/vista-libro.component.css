@@ -86,6 +86,6 @@
 	color: #FFD700;
 }
 
-.star-filled:hover {
-	color: #ddd;
+.star-empty > label:hover ~ i {
+	color: #FFD700;
 }
