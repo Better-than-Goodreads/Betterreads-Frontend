@@ -21,7 +21,7 @@ export class UsuariosComponent {
   searchText = '';
   onSearch() {
     this.loading = true;
-    this.usuarioService.searchUsers(this.searchText).subscribe({
+    this.usuarioService.searchUsers(this.searchText, this.searchAuthor).subscribe({
       next: (usuarios: Usuario[]) => {
         this.loading = false;
         this.usuarios = usuarios;
@@ -32,6 +32,6 @@ export class UsuariosComponent {
 
     })
   }
-  
+
   searchAuthor = false;
 }

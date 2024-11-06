@@ -1,7 +1,7 @@
 .search-bar {
 	display: flex;
 	margin: 0;
-	width: 75%;
+	width: 80%;
 }
 
 .tool-tab {
@@ -12,11 +12,12 @@
 }
 
 .author-toggle {
-	display: flex;
-  	align-items: baseline;
-  	width: 18%;
-  	justify-content: space-between;
-  	border-left: 1px black solid;
   	padding-left: 1em;
   	height: 100%;
+}
+
+.usuarios {
+	width: fit-content;
+	align-items: center;
+	min-width: 70vw;
 }

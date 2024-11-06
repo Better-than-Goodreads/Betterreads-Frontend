@@ -1,5 +1,5 @@
 <div class="vertical-container" style="align-items: center;">
-	<div style="width: fit-content;align-items: center;">
+	<div class="usuarios">
 	<div class="tool-tab">
 		<mat-form-field appearance="outline" class="search-bar">
 			<input matInput placeholder="Type to search..." [(ngModel)]="searchText" (change)="onSearch()" />
@@ -8,9 +8,8 @@
 			</button>
 		</mat-form-field>
 		<p class="author-toggle">
-			{{searchAuthor? 'Author' : 'User'}}
-			<mat-slide-toggle labelPosition="before" [(ngModel)]="searchAuthor">
-
+			<mat-slide-toggle [(ngModel)]="searchAuthor" (click)="onSearch()">
+				Authors
 			</mat-slide-toggle></p>
 	</div>
 	@if (loading) {

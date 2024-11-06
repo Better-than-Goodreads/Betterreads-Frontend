@@ -27,8 +27,8 @@ export class UsuariosService {
     return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
   }
 
-  searchUsers(searchText: string): Observable<Usuario[]> {
-    const url = `${this.urlUsuarios}/search?name=${searchText}`;
+  searchUsers(searchText: string, isAuthor: boolean): Observable<Usuario[]> {
+    const url = `${this.urlUsuarios}/search?name=${searchText}&author=${isAuthor}`;
     return this.http.get<any>(url).pipe(map((res: {users: Usuario[]}) => res.users as Usuario[]))
   }
 
