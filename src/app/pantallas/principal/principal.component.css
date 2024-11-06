@@ -21,3 +21,10 @@
 	width: 100%;
 	gap: 1em;
 }
+
+.containerBooks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1em;
+}

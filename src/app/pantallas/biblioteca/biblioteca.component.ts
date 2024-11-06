@@ -18,7 +18,7 @@ export class BibliotecaComponent {
 	userId = '';
 	loading = true;
 
-	statusValues = STATUS_BOOKSHELF;
+	statusValues = [...STATUS_BOOKSHELF, "all"];
 
 	selectedState: string = 'read';
 
