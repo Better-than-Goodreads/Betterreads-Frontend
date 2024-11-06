@@ -22,7 +22,7 @@ export class UsuarioActualService {
   }
 
   getId() {
-    return sessionStorage.getItem('user_id');
+    return sessionStorage.getItem('user_id')?? '';
   }
 
   getUsername(): Observable<string> {
@@ -37,6 +37,7 @@ export class UsuarioActualService {
     if (this.usuarioActual.id) return of(this.usuarioActual);
 
     const id = this.getId();
+    if (!id) return of(new Usuario({}));
     const url = `${environment.apiUrl}/users/${id}`;
     return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
   }

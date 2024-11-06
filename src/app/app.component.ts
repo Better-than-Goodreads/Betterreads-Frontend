@@ -22,11 +22,10 @@ export class AppComponent {
         const currentUrl = event.url;
         // Check the URL to determine if the sidenav should be visible
         this.usuarioActualService.getUsuario().subscribe(user => {
-          this.usuarioActual = user.username ? user.username : 'Log In';
+          this.usuarioActual = user?.username ? user.username : 'Log In';
           this.esAutor = user.is_author ?? false;
           this.id = user.id ?? '';
           this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : this.defaultImage;
-          console.log(user);
         })
         this.showSidenav = !this.muestraSidenav(currentUrl);
       }

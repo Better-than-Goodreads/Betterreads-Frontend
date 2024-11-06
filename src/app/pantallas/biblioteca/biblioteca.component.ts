@@ -18,6 +18,8 @@ export class BibliotecaComponent {
 	userId = '';
 	loading = true;
 
+	statusValues = STATUS_BOOKSHELF;
+
 	selectedState: string = 'read';
 
 	constructor(private route: ActivatedRoute, private bibliotecaService: BibliotecaService) { }

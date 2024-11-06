@@ -1,7 +1,7 @@
 
 <div class="main">
 	<mat-button-toggle-group [hideSingleSelectionIndicator]="true" name="status" aria-label="Book status">
-	  <mat-button-toggle *ngFor="let state of states" (click)="selectState(state)" [ngClass]="{'selected': state == selectedState, 'not-selected': selectedState}" >{{state}}</mat-button-toggle>
+	  <mat-button-toggle *ngFor="let state of states; let i = index" (click)="selectState(statusValues[i])" [ngClass]="{'selected': state == selectedState, 'not-selected': selectedState}" >{{state}}</mat-button-toggle>
 	</mat-button-toggle-group>
 
 
