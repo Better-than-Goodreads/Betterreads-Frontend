@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { Router, NavigationEnd } from '@angular/router';
 import { UsuarioActualService } from './services/usuario-actual.service';
 import { Usuario } from './entidades/usuario';
+import { of } from "rxjs";
+
 
 @Component({
   selector: "app-root",
@@ -19,12 +21,14 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         const currentUrl = event.url;
         // Check the URL to determine if the sidenav should be visible
+        this.usuarioActualService.getUsuario().subscribe(user => {
+          this.usuarioActual = user.username ? user.username : 'Log In';
+          this.esAutor = user.is_author ?? false;
+          this.id = user.id ?? '';
+          this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : this.defaultImage;
+          console.log(user);
+        })
         this.showSidenav = !this.muestraSidenav(currentUrl);
-        this.usuarioActual = this.usuarioActualService.usuarioActual?.username ? this.usuarioActualService.usuarioActual?.username : 'Log In';
-        console.log(this.usuarioActualService.usuarioActual);
-        this.esAutor = this.usuarioActualService.usuarioActual?.is_author ?? false;
-        this.id = this.usuarioActualService.usuarioActual?.id ?? '';
-        this.urlFotoPerfil = this.id ? `http://localhost:8080/users/${this.id}/picture` : this.defaultImage;
       }
     });
 

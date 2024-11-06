@@ -46,6 +46,7 @@ export class UsuariosService {
     const url = this.urlUsuarios + '/login';
     return this.http.post<any>(url, {'password': password, 'username': username}).pipe(map((result: {user: Usuario, token:string}) => {
       sessionStorage.setItem('access_token', result.token);
+      sessionStorage.setItem('user_id', result.user.id);
       this.usuarioActualService.usuarioActual = result.user;
       return result.user;
     }));
