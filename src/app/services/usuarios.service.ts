@@ -27,6 +27,11 @@ export class UsuariosService {
     return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
   }
 
+  searchUsers(searchText: string): Observable<Usuario[]> {
+    const url = `${this.urlUsuarios}/search?name=${searchText}`;
+    return this.http.get<any>(url).pipe(map((res: {users: Usuario[]}) => res.users as Usuario[]))
+  }
+
   getReviewsUsuario(id: string): Observable<Review[]> {
     const url = environment.apiUrl + `/books/user/${id}/reviews`;
     return this.http.get<any>(url).pipe(map((res: {reviews: Review[]}) => res.reviews));

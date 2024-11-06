@@ -17,4 +17,19 @@ export class UsuariosComponent {
       this.usuarios = usuarios;
       this.loading = false});
   }
+
+  searchText = '';
+  onSearch() {
+    this.loading = true;
+    this.usuarioService.searchUsers(this.searchText).subscribe({
+      next: (usuarios: Usuario[]) => {
+        this.loading = false;
+        this.usuarios = usuarios;
+      },
+      error: (error: any) => {
+        console.error('Error fetching users', error);
+      }
+
+    })
+  }
 }

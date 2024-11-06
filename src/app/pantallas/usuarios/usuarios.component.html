@@ -1,9 +1,22 @@
 <div class="vertical-container" style="align-items: center;">
+	<div style="width: fit-content;align-items: center;">
+	<div class="tool-tab">
+		<mat-form-field appearance="outline" class="search-bar">
+			<input matInput placeholder="Type to search..." [(ngModel)]="searchText" (change)="onSearch()" />
+			<button mat-icon-button matSuffix (click)="onSearch()">
+				<mat-icon>search</mat-icon>
+			</button>
+		</mat-form-field>
+	</div>
 	@if (loading) {
 		<mat-spinner></mat-spinner>
 	} @else {
 		@for (usuario of usuarios; track usuario.id) {
 			<app-usuario [usuario]="usuario"></app-usuario>
 		}
+		@if (usuarios.length === 0) {
+			<h2>No users found 😭</h2>
+		}
 	}
+</div>
 </div>

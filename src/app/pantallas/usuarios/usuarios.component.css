@@ -1,0 +1,13 @@
+.search-bar {
+	display: flex;
+	margin: 0;
+	justify-content: center;
+	flex-grow: 1;
+}
+
+.tool-tab {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 1em;
+}
