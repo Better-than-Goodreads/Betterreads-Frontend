@@ -21,7 +21,7 @@
 					<i *ngFor="let star of [].constructor(5); let i = index"
 					   (click)="puntuar(i + 1)"
 					   class="material-icons"
-					   [ngClass]="{'star-filled': i < book.stars, 'star-empty': i >= book.stars}">
+					   [ngClass]="{'star-filled': i < book.avg_rating, 'star-empty': i >= book.avg_rating}">
 					   star
 					</i>
 				</div>
