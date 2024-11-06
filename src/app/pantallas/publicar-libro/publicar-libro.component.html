@@ -1,27 +1,27 @@
 <div class="vertical-container container">
-	<div class="vertical-container publicacionLibro">
-		<h2 style="align-self: center">Publicar un Libro en BetterReads</h2>
-		<p>Complete los datos del libro para publicarlo</p>
+	<div class="vertical-container">
+		<h2 style="align-self: center">Publish a Book on BetterReads</h2>
+		<p>Fill in the book details to publish it</p>
 
 		<div style="row-gap: 0.25em" class="vertical-container">
 			<mat-form-field>
-				<mat-label>Título</mat-label>
-				<input required matInput [(ngModel)]="libro.title" placeholder="Harry Potter y la cámara secreta" />
+				<mat-label>Title</mat-label>
+				<input required matInput [(ngModel)]="libro.title" placeholder="Harry Potter and the Chamber of Secrets" />
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>Descripción</mat-label>
+				<mat-label>Description</mat-label>
 				<textarea matInput [(ngModel)]="libro.description"
-					placeholder="La historia de la princesa..."></textarea>
+					placeholder="The story of the princess..."></textarea>
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>Número de páginas</mat-label>
+				<mat-label>Number of pages</mat-label>
 				<input required type="number" matInput [(ngModel)]="libro.amount_of_pages" min="1" placeholder="346" />
 			</mat-form-field>
 
 			<mat-form-field>
-			  <mat-label>Fecha de publicacion</mat-label>
+			  <mat-label>Publication date</mat-label>
 			  <input matInput [matDatepicker]="picker" [(ngModel)]="libro.publication_date">
 			  <mat-hint>MM/DD/YYYY</mat-hint>
 			  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -29,12 +29,12 @@
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>Idioma</mat-label>
-				<input matInput [(ngModel)]="libro.language" placeholder="Español" />
+				<mat-label>Language</mat-label>
+				<input matInput [(ngModel)]="libro.language" placeholder="Spanish" />
 			</mat-form-field>
 
 			<mat-form-field appearance="fill">
-			  <mat-label>Géneros</mat-label>
+			  <mat-label>Genres</mat-label>
 			  <mat-select [(ngModel)]="libro.genres" multiple>
 				<mat-option *ngFor="let genre of genresList" [value]="genre">
 				  {{ genre }}
@@ -49,7 +49,7 @@
 			}
 
 			<button mat-flat-button (click)="publicarLibro()">
-				Publicar Libro
+				Publish book
 			</button>
 		</div>
 	</div>

@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { Libro } from '../../entidades/Libro';
 import { BookService } from '../../services/servicio-libros.service';
 import { GENRES } from '../../entidades/Genres';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-publicacion-libro',
@@ -14,7 +19,7 @@ export class PublicarLibroComponent {
   selectedFile: File | null = null;
   error: string = '';
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private _snackBar: MatSnackBar) { }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -26,22 +31,22 @@ export class PublicarLibroComponent {
 
   publicarLibro() {
 	if (!this.libro.title || !this.libro.publication_date || !this.libro.publication_date) {
-		this.error = 'Complete todos los campos requeridos.';
+		this.error = 'Complete all required fields.';
 		return
 	}
 
 	if (this.libro.genres.length === 0) {
-		this.error = 'Debe ingresar al menos un género';
+		this.error = 'You must enter at least one genre.';
 		return
 	}
 
 	if (!this.selectedFile) {
-		this.error = 'Debe seleccionar una imagen para el libro';
+		this.error = 'You must select an image for the book.';
 		return
 	}
 
 	if (this.selectedFile.type !== 'image/jpeg' && this.selectedFile.type !== 'image/png') {
-		this.error = 'La imagen debe ser de tipo .jpg o .png';
+		this.error = 'The image must be of type .jpg or .png.';
 		return
 	}
 
@@ -57,10 +62,10 @@ export class PublicarLibroComponent {
     this.bookService.postBook(bookToPublish, this.selectedFile).subscribe({
       next: () => {
         window.location.href = '/home/'; // tambn podria ir a /libros/{nombre libro}
-		console.log('Libro publicado correctamente');
+				this._snackBar.open('Book published correctly');
       },
-      error: () => {
-        this.error = 'Hubo un error al publicar el libro. Intentelo nuevamente.';
+      error: (error) => {
+        this.error = 'There was an error publishing the book.' + error;
       }
     });
   }

@@ -28,6 +28,9 @@ export class VistaLibroComponent {
 	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
 	ngOnInit() {
+		this.setUpPantalla();
+	}
+	setUpPantalla() {
 		this.currentStatus = STATUS_BOOKSHELF[2];
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
@@ -54,14 +57,16 @@ export class VistaLibroComponent {
 	publicarReview() {
 		this.bookService.postReview(this.book.id, this.publishReview).subscribe({
 			next: () => {
-				this._snackBar.open('Review published', 'X', {
+				this._snackBar.open('Review published correctly', 'X', {
 			        horizontalPosition: 'center',
 			        verticalPosition: 'top',
 			      });
-				window.location.reload();
+				this.setUpPantalla();
+				//window.location.reload();
 			},
 			error: (error: any) => {
-				this._snackBar.open('Error publishing review', 'X', {
+				console.log(error);
+				this._snackBar.open('Error publishing review: ' + error.error.detail, 'X', {
 			        horizontalPosition: 'center',
 			        verticalPosition: 'top',
 			      });
