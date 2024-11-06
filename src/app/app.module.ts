@@ -46,6 +46,7 @@ import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { ReviewComponent } from "./componentes/review/review.component";
 import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
+import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendaciones.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -62,7 +63,8 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
   UsuariosComponent,
   UsuarioComponent,
 		ReviewComponent,
-  BibliotecaComponent
+  BibliotecaComponent,
+  RecomendacionesComponent
 	],
 	imports: [
 		RouterOutlet,

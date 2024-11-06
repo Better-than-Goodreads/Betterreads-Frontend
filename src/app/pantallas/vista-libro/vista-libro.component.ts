@@ -32,7 +32,7 @@ export class VistaLibroComponent {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
 			this.book = book.book;
-			this.publishReview = book.review;
+			this.publishReview = book.review?? new Review();
 			console.log(this.publishReview);
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;

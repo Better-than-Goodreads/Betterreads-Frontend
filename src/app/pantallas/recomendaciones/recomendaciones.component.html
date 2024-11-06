@@ -1,0 +1,16 @@
+<div class="vertical-container" style="padding-left: 2em;">
+@if (loading) {
+	<mat-spinner></mat-spinner>
+	} @else {
+		<h1>Top 3 genres</h1>
+		@for (recomendacion of recomendaciones; track recomendacion.genre) {
+			<h2 style="border-bottom: 1px solid black;">{{recomendacion.genre}}</h2>
+			@for (book of recomendacion.books; track book.id) {
+				<app-libro [book]="book"></app-libro>
+			}
+			@if (recomendacion.books.length === 0) {
+			<h4>No books to recommend 😭</h4>
+			}
+		}
+	}
+</div>

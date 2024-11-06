@@ -10,7 +10,7 @@
 
 
 			<div class="publicar-review-container">
-				<h4>{{publishReview.rating ? 'Rated this book' : 'Rate this book'}}</h4>
+				<h4>{{publishReview?.rating ? 'Rated this book' : 'Rate this book'}}</h4>
 				<div class="star-rating">
 					<i *ngFor="let star of [].constructor(5); let i = index"
 					   (click)="puntuar(i + 1)"

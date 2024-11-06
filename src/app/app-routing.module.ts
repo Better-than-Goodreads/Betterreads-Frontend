@@ -8,6 +8,7 @@ import { VistaLibroComponent } from './pantallas/vista-libro/vista-libro.compone
 import { VistaUsuariosComponent } from './pantallas/vista-usuarios/vista-usuarios.component';
 import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
+import { RecomendacionesComponent } from "./pantallas/recomendaciones/recomendaciones.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: "user/:id", component: VistaUsuariosComponent },
   { path: "users", component: UsuariosComponent },
   { path: "bookshelf/:id", component: BibliotecaComponent },
+  { path: "recommendations", component: RecomendacionesComponent },
 ];
 
 @NgModule({
