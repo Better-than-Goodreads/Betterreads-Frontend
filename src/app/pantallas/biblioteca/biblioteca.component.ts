@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BibliotecaService } from '../../services/biblioteca.service';
 import { Libro } from '../../entidades/Libro';
 import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-biblioteca',
@@ -22,7 +23,7 @@ export class BibliotecaComponent {
 
 	selectedState: string = 'read';
 
-	constructor(private route: ActivatedRoute, private bibliotecaService: BibliotecaService) { }
+	constructor(private route: ActivatedRoute, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
 
 	selectState(state: string) {
 		this.selectedState = state;
@@ -55,9 +56,10 @@ export class BibliotecaComponent {
 		this.bibliotecaService.removeFromBookshelf(bookId).subscribe({
 			next: () => {
 				this.books = this.books.filter((book) => book.id != bookId);
+				this._snackBar.open('Book deleted', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			},
 			error: () => {
-				console.log('Error deleting book');
+				this._snackBar.open('Error deleting book from bookshelf', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			}
 		})
 	}
