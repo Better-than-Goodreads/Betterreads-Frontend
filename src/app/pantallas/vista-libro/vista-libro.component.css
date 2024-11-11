@@ -16,10 +16,12 @@
 .trash-icon {
 	cursor: pointer;
 	font-size: 1.5em;
+	color: #d74e31;
+	user-select: none;
 }
 
 .trash-icon:hover {
-	color: red;
+	color: #e74800;
 }
 
 .flex-row {
