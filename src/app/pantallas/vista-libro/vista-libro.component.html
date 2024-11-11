@@ -31,7 +31,10 @@
 		</div>
 
 		<div class="vertical-container content">
-			<h1>{{book.title}}</h1>
+			<div class="flex-row">
+				<h1>{{book.title}}</h1>
+				<i *ngIf="isOwner" (click)="borrarLibro()" class="material-icons trash-icon">delete</i>
+			</div>
 			<h3>{{book.author_name}}</h3>
 
 			<div class="horizontal-container" style="align-items: center">

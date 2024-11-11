@@ -6,6 +6,7 @@ import { Review } from '../../entidades/Review';
 import { BibliotecaService } from '../../services/biblioteca.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
+import { UsuarioActualService } from '../../services/usuario-actual.service';
 
 @Component({
 	selector: 'app-vista-libro',
@@ -25,16 +26,20 @@ export class VistaLibroComponent {
 
 	currentStatus: string = '';
 
+	isOwner = false;
+
+
 	hoverEstrellas = 0;
 	estrellas(cantidad: number) {
 		this.hoverEstrellas = cantidad;
 	}
 
-	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
+	constructor(private route: ActivatedRoute, private bookService: BookService, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar, private usuarioActualService: UsuarioActualService) { }
 
 	ngOnInit() {
 		this.setUpPantalla();
 	}
+
 	setUpPantalla() {
 		this.currentStatus = STATUS_BOOKSHELF[2];
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
@@ -47,7 +52,10 @@ export class VistaLibroComponent {
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
 			this.currentStatus = book.status;
 			this.selectedStatus = this.currentStatus ?? STATUS_BOOKSHELF[2];
+
 			console.log('STATUS:', this.currentStatus);
+
+			this.isOwner = this.usuarioActualService.getId() == this.book.author_id;
 		});
 
 		this.bookService.getReviews(id).subscribe(reviews => {
@@ -110,5 +118,17 @@ export class VistaLibroComponent {
 			});
 		}
 		this.currentStatus = status;
+	}
+
+	borrarLibro() {
+		this.bookService.deleteBook(this.book.id).subscribe({
+			next: () => {
+				this._snackBar.open('Book deleted', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				window.location.href = '/books';
+			},
+			error: (error: any) => {
+				this._snackBar.open('Error deleting book', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+			}
+		});
 	}
 }
