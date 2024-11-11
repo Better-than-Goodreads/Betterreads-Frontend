@@ -12,7 +12,7 @@
 		<h2>No books found 😭</h2>
 		}
 		@for (book of books; track book.id) {
-			<app-libro [book]="book"></app-libro>
+		<app-libro [book]="book" [showDeleteButton]="true" (delete)="deleteFromShelf"></app-libro>
 		}
 	}
 </div>

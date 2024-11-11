@@ -51,4 +51,14 @@ export class BibliotecaComponent {
 		console.log('ID:', id);
 	}
 
+	deleteFromShelf(bookId: string) {
+		this.bibliotecaService.removeFromBookshelf(bookId).subscribe({
+			next: () => {
+				this.books = this.books.filter((book) => book.id != bookId);
+			},
+			error: () => {
+				console.log('Error deleting book');
+			}
+		})
+	}
 }

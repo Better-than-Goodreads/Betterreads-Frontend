@@ -2,11 +2,12 @@
     height: 30vh;
     width: 70vw;
     border: solid 1px black;
-    padding: 1em;
     border-radius: 10px;
 	max-width: 50rem;
 	cursor: pointer;
 	gap: 1em;
+	position: relative;
+	padding: 1em;
 }
 
 .rate-container {
@@ -41,13 +42,29 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	position: relative;
+	width: 65%;
 }
-
 
 .action-buttons {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.trash-icon {
+	position: absolute;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 0.25em;
+	top: 0.25em;
+	right: 0.25em;
+}
+
+.trash-icon:hover {
+	cursor: pointer;
+	color: white;
+	background-color: #d74e31;
 }
 
 .rate-label {

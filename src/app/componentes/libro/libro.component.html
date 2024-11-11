@@ -1,19 +1,24 @@
-<div class="horizontal-container book-container" (click)="verLibro()">
-	<div style="width:30%; position: relative">
+<div class="horizontal-container book-container">
+	<div style="width:30%; position: relative" (click)="verLibro()">
 		<img class="book-img" src="http://localhost:8080/books/{{book.id}}/picture" alt="Book cover" class="book-img">
 	</div>
 
-	<div class="vertical-container" style="width:70%">
+	<mat-icon 
+		*ngIf="showDeleteButton"
+		(click)="borrar()"
+		class="material-icons trash-icon">delete</mat-icon>
+
+	<div class="vertical-container" (click)="verLibro()">
 		<span>
-		<h2>{{book.title}}</h2>
-		<h3 style="color: #666;">by {{book.author_name}}</h3>
-		<p style="color: #333;">
-			{{book.description}}
-		</p>
+			<h2>{{book.title}}</h2>
+			<h3 style="color: #666;">by {{book.author_name}}</h3>
+			<p style="color: #333;">
+				{{book.description}}
+			</p>
 		</span>
 
 
-		<span class="end-container">
+		<span class="end-container" (click)="verLibro()">
 			<div class="rate-container">
 				<span>Rate</span>
 				<p>{{book.avg_rating | number : '1.1'}}</p>

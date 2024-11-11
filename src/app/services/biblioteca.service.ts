@@ -26,4 +26,8 @@ export class BibliotecaService {
 		}
 		return this.http.get<Libro[]>(this.apiUrl + `/${userId}` + '/shelf', { params: { type: status } });
 	}
+
+	removeFromBookshelf(bookId: string): Observable<any> {
+		return this.http.delete(this.apiUrl + '/shelf/' + bookId);
+	}
 }
