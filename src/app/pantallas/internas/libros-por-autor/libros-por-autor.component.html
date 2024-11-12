@@ -1,0 +1,17 @@
+<div class="books">
+	@if (loading) {
+	<mat-spinner></mat-spinner>
+	} @else {
+	<h2>Books published by {{usuario.username}}</h2>
+
+	@if (books.length === 0) {
+	<h2>No books found 😭</h2>
+	}
+
+	<div class="containerBooks">
+		@for (book of books; track book.id) {
+			<app-libro [book]="book"></app-libro>
+		}
+	</div>
+	}
+</div>

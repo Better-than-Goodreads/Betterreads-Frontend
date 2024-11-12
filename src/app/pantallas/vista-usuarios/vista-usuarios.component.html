@@ -16,12 +16,14 @@
 		<div class="horizontal-container" style="width: fit-content; column-gap: 1em;">
 			<div class="vertical-container datos">
 				<h3>Name</h3>
+				<h3>Email</h3>
 				<h3 *ngIf="usuario.age">Age</h3>
 				<h3 *ngIf="usuario.location">Location</h3>
 				<h3 *ngIf="usuario.gender">Gender</h3>
 			</div>
 			<div class="vertical-container datos">
 				<p>{{usuario.last_name}}, {{usuario.first_name}}</p>
+				<p>{{usuario.email}}</p>
 				<p *ngIf="usuario.age">{{usuario.age}}</p>
 				<p *ngIf="usuario.location">{{usuario.location}}</p>
 				<p *ngIf="usuario.gender">{{usuario.gender}}</p>
@@ -31,18 +33,25 @@
 		<p>{{usuario.about_me}}</p>
 		<a href="/bookshelf/{{usuario.id}}">Bookshelf</a>
 		<div *ngIf="usuario.is_author">
-			<h2>Libros publicados</h2>
-			@for (book of books; track book.id) {
+			<h2>Published books</h2>
+			@for (book of books.slice(0,5); track book.id) {
 			<app-libro [book]="book"></app-libro>
 			}
+			<div class="vertical-container" style="width: 100%; justify-content: center;margin-top: 1em;">
+				<a *ngIf="books.length > 5" mat-button href="user/{{usuario.id}}/books-published">See all books</a>
+			</div>
 		</div>
+
 		<h2>Reviews</h2>
 		@if (reviews.length === 0) {
 			<h2>No reviews found 😭</h2>
 		}
-		@for (r of reviews; track r.book_id) {
+		@for (r of reviews.slice(0,5); track r.book_id) {
 			<app-review [review]="r" [bookTitle]="r.book_title" />
 		}
+		<div class="vertical-container" style="width: 100%; justify-content: center;margin-top: 1em;">
+				<button *ngIf="reviews.length > 5" mat-button>See all reviews</button>
+			</div>
 	</div>
 
 </div>
