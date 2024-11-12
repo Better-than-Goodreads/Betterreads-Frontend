@@ -16,12 +16,12 @@
 						(click)="puntuar(i + 1)"
 						(mouseover)="estrellas(i)"
 						class="material-icons"
-						[ngClass]="{'star-filled': i < publishReview.rating || i < hoverEstrellas, 'star-empty': i >= publishReview.rating && i >= hoverEstrellas}">
+						[ngClass]="{'star-filled': i < rating || i < hoverEstrellas, 'star-empty': i >= rating && i >= hoverEstrellas}">
 					   star
 					</i>
 				</div>
 				<mat-form-field appearance="outline" class="search-bar">
-					<input matInput type="" placeholder="Write your review" [(ngModel)]="publishReview.review"
+					<input matInput maxlength=255 type="" placeholder="Write your review" [(ngModel)]="publishReview.review"
 						(change)="publicarReview()" />
 					<button mat-icon-button matSuffix (click)="publicarReview()">
 						<mat-icon>send</mat-icon>

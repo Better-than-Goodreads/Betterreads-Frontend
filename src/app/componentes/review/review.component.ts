@@ -8,7 +8,7 @@ import { Review } from '../../entidades/Review';
 })
 export class ReviewComponent implements AfterViewInit {
 	@Input() review: Review = new Review();
-
+	@Input() bookTitle = '';
 	ngAfterViewInit() {
 		this.urlFotoPerfil = `http://localhost:8080/users/${this.review.user_id}/picture`;
 	}

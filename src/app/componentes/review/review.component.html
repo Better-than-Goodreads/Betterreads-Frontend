@@ -12,5 +12,6 @@
 			</i>
 		</div>
 	</div>
-	<p>{{review.review}}</p>
+	<p *ngIf="bookTitle">rated {{bookTitle}}</p>
+	<p class="review">{{review.review}}</p>
 </div>
