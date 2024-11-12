@@ -18,8 +18,11 @@ export class PublicarLibroComponent {
   genresList = GENRES;
   selectedFile: File | null = null;
   error: string = '';
+  maxDate = new Date();
 
-  constructor(private bookService: BookService, private _snackBar: MatSnackBar) { }
+  constructor(private bookService: BookService, private _snackBar: MatSnackBar) {
+  	this.libro.amount_of_pages = 1;
+  }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];

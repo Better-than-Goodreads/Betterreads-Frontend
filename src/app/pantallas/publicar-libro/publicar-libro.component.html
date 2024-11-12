@@ -22,7 +22,7 @@
 
 			<mat-form-field>
 			  <mat-label>Publication date</mat-label>
-			  <input matInput [matDatepicker]="picker" [(ngModel)]="libro.publication_date">
+			  <input matInput [matDatepicker]="picker" [max]="maxDate" [(ngModel)]="libro.publication_date">
 			  <mat-hint>MM/DD/YYYY</mat-hint>
 			  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
 			  <mat-datepicker #picker></mat-datepicker>
