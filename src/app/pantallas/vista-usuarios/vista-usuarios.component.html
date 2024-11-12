@@ -29,7 +29,7 @@
 				<p *ngIf="usuario.gender">{{usuario.gender}}</p>
 			</div>
 		</div>
-		<h3>About me:</h3>
+		<h3 *ngIf="usuario.about_me">About me:</h3>
 		<p>{{usuario.about_me}}</p>
 		<a href="/bookshelf/{{usuario.id}}">Bookshelf</a>
 		<div *ngIf="usuario.is_author">

@@ -1,20 +1,32 @@
-<div class="vertical-container" style="padding-left: 2em;">
+<div class="vertical-container" style="padding-left: 2em; height: 100%;">
 @if (loading) {
 	<mat-spinner></mat-spinner>
 	} @else {
-		<h1>Top 3 genres</h1>
-		@for (recomendacion of recomendaciones; track recomendacion.genre) {
-			<div class="horizontal-container titulo">
-				<h2>{{recomendacion.genre}}</h2>
-				<button mat-flat-button (click)="addRecommendation(recomendacion.genre)">More</button>
-			</div>
-			
-			@for (book of recomendacion.books; track book.id) {
-				<app-libro [book]="book"></app-libro>
-			}
-			@if (recomendacion.books.length === 0) {
-			<h4>No books to recommend 😭</h4>
+		@if (error) {
+			<h2>{{error.title}}</h2>
+			<h3>{{error.detail}}</h3>
+		} @else {
+			<h1>Top 3 genres</h1>
+			@for (recomendacion of recomendaciones; track recomendacion.genre) {
+				<div class="horizontal-container titulo">
+					<h2>{{recomendacion.genre}}</h2>
+					
+				</div>
+				
+				@for (book of recomendacion.books; track book.id) {
+					<app-libro [book]="book"></app-libro>
+				}
+				@if (recomendacion.books.length === 0) {
+				<h4>No books to recommend 😭</h4>
+				}
+				<button *ngIf="recomendacion.books.length && 
+					recomendacion.books.length >= 5" 
+					mat-button
+					(click)="addRecommendation(recomendacion.genre)">
+					More books
+				</button>
 			}
 		}
+		
 	}
 </div>
