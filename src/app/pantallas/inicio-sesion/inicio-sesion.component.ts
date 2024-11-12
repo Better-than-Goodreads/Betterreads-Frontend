@@ -5,11 +5,6 @@ import { Observable, of } from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { UsuariosService } from "../../services/usuarios.service";
 import { Usuario } from "../../entidades/usuario";
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,8 +14,7 @@ import {
 })
 export class InicioSesionComponent {
   constructor(private usuarioService: UsuariosService, 
-    private router: Router,
-    private _snackBar: MatSnackBar) {}
+    private router: Router) {}
 
   hide = true;
 
@@ -36,14 +30,12 @@ export class InicioSesionComponent {
     ]),
   });
 
+  error = '';
   submitLogin() {
     const usuario = this.datosIniciales.value.usuario ?? '';
     const password = this.datosIniciales.value.password ?? '';
     this.usuarioService.logIn(usuario, password).pipe(catchError(error => {
-      this._snackBar.open(error.error.detail, 'X', {
-        horizontalPosition: 'center',
-        verticalPosition: 'top',
-      });
+      this.error = error.error.detail;
       return of(null);
     })).subscribe( resultado => {
       if (resultado) {
