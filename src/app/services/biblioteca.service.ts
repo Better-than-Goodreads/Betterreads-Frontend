@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Libro } from '../entidades/Libro';
+import { map } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -22,12 +23,16 @@ export class BibliotecaService {
 
 	getBookshelf(userId: string, status: string): Observable<Libro[]> {
 		if (status == '') {
-			status = 'Read';
+			status = 'read';
 		}
 		return this.http.get<Libro[]>(this.apiUrl + `/${userId}` + '/shelf', { params: { type: status } });
 	}
 
 	removeFromBookshelf(bookId: string): Observable<any> {
 		return this.http.delete(this.apiUrl + '/shelf/' + bookId);
+	}
+
+	getAmountOfReadBooks(userId: string) {
+		return this.getBookshelf(userId, 'read').pipe(map(books => books.length));
 	}
 }

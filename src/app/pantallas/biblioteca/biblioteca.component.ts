@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BibliotecaService } from '../../services/biblioteca.service';
+import { UsuarioActualService } from '../../services/usuario-actual.service';
+import { UsuariosService } from '../../services/usuarios.service';
+import { Observable, of } from "rxjs";
 import { Libro } from '../../entidades/Libro';
 import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-biblioteca',
@@ -23,7 +27,7 @@ export class BibliotecaComponent {
 
 	selectedState: string = 'read';
 
-	constructor(private route: ActivatedRoute, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar) { }
+	constructor(private route: ActivatedRoute, private bibliotecaService: BibliotecaService, private _snackBar: MatSnackBar, public usuarioActualService: UsuarioActualService, private usuarioService: UsuariosService) { }
 
 	selectState(state: string) {
 		this.selectedState = state;
@@ -47,10 +51,14 @@ export class BibliotecaComponent {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.userId = id;
 
+		this.username$ = this.usuarioService.getUsuario(id).pipe(map(usuario => usuario.username));
+
 		this.selectState(this.selectedState);
 
 		console.log('ID:', id);
 	}
+
+	username$: Observable<string> = of(''); 
 
 	deleteFromShelf(bookId: string) {
 		this.bibliotecaService.removeFromBookshelf(bookId).subscribe({
