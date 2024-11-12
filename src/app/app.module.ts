@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { LOCALE_ID, NgModule } from "@angular/core";
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 import { AppComponent } from "./app.component";
 import { InicioSesionComponent } from "./pantallas/inicio-sesion/inicio-sesion.component";
@@ -103,6 +104,10 @@ import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendac
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 			useValue: { appearance: "outline" },
 		},
+		{
+	      provide: STEPPER_GLOBAL_OPTIONS,
+	      useValue: {showError: true},
+	    },
 		UsuariosService,
 		UsuarioActualService,
 		{

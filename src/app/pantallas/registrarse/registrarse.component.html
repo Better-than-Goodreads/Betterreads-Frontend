@@ -3,7 +3,7 @@
     <h2>Welcome to BetterReads!</h2>
     <p>Fill in your details to create an account</p>
     <mat-stepper [linear]="true" labelPosition="bottom" #stepper>
-      <mat-step [stepControl]="datosIniciales">
+      <mat-step [stepControl]="datosIniciales" errorMessage="invalid">
         <form class="vertical-container" [formGroup]="datosIniciales">
           <div
             style="row-gap: 0.75em; padding-top: 0.5em"
@@ -20,6 +20,10 @@
                 *ngIf="datosIniciales.get('usuario')?.hasError('required')"
                 >The username is required</mat-error
               >
+              <mat-error
+                *ngIf="datosIniciales.get('usuario')?.getError('error')"
+                >{{datosIniciales.get('usuario')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -37,6 +41,10 @@
                 "
                 >Invalid email</mat-error
               >
+              <mat-error
+                *ngIf="datosIniciales.get('email')?.getError('error')"
+                >{{datosIniciales.get('email')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -62,6 +70,10 @@
                 *ngIf="datosIniciales.get('password')?.hasError('required')"
                 >The password is required</mat-error
               >
+              <mat-error
+                *ngIf="datosIniciales.get('password')?.getError('error')"
+                >{{datosIniciales.get('password')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
 
             <div class="botones">
@@ -71,7 +83,7 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="infoPersonal">
+      <mat-step [stepControl]="infoPersonal" errorMessage="invalid">
         <form class="vertical-container" [formGroup]="infoPersonal">
           <div
             style="row-gap: 0.75em; padding-top: 0.5em"
@@ -85,6 +97,10 @@
                   *ngIf="infoPersonal.get('nombre')?.hasError('required')"
                   >The name is required</mat-error
                 >
+                <mat-error
+                *ngIf="datosIniciales.get('first_name')?.getError('error')"
+                >{{datosIniciales.get('first_name')?.getError('error')}}
+              </mat-error>
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Surname</mat-label>
@@ -97,6 +113,10 @@
                   *ngIf="infoPersonal.get('apellido')?.hasError('required')"
                   >The surname is required</mat-error
                 >
+                <mat-error
+                *ngIf="datosIniciales.get('last_name')?.getError('error')"
+                >{{datosIniciales.get('last_name')?.getError('error')}}
+              </mat-error>
               </mat-form-field>
             </div>
             <mat-checkbox formControlName="esAutor">I am an author</mat-checkbox>
@@ -109,7 +129,7 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="infoPersonal" optional>
+      <mat-step [stepControl]="infoPersonal" errorMessage="invalid" optional>
         <form class="vertical-container" [formGroup]="infoOpcional">
           <div style="row-gap: 0.75em; padding-top: 0.5em" class="horizontal-container">
             <mat-form-field>
@@ -119,6 +139,10 @@
                 <mat-option value="Male">Male</mat-option>
                 <mat-option value="Other">Other</mat-option>
               </mat-select>
+              <mat-error
+                *ngIf="datosIniciales.get('gender')?.getError('error')"
+                >{{datosIniciales.get('gender')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -132,11 +156,19 @@
               <mat-error *ngIf="infoPersonal.get('edad')?.hasError('min')"
                 >You have to be at least 12 years old</mat-error
               >
+              <mat-error
+                *ngIf="datosIniciales.get('age')?.getError('error')"
+                >{{datosIniciales.get('age')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
           </div>
           <mat-form-field>
             <mat-label>Country</mat-label>
             <input matInput formControlName="pais" placeholder="Argentina" />
+            <mat-error
+                *ngIf="datosIniciales.get('location')?.getError('error')"
+                >{{datosIniciales.get('location')?.getError('error')}}
+              </mat-error>
           </mat-form-field>
 
           <div class="botones">
@@ -146,7 +178,7 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="aboutMe" optional>
+      <mat-step [stepControl]="aboutMe" errorMessage="invalid" optional>
         <form [formGroup]="aboutMe" class="vertical-container">
           <div
             style="row-gap: 0.75em; padding-top: 0.5em"
@@ -159,10 +191,17 @@
                 formControlName="aboutMe"
                 placeholder="Ex. I like to read about..."
               ></textarea>
+              <mat-error
+                *ngIf="datosIniciales.get('about_me')?.getError('error')"
+                >{{datosIniciales.get('about_me')?.getError('error')}}
+              </mat-error>
             </mat-form-field>
             <p>Profile picture:</p>
-            <input type="file" (change)="onFileSelected($event)" />
-
+              <input type="file" (change)="onFileSelected($event)" />
+              <mat-error
+                *ngIf="datosIniciales.get('profile_picture')?.getError('error')"
+                >{{datosIniciales.get('profile_picture')?.getError('error')}}
+              </mat-error>
             <div class="botones">
               <button mat-button matStepperPrevious>Previous</button>
               <button mat-flat-button (click)="registrarse()">Register</button>
