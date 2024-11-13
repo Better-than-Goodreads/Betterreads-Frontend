@@ -16,6 +16,14 @@ export class AmigosService {
 		return this.http.get<any>(this.urlUsers + `/${userId}/friends`)
 	}
 
+	getFriendRequestsReceived(): Observable<Usuario[]> {
+		return this.http.get<any>(this.urlUsers + `/friends/requests/received`)
+	}
+
+	getFriendRequestsSent(): Observable<Usuario[]> {
+		return this.http.get<any>(this.urlUsers + `/friends/requests/sent`)
+	}
+
 	sendFriendRequest(friendId: string): Observable<any> {
 		return this.http.post<any>(this.urlUsers + `/friends/`, null, { params: { Id: friendId } })
 	}

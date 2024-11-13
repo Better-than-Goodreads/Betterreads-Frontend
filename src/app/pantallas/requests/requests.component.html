@@ -1,0 +1,20 @@
+<div>
+	<h1>Friend requests</h1>
+	<div>
+	@for (usuario of requests; track usuario.id) {
+		<app-usuario [usuario]="usuario" [showFollowButton]="false"></app-usuario>
+		<div class="aceptarBotones">
+			<button (click)="acceptFriendRequest(usuario.id)" mat-flat-button class="acceptButton">Accept</button>
+			<button (click)="rejectFriendRequest(usuario.id)" mat-flat-button class="rejectButton">Reject</button>
+		</div>
+	}
+	</div>
+
+	<br>
+	<h1>Your Pending Friend Requests</h1>
+	<div>
+	@for (usuario of requests; track usuario.id) {
+		<app-usuario [usuario]="usuario" [showFollowButton]="false"></app-usuario>
+	}
+	</div>
+</div>

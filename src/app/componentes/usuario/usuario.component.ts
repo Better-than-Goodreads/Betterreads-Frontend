@@ -13,6 +13,8 @@ import { BibliotecaService } from '../../services/biblioteca.service';
 })
 export class UsuarioComponent implements AfterViewInit {
   @Input() usuario: Usuario = new Usuario({});
+  @Input() showFollowButton: boolean = true;
+
   constructor(private usuarioService: UsuariosService, private router: Router, public bibliotecaService: BibliotecaService) { }
 
   urlFotoPerfil = '';
