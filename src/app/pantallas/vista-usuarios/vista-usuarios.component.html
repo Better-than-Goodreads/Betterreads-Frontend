@@ -1,7 +1,11 @@
 <div class="horizontal-container" style="padding-left: 1em;">
-	<div class="vertical-container img-container-perfil perfil">
-		<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
+	<div class="vertical-container">
+		<div class="vertical-container img-container-perfil perfil">
+			<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
+		</div>
+		<app-bookshelf [usuario]="usuario" style="width: 15em"></app-bookshelf>
 	</div>
+	
 	<div class="vertical-container contenido">
 		<div class="horizontal-container titulo">
 			<h1>{{usuario.username}}</h1>
@@ -31,7 +35,6 @@
 		</div>
 		<h3 *ngIf="usuario.about_me">About me:</h3>
 		<p>{{usuario.about_me}}</p>
-		<a href="/bookshelf/{{usuario.id}}">Bookshelf</a>
 		<div *ngIf="usuario.is_author">
 			<h2>Published books</h2>
 			@for (book of books.slice(0,5); track book.id) {

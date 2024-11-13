@@ -50,6 +50,7 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
 import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendaciones.component';
 import { LibrosPorAutorComponent } from './pantallas/internas/libros-por-autor/libros-por-autor.component';
 import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usuario/reviews-por-usuario.component';
+import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -69,7 +70,8 @@ import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usu
   BibliotecaComponent,
   RecomendacionesComponent,
   LibrosPorAutorComponent,
-  ReviewsPorUsuarioComponent
+  ReviewsPorUsuarioComponent,
+  BookshelfComponent
 	],
 	imports: [
 		RouterOutlet,
