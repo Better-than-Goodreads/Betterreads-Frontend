@@ -29,7 +29,7 @@ export class BibliotecaService {
 	}
 
 	removeFromBookshelf(bookId: string): Observable<any> {
-		return this.http.delete(this.apiUrl + '/shelf/' + bookId);
+		return this.http.delete(this.apiUrl + '/shelf/', {params: {id: bookId}});
 	}
 
 	getAmountOfReadBooks(userId: string) {
