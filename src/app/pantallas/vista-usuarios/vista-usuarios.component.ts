@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../../entidades/usuario';
-import { Review } from '../../entidades/Review';
 import { Libro } from "../../entidades/Libro";
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from "../../services/usuarios.service";
@@ -30,7 +29,6 @@ export class VistaUsuariosComponent {
       });
       console.log(this.reviews);
       this.books = books;
-
     })
   }
 
