@@ -51,6 +51,7 @@ import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendac
 import { LibrosPorAutorComponent } from './pantallas/internas/libros-por-autor/libros-por-autor.component';
 import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usuario/reviews-por-usuario.component';
 import { RequestsComponent } from './pantallas/requests/requests.component';
+import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -71,7 +72,8 @@ import { RequestsComponent } from './pantallas/requests/requests.component';
 		RecomendacionesComponent,
 		LibrosPorAutorComponent,
 		ReviewsPorUsuarioComponent,
-		RequestsComponent
+		RequestsComponent,
+    BookshelfComponent
 	],
 	imports: [
 		RouterOutlet,
