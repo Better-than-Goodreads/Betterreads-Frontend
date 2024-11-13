@@ -9,8 +9,8 @@
 		</div>
 
 		<div class="horizontal-container friends">
-			<button mat-flat-button style="width: 50%;">Follow</button>
-			<p>23 Friends</p>
+			<button (click)="sendFriendRequest()" mat-flat-button style="width: 50%;">Add friend</button>
+			<p>{{friends.length}} Friends</p>
 		</div>
 		<h2>Details</h2>
 		<div class="horizontal-container" style="width: fit-content; column-gap: 1em;">

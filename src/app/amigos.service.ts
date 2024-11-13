@@ -10,17 +10,17 @@ import { Usuario } from './entidades/usuario';
 export class AmigosService {
 	constructor(private http: HttpClient) { }
 
-	private urlAmigos = environment.apiUrl + '/users/';
+	private urlUsers = environment.apiUrl + '/users';
 
 	getFriends(userId: string): Observable<Usuario[]> {
-		return this.http.get<any>(this.urlAmigos + `/${userId}/friends`)
+		return this.http.get<any>(this.urlUsers + `/${userId}/friends`)
 	}
 
 	sendFriendRequest(friendId: string): Observable<any> {
-		return this.http.post<any>(this.urlAmigos + `/friends`, {id: friendId})
+		return this.http.post<any>(this.urlUsers + `/friends/`, null, { params: { Id: friendId } })
 	}
 
 	acceptFriendRequest(friendId: string): Observable<any> {
-		return this.http.post<any>(this.urlAmigos + `/friends/requests`, {id: friendId})
+		return this.http.post<any>(this.urlUsers + `/friends/requests`, { id: friendId })
 	}
 }
