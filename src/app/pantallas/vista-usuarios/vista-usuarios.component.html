@@ -47,10 +47,10 @@
 			<h2>No reviews found 😭</h2>
 		}
 		@for (r of reviews.slice(0,5); track r.book_id) {
-			<app-review [review]="r" [bookTitle]="r.book_title" />
+			<app-review [review]="r" [bookTitle]="r.book_title" [bookId]="r.book_id"/>
 		}
 		<div class="vertical-container" style="width: 100%; justify-content: center;margin-top: 1em;">
-				<button *ngIf="reviews.length > 5" mat-button>See all reviews</button>
+				<a *ngIf="reviews.length > 5" href="user/{{usuario.id}}/reviews-published" mat-button>See all reviews</a>
 			</div>
 	</div>
 

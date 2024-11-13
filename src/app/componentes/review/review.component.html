@@ -1,7 +1,7 @@
 <div class="main">
 	<div class="container1">
 		<div class="img-container-perfil">
-			<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil" />
+			<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil button" (click)="goToUser()"/>
 		</div>
 		<h3>{{review.username}}</h3>
 		<div class="star-rating">
@@ -12,6 +12,9 @@
 			</i>
 		</div>
 	</div>
-	<p *ngIf="bookTitle">rated {{bookTitle}}</p>
-	<p class="review">{{review.review}}</p>
+	<div class="button" (click)="goToBook()">
+		<p *ngIf="bookTitle && !review.review" class="book-info">Rated: {{bookTitle}}</p>
+		<p *ngIf="bookTitle && review.review" class="book-info">Reviewed: {{bookTitle}}</p>
+	</div>
+	<p *ngIf="review.review" class="review">{{review.review}}</p>
 </div>

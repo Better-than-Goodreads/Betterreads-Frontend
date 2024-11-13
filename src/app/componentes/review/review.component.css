@@ -4,7 +4,8 @@
 	background-color: #ffff;
 	border-radius: 10px;
 	padding: 1em;
-	max-width: 25rem;
+	min-width: 25rem;
+	max-width: 60rem;
 }
 
 .star-rating {
@@ -39,4 +40,17 @@ img {
 
 .review{
 	font-size: 1.2em;
+	border-top: solid lightgray 1px;
+	margin: 0;
+	padding-top: 0.25em;
 }
+
+.book-info {
+	margin-bottom: 0.25em;
+	font-style: italic;
+}
+
+.button:hover{
+	cursor: pointer;
+}
+
