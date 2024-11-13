@@ -19,7 +19,7 @@
 	@if (sentRequests.length > 0) {
 		<h1>Your Pending Friend Requests</h1>
 		<div>
-		@for (usuario of requests; track usuario.id) {
+		@for (usuario of sentRequests; track usuario.id) {
 			<app-usuario [usuario]="usuario" [showFollowButton]="false"></app-usuario>
 		}
 		</div>

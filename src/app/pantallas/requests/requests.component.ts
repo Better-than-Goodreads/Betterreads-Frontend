@@ -24,6 +24,18 @@ export class RequestsComponent {
 				}
 			}
 		);
+
+		this.amigosService.getFriendRequestsSent().subscribe(
+			{
+				next: (data) => {
+					console.log('Sent:', data);
+					this.sentRequests = data;
+				},
+				error: (error) => {
+					this._snackBar.open('Error getting friend requests', 'X', {})
+				}
+			}
+		);
 	}
 
 	acceptFriendRequest(id: string) { 
