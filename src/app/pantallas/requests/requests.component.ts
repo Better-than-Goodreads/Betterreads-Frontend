@@ -26,8 +26,29 @@ export class RequestsComponent {
 		);
 	}
 
-	acceptFriendRequest(id: string) { }
-	rejectFriendRequest(id: string) { }
+	acceptFriendRequest(id: string) { 
+		this.amigosService.acceptFriendRequest(id).subscribe({
+			next: () => {
+				this._snackBar.open('Solicitud de amistad aceptada', 'Cerrar', {});
+				this.requests = this.requests.filter(request => request.id != id);
+			},
+			error: () => {
+				this._snackBar.open('Error al aceptar la solicitud de amistad', 'Cerrar', {});
+			}
+		});
+	}
+
+	rejectFriendRequest(id: string) { 
+		this.amigosService.rejectFriendRequest(id).subscribe({
+			next: () => {
+				this._snackBar.open('Solicitud de amistad aceptada', 'Cerrar', {});
+				this.requests = this.requests.filter(request => request.id != id);
+			},
+			error: () => {
+				this._snackBar.open('Error al aceptar la solicitud de amistad', 'Cerrar', {});
+			}
+		});
+	}
 
 	requests: Usuario[] = [];
 	sentRequests: Usuario[] = [];
