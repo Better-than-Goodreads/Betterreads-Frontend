@@ -13,7 +13,7 @@
 				<button mat-flat-button>Follow</button>
 			}
 			<div>
-				<p>2 friends</p>
+				<p>{{friends$ | async}} friends</p>
 				<p>{{booksRead$ | async}} books read</p>
 			</div>
 		</div>

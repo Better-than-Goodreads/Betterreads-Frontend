@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AmigosService } from '../../amigos.service';
+import { AmigosService } from '../../services/amigos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Usuario } from '../../entidades/usuario';
 
@@ -20,7 +20,7 @@ export class RequestsComponent {
 					this.requests = data;
 				},
 				error: (error) => {
-					this._snackBar.open('Error al obtener las solicitudes de amistad', 'Cerrar', {})
+					this._snackBar.open('Error getting friend requests', 'X', {})
 				}
 			}
 		);
@@ -29,11 +29,11 @@ export class RequestsComponent {
 	acceptFriendRequest(id: string) { 
 		this.amigosService.acceptFriendRequest(id).subscribe({
 			next: () => {
-				this._snackBar.open('Solicitud de amistad aceptada', 'Cerrar', {});
+				this._snackBar.open('Friend request accepted', 'X', {});
 				this.requests = this.requests.filter(request => request.id != id);
 			},
 			error: () => {
-				this._snackBar.open('Error al aceptar la solicitud de amistad', 'Cerrar', {});
+				this._snackBar.open('Error accepting friend request', 'X', {});
 			}
 		});
 	}
@@ -41,11 +41,11 @@ export class RequestsComponent {
 	rejectFriendRequest(id: string) { 
 		this.amigosService.rejectFriendRequest(id).subscribe({
 			next: () => {
-				this._snackBar.open('Solicitud de amistad aceptada', 'Cerrar', {});
+				this._snackBar.open('Friend request rejected', 'X', {});
 				this.requests = this.requests.filter(request => request.id != id);
 			},
 			error: () => {
-				this._snackBar.open('Error al aceptar la solicitud de amistad', 'Cerrar', {});
+				this._snackBar.open('Error rejecting friend request', 'X', {});
 			}
 		});
 	}

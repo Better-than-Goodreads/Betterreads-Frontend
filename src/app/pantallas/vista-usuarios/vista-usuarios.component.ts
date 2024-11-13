@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from "../../services/usuarios.service";
 import { switchMap } from 'rxjs/operators';
 import { forkJoin, of, Observable } from 'rxjs';
-import { AmigosService } from '../../amigos.service';
+import { AmigosService } from '../../services/amigos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -34,6 +34,7 @@ export class VistaUsuariosComponent {
 
 	  let user_id = sessionStorage.getItem('user_id');
 	  this.is_myself = user_id == this.usuario.id;
+	  console.log(this.is_myself);
 	  this.is_friend = this.friends.find(friend => friend.id == user_id) == undefined ? false : true;
     })
   }

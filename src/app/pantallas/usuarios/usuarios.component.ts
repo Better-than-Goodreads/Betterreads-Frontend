@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../../entidades/usuario';
 import { UsuariosService } from "../../services/usuarios.service";
-import { AmigosService } from '../../amigos.service';
+import { AmigosService } from '../../services/amigos.service';
 
 @Component({
   selector: 'app-usuarios',
