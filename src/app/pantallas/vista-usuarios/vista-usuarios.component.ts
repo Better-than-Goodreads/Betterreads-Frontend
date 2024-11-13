@@ -31,6 +31,10 @@ export class VistaUsuariosComponent {
       });
       this.books = books;
 	  this.friends = friends;
+
+	  let user_id = sessionStorage.getItem('user_id');
+	  this.is_myself = user_id == this.usuario.id;
+	  this.is_friend = this.friends.find(friend => friend.id == user_id) == undefined ? false : true;
     })
   }
 
@@ -58,10 +62,29 @@ export class VistaUsuariosComponent {
 	  }));
   }
 
+  removeFriend() {
+	  this.amigosService.removeFriend(this.usuario.id).subscribe({
+		  next: () => {
+			  this._snackBar.open('Friend removed', 'Close', {
+				  duration: 2000,
+			  });
+			  this.is_friend = false;
+			  this.friends = this.friends.filter(friend => friend.id != sessionStorage.getItem('user_id'));
+		  },
+		  error: () => {
+			  this._snackBar.open('Error removing friend', 'Close', {
+				  duration: 2000,
+			  });
+		  }
+	  });
+  }
+
   books: Libro[] = [];
   reviews: any[] = [];
   friends: Usuario[] = [];
 
+  is_friend = false;
+  is_myself = false;
   defaultImage = './default-profile.png';
   urlFoto = '';
   usuario = new Usuario({});

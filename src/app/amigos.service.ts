@@ -35,4 +35,8 @@ export class AmigosService {
 	rejectFriendRequest(friendId: string): Observable<any> {
 		return this.http.delete<any>(this.urlUsers + `/friends/requests`, { params: { Id: friendId } })
 	}
+
+	removeFriend(friendId: string): Observable<any> {
+		return this.http.delete<any>(this.urlUsers + `/friends/`, { params: { Id: friendId } })
+	}
 }
