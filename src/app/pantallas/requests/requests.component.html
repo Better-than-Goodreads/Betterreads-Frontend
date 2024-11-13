@@ -1,0 +1,32 @@
+<div class="main">
+
+	@if (requests.length > 0) {
+		<h1>Friend requests</h1>
+		<div class="container1">
+		@for (usuario of requests; track usuario.id) {
+			<div>
+				<app-usuario [usuario]="usuario" [showFollowButton]="false"></app-usuario>
+				<div class="aceptarBotones">
+					<button (click)="acceptFriendRequest(usuario.id)" class="primary-button">Accept</button>
+					<button (click)="rejectFriendRequest(usuario.id)" class="warning-button">Reject</button>
+				</div>
+			</div>
+		}
+		</div>
+		<hr />
+	}
+
+	@if (sentRequests.length > 0) {
+		<h1>Your Pending Friend Requests</h1>
+		<div>
+		@for (usuario of requests; track usuario.id) {
+			<app-usuario [usuario]="usuario" [showFollowButton]="false"></app-usuario>
+		}
+		</div>
+	}
+
+	
+	@if (sentRequests.length === 0 && requests.length === 0) {
+		<h2>No friend requests received or pending found 😭😭😭</h2>
+	}
+</div>

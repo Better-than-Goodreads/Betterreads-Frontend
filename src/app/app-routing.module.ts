@@ -11,6 +11,7 @@ import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component
 import { RecomendacionesComponent } from "./pantallas/recomendaciones/recomendaciones.component";
 import { LibrosPorAutorComponent } from "./pantallas/internas/libros-por-autor/libros-por-autor.component";
 import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usuario/reviews-por-usuario.component";
+import { RequestsComponent } from "./pantallas/requests/requests.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "users", component: UsuariosComponent },
   { path: "bookshelf/:id", component: BibliotecaComponent },
   { path: "recommendations", component: RecomendacionesComponent },
+  { path: "requests", component: RequestsComponent },
   { path: "user/:id/books-published", component: LibrosPorAutorComponent },
   { path: "user/:id/reviews-published", component: ReviewsPorUsuarioComponent },
 ];
