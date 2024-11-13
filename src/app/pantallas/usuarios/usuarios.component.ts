@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../../entidades/usuario';
 import { UsuariosService } from "../../services/usuarios.service";
+import { AmigosService } from '../../services/amigos.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -10,7 +11,7 @@ import { UsuariosService } from "../../services/usuarios.service";
 export class UsuariosComponent {
   usuarios: Usuario[] = [];
   loading = true;
-  constructor(private usuarioService: UsuariosService) { }
+  constructor(private usuarioService: UsuariosService, private amigosService: AmigosService) { }
 
   ngOnInit(): void {
     this.usuarioService.getUsuarios().subscribe(usuarios => {

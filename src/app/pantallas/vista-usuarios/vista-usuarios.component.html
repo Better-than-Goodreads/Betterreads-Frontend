@@ -1,7 +1,11 @@
 <div class="horizontal-container" style="padding-left: 1em;">
-	<div class="vertical-container img-container-perfil perfil">
-		<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
+	<div class="vertical-container">
+		<div class="vertical-container img-container-perfil perfil">
+			<img [src]="urlFoto" (error)="urlFoto = defaultImage" alt="Profile picture" class="imagen-perfil">
+		</div>
+		<app-bookshelf [usuario]="usuario" style="width: 15em"></app-bookshelf>
 	</div>
+	
 	<div class="vertical-container contenido">
 		<div class="horizontal-container titulo">
 			<h1>{{usuario.username}}</h1>
@@ -9,40 +13,54 @@
 		</div>
 
 		<div class="horizontal-container friends">
-			<button mat-flat-button style="width: 50%;">Follow</button>
-			<p>23 Friends</p>
+			@if (!is_myself) {
+				@if (is_friend) {
+					<button (click)="removeFriend()" mat-flat-button style="width: 50%; background-color:darkred;">Remove Friend</button>
+				} @else {
+					<button (click)="sendFriendRequest()" mat-flat-button style="width: 50%;">Add friend</button>
+				}
+			} 
+			<p>{{friends.length}} Friends</p>
 		</div>
 		<h2>Details</h2>
 		<div class="horizontal-container" style="width: fit-content; column-gap: 1em;">
 			<div class="vertical-container datos">
 				<h3>Name</h3>
+				<h3>Email</h3>
 				<h3 *ngIf="usuario.age">Age</h3>
 				<h3 *ngIf="usuario.location">Location</h3>
 				<h3 *ngIf="usuario.gender">Gender</h3>
 			</div>
 			<div class="vertical-container datos">
 				<p>{{usuario.last_name}}, {{usuario.first_name}}</p>
+				<p>{{usuario.email}}</p>
 				<p *ngIf="usuario.age">{{usuario.age}}</p>
 				<p *ngIf="usuario.location">{{usuario.location}}</p>
 				<p *ngIf="usuario.gender">{{usuario.gender}}</p>
 			</div>
 		</div>
-		<h3>About me:</h3>
+		<h3 *ngIf="usuario.about_me">About me:</h3>
 		<p>{{usuario.about_me}}</p>
-		<a href="/bookshelf/{{usuario.id}}">Bookshelf</a>
 		<div *ngIf="usuario.is_author">
-			<h2>Libros publicados</h2>
-			@for (book of books; track book.id) {
+			<h2>Published books</h2>
+			@for (book of books.slice(0,5); track book.id) {
 			<app-libro [book]="book"></app-libro>
 			}
+			<div class="vertical-container" style="width: 100%; justify-content: center;margin-top: 1em;">
+				<a *ngIf="books.length > 5" mat-button href="user/{{usuario.id}}/books-published">See all books</a>
+			</div>
 		</div>
+
 		<h2>Reviews</h2>
 		@if (reviews.length === 0) {
 			<h2>No reviews found 😭</h2>
 		}
-		@for (r of reviews; track r.review) {
-			<app-review [review]="r" />
+		@for (r of reviews.slice(0,5); track r.book_id) {
+			<app-review [review]="r" [bookTitle]="r.book_title" [bookId]="r.book_id"/>
 		}
+		<div class="vertical-container" style="width: 100%; justify-content: center;margin-top: 1em;">
+				<a *ngIf="reviews.length > 5" href="user/{{usuario.id}}/reviews-published" mat-button>See all reviews</a>
+			</div>
 	</div>
 
 </div>

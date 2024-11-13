@@ -1,0 +1,7 @@
+<div class="bookshelf" (click)="goToBookshelf()">
+	<h3><mat-icon aria-label="bookshelf" fontIcon="book"></mat-icon>Bookshelf of {{_usuario?.username}}</h3>
+	<p *ngFor="let state of states.keys()">
+		<b>{{state}}:</b> {{states.get(state)}}
+	</p>
+	
+</div>

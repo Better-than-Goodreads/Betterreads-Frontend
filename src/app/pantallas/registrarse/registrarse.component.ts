@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { Validators, FormGroup, FormControl } from "@angular/forms";
+import { Component, ChangeDetectorRef, ViewChild } from "@angular/core";
+import { Validators, FormGroup, FormControl, ValidationErrors, AbstractControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { UsuariosService } from "../../services/usuarios.service";
 import { Usuario } from "../../entidades/usuario";
@@ -11,6 +11,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import {MatStepper} from '@angular/material/stepper';
 
 @Component({
   selector: "app-registrarse",
@@ -20,9 +21,12 @@ import {
 export class RegistrarseComponent {
   constructor(private usuarioService: UsuariosService,
     private router: Router,
-    private _snackBar: MatSnackBar) {}
+    private _snackBar: MatSnackBar,
+    private _cdr: ChangeDetectorRef) {}
 
   hide = true;
+  errors = new Map<string, string>();
+
 
   ngOnInit(): void {
     this.infoPersonal.get("edad")?.valueChanges.subscribe((valor) => {
@@ -81,13 +85,46 @@ export class RegistrarseComponent {
     });
     // TODO: ver el tema de guardar el usuario/ sesion
     this.usuarioService.createUsuario(usuario, this.selectedFile).pipe(catchError(error => {
-      this._snackBar.open(error.error.detail, 'X', {
+      if (error.error.detail) {
+        this._snackBar.open(error.error.detail, 'X', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
-      });
+        });
+      }
+      console.log(error);
+      this.errors = new Map<string, string>(error.error.validation_errors.map((valError: {field: string, reason: string}) => [valError.field, valError.reason]));
+      this.validateErrors();
       return of(null);
     })).subscribe(usuario => {
       if (usuario) this.router.navigate(['/home'])
     });
   }
+
+
+  validateErrors() {
+    if (this.errors.get('username')) this.datosIniciales.get('usuario')?.setErrors({'error': this.errors.get('username')});
+    if(this.errors.get('email')) this.datosIniciales.get('email')?.setErrors({'error': this.errors.get('email')});
+    if(this.errors.get('password')) this.datosIniciales.get('password')?.setErrors({'error': this.errors.get('password')});
+    if(this.errors.get('first_name')) this.infoPersonal.get('nombre')?.setErrors({'error': this.errors.get('first_name')});
+    if(this.errors.get('last_name')) this.infoPersonal.get('apellido')?.setErrors({'error': this.errors.get('last_name')});
+    if(this.errors.get('is_author')) this.infoPersonal.get('esAutor')?.setErrors({'error': this.errors.get('is_author')});
+    if(this.errors.get('gender')) this.infoOpcional.get('genero')?.setErrors({'error': this.errors.get('gender')});
+    if(this.errors.get('agre')) this.infoOpcional.get('edad')?.setErrors({'error': this.errors.get('agre')});
+    if(this.errors.get('location')) this.infoOpcional.get('pais')?.setErrors({'error': this.errors.get('location')});
+    if(this.errors.get('about_me')) this.aboutMe.get('aboutMe')?.setErrors({'error': this.errors.get('about_me')});
+
+    this._cdr.detectChanges();
+    if (!this.stepper) return;
+    if (!this.datosIniciales.valid) {
+      this.stepper.selectedIndex=0;
+    } else if (!this.infoPersonal.valid) {
+      this.stepper.selectedIndex = 1;
+    } else if (!this.infoOpcional.valid) {
+      this.stepper.selectedIndex = 2;
+    } else if (!this.aboutMe.valid) {
+      this.stepper.selectedIndex = 3;
+    }
+  }
+
+  @ViewChild('stepper') stepper: MatStepper | null = null;
 }

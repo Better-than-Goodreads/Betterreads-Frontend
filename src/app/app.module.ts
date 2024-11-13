@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { LOCALE_ID, NgModule } from "@angular/core";
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { AppComponent } from "./app.component";
 import { InicioSesionComponent } from "./pantallas/inicio-sesion/inicio-sesion.component";
@@ -33,9 +34,9 @@ import { MatCardModule } from '@angular/material/card';
 import { LibroComponent } from "./componentes/libro/libro.component";
 import { PublicarLibroComponent } from "./pantallas/publicar-libro/publicar-libro.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import {MatListModule} from '@angular/material/list';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -47,6 +48,10 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { ReviewComponent } from "./componentes/review/review.component";
 import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
 import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendaciones.component';
+import { LibrosPorAutorComponent } from './pantallas/internas/libros-por-autor/libros-por-autor.component';
+import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usuario/reviews-por-usuario.component';
+import { RequestsComponent } from './pantallas/requests/requests.component';
+import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -58,13 +63,17 @@ import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendac
 		RegistrarseComponent,
 		LibroComponent,
 		PublicarLibroComponent,
-  VistaLibroComponent,
-  VistaUsuariosComponent,
-  UsuariosComponent,
-  UsuarioComponent,
+		VistaLibroComponent,
+		VistaUsuariosComponent,
+		UsuariosComponent,
+		UsuarioComponent,
 		ReviewComponent,
-  BibliotecaComponent,
-  RecomendacionesComponent
+		BibliotecaComponent,
+		RecomendacionesComponent,
+		LibrosPorAutorComponent,
+		ReviewsPorUsuarioComponent,
+		RequestsComponent,
+    BookshelfComponent
 	],
 	imports: [
 		RouterOutlet,
@@ -78,7 +87,7 @@ import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendac
 		MatNativeDateModule,
 		// Componentes
 		MatSidenavModule,
-    MatListModule,
+		MatListModule,
 		MatLabel,
 		MatFormFieldModule,
 		MatOption,
@@ -103,12 +112,16 @@ import { RecomendacionesComponent } from './pantallas/recomendaciones/recomendac
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
 			useValue: { appearance: "outline" },
 		},
+		{
+			provide: STEPPER_GLOBAL_OPTIONS,
+			useValue: { showError: true },
+		},
 		UsuariosService,
 		UsuarioActualService,
 		{
-		  provide: HTTP_INTERCEPTORS,
-		  useClass: JwtInterceptor,
-		  multi: true
+			provide: HTTP_INTERCEPTORS,
+			useClass: JwtInterceptor,
+			multi: true
 		}
 	],
 	bootstrap: [AppComponent]

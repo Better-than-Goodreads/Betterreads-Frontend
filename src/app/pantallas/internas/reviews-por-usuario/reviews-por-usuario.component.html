@@ -1,0 +1,18 @@
+
+<div class="reviews">
+	@if (loading) {
+	<mat-spinner></mat-spinner>
+	} @else {
+	<h2>Reviews published by {{usuario.username}}</h2>
+
+	@if (reviews.length === 0) {
+	<h2>No reviews found 😭</h2>
+	}
+
+	<div class="containerReviews">
+		@for (r of reviews; track r.book_id) {
+			<app-review [review]="r" [bookTitle]="r.book_title" [bookId]="r.book_id" />
+		}
+	</div>
+	}
+</div>

@@ -17,6 +17,7 @@ export class VistaLibroComponent {
 	reviews: Review[] = [];
 	previewsReview: Review | null = null;
 	publishReview = new Review();
+	rating = 0;
 	urlFoto = '';
 	book = new Libro();
 	puntuarReview = 0;
@@ -47,6 +48,7 @@ export class VistaLibroComponent {
 			this.book = book.book;
 			this.publishReview = book.review?? new Review();
 			this.hoverEstrellas = this.publishReview.rating;
+			this.rating = this.publishReview.rating;
 			console.log(this.publishReview);
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
@@ -65,25 +67,26 @@ export class VistaLibroComponent {
 	}
 
 	puntuar(i: number) {
-		this.publishReview.rating = i;
+		this.rating = i;
 	}
 
 	publicarReview() {
+		this.publishReview.rating = this.rating;
 		this.bookService.postReview(this.book.id, this.publishReview).subscribe({
 			next: () => {
 				this._snackBar.open('Review published correctly', 'X', {
 			        horizontalPosition: 'center',
-			        verticalPosition: 'top',
+			        verticalPosition: 'top'
 			      });
 				this.setUpPantalla();
-				//window.location.reload();
 			},
 			error: (error: any) => {
 				console.log(error);
 				this._snackBar.open('Error publishing review: ' + error.error.detail, 'X', {
 			        horizontalPosition: 'center',
-			        verticalPosition: 'top',
+			        verticalPosition: 'top'
 			      });
+				this.setUpPantalla();
 				console.error('Error publishing review', error); // Cuando este el edit esto no pasa
 			}
 		});

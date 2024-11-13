@@ -39,7 +39,9 @@
           >The password is required</mat-error
         >
       </mat-form-field>
-
+      @if (error) {
+      <p style="color: red">{{ error }}</p>
+      }
       <button type="submit" (click)="submitLogin()" mat-flat-button>
         Log In
       </button>
