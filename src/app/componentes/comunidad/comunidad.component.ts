@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ComunidadService } from '../../services/comunidad.service';
 import { Comunidad } from '../../entidades/Comunidad';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsuariosService } from '../../services/usuarios.service';
+import { UsuarioActualService } from '../../services/usuario-actual.service';
 
 @Component({
 	selector: 'app-comunidad',
@@ -10,9 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ComunidadComponent {
 	comunidades: Comunidad[] = [];
+
+	comunidadAPublicar: Comunidad = new Comunidad();
+	error: string = '';
+
 	constructor(
 		private comunidadService: ComunidadService,
-		private _snackBar: MatSnackBar
+		private _snackBar: MatSnackBar,
+		private usuarioActualService: UsuarioActualService,
 	) { }
 
 	ngOnInit() {
@@ -42,5 +49,26 @@ export class ComunidadComponent {
 			}
 		}
 		);
+	}
+
+	createCommunity() {
+		if (!this.comunidadAPublicar.name || !this.comunidadAPublicar.description) {
+			this._snackBar.open('Complete all required fields.', 'X', {});
+			return
+		}
+
+		this.comunidadAPublicar.owner_id = this.usuarioActualService.getId()
+
+		this.comunidadService.createCommunity(this.comunidadAPublicar).subscribe({
+			next: (data) => {
+				this.comunidades = [data, ...this.comunidades];
+				this.comunidadAPublicar = new Comunidad();
+				this._snackBar.open("Community created successfully", 'X', {});
+			},
+			error: (e) => {
+				this.error = e.error.error.d;
+				this._snackBar.open(e.error.error.d || "Error creating community", 'X', {});
+			}
+		});
 	}
 }

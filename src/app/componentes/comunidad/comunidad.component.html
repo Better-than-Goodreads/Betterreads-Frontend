@@ -1,27 +1,50 @@
 <div class="main">
-
+	<div>
 	@if (comunidades.length > 0) {
 		<h1>Communities</h1>
 		<div class="container1">
 		@for (comunidad of comunidades; track comunidad.id) {
-			<div>
-				<h1>{{comunidad.name}}</h1>
-				<p>{{comunidad.description}}</p>
+			<div class="comunidad">
+				<div>
+					<h2>{{comunidad.name}}</h2>
+					<p>{{comunidad.description}}</p>
+				</div>
 				<div class="aceptarBotones">
 					@if (comunidad.joined) {
 						<button (click)="joinCommunity(comunidad.id)" class="secondary-button">Joined</button>
 					} @else {
 						<button (click)="joinCommunity(comunidad.id)" class="primary-button">Join</button>
 					}
-					<!-- <button (click)="rejectFriendRequest(usuario.id)" class="warning-button">Reject</button> -->
 				</div>
 			</div>
 		}
 		</div>
-		<hr />
 	}
 
 	@if (comunidades.length === 0) {
 		<h2>No communities received or pending found 😭😭😭</h2>
 	}
+	</div>
+
+	<div style="row-gap: 0.25em" class="vertical-container">
+		<h2 style="align-self: center">Create a Community</h2>
+		<mat-form-field>
+			<mat-label>Title</mat-label>
+			<input required matInput maxlength=255 [(ngModel)]="comunidadAPublicar.name" placeholder="Harry Potter and the Chamber of Secrets" />
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Description</mat-label>
+			<textarea required matInput maxlength=255 [(ngModel)]="comunidadAPublicar.description"
+				placeholder="The story of the princess..."></textarea>
+		</mat-form-field>
+
+		@if (error) {
+		<p style="color: red">{{ error }}</p>
+		}
+
+		<button mat-flat-button (click)="createCommunity()">
+			Create
+		</button>
+	</div>
 </div>

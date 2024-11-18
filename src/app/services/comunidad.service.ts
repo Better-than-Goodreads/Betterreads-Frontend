@@ -19,4 +19,8 @@ export class ComunidadService {
   joinCommunity(id: string): Observable<any> {
 	return this.http.post(this.apiUrl + id + '/join', {});
   }
+
+  createCommunity(comunidad: Comunidad): Observable<Comunidad> {
+	return this.http.post<Comunidad>(this.apiUrl, comunidad);
+  }
 }
