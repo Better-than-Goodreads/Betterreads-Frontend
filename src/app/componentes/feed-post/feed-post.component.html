@@ -4,7 +4,7 @@
 
 		<div class="horizontal-container"  style="align-items: center; margin-bottom: 0.5em;">
 			<div class="img-container-perfil container-foto">
-				<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil">
+				<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil" (click)="goToUser()">
 			</div>
 			<div *ngIf="post.type == 'rating'" class="horizontal-container">
 

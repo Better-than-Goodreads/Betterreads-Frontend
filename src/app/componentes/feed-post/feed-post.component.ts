@@ -18,6 +18,10 @@ export class FeedPostComponent implements AfterViewInit {
     this.router.navigate(['/book', this.post?.post?.book_id])
   }
 
+  goToUser() {
+    this.router.navigate(['user', this.post?.post?.id]);
+  }
+
   urlFotoPerfil = '';
   defaultImage = './default-profile.png';
 
