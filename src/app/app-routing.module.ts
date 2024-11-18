@@ -12,6 +12,7 @@ import { RecomendacionesComponent } from "./pantallas/recomendaciones/recomendac
 import { LibrosPorAutorComponent } from "./pantallas/internas/libros-por-autor/libros-por-autor.component";
 import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usuario/reviews-por-usuario.component";
 import { RequestsComponent } from "./pantallas/requests/requests.component";
+import { ComunidadComponent } from "./componentes/comunidad/comunidad.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: "requests", component: RequestsComponent },
   { path: "user/:id/books-published", component: LibrosPorAutorComponent },
   { path: "user/:id/reviews-published", component: ReviewsPorUsuarioComponent },
+  { path: "communities", component: ComunidadComponent },
 ];
 
 @NgModule({
