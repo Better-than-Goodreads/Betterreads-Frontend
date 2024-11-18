@@ -13,6 +13,7 @@ import { LibrosPorAutorComponent } from "./pantallas/internas/libros-por-autor/l
 import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usuario/reviews-por-usuario.component";
 import { RequestsComponent } from "./pantallas/requests/requests.component";
 import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
+import { LibrosComponent } from "./pantallas/libros/libros.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -25,6 +26,7 @@ const routes: Routes = [
     component: InicioSesionComponent,
   },
   { path: "home", component: PrincipalComponent },
+  { path: "books", component: LibrosComponent },
   { path: "post-book", component: PublicarLibroComponent },
   { path: "book/:id", component: VistaLibroComponent },
   { path: "user/:id", component: VistaUsuariosComponent },

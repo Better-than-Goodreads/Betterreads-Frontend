@@ -53,6 +53,8 @@ import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usu
 import { RequestsComponent } from './pantallas/requests/requests.component';
 import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
 import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
+import { LibrosComponent } from './pantallas/libros/libros.component';
+import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -75,7 +77,9 @@ import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
 		ReviewsPorUsuarioComponent,
 		RequestsComponent,
     BookshelfComponent,
-    ComunidadComponent
+    ComunidadComponent,
+    LibrosComponent,
+    FeedPostComponent
 	],
 	imports: [
 		RouterOutlet,

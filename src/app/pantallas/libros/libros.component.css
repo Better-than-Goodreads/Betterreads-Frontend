@@ -1,0 +1,30 @@
+.books {
+	width: 100%;
+	gap: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+
+
+.search-bar {
+	display: flex;
+	margin: 0;
+	justify-content: center;
+	flex-grow: 1;
+}
+
+.tool-tab {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 1em;
+}
+
+.containerBooks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1em;
+}
