@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ComunidadService } from '../../services/comunidad.service';
 import { Comunidad } from '../../entidades/Comunidad';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UsuariosService } from '../../services/usuarios.service';
 import { UsuarioActualService } from '../../services/usuario-actual.service';
 
 @Component({

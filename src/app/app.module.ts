@@ -52,7 +52,7 @@ import { LibrosPorAutorComponent } from './pantallas/internas/libros-por-autor/l
 import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usuario/reviews-por-usuario.component';
 import { RequestsComponent } from './pantallas/requests/requests.component';
 import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
-import { ComunidadComponent } from "./componentes/comunidad/comunidad.component";
+import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
 
 //registerLocaleData(localeEn, 'en-US');
 
