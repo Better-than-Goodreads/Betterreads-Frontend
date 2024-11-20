@@ -4,7 +4,6 @@ import { UsuarioActualService } from './services/usuario-actual.service';
 import { Usuario } from './entidades/usuario';
 import { of } from "rxjs";
 
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -48,6 +47,18 @@ export class AppComponent {
 
   muestraSidenav(url: string) {
     return url === '/register' || url === '/log-in'
+  }
+
+  logOut() {
+    this.usuarioActualService.logOut();
+    this.router.navigate(['/home']);
+    if (window.location.href.includes("/home")) window.location.reload();
+  }
+
+  tryLogIn() {
+    if (!this.id) {
+      this.router.navigate(['/log-in']);
+    }
   }
 
   showSidenav = false;

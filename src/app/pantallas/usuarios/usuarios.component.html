@@ -15,6 +15,8 @@
 	@if (loading) {
 		<mat-spinner></mat-spinner>
 	} @else {
+		<h2 *ngIf="filtered">Filtered by {{searchAuthor? 'authors' : 'users'}}</h2>
+		<h2 *ngIf="!filtered">All users/authors</h2>
 		@for (usuario of usuarios; track usuario.id) {
 			<app-usuario [usuario]="usuario"></app-usuario>
 		}

@@ -23,7 +23,7 @@ export class VistaLibroComponent {
 	puntuarReview = 0;
 	statusBookshelf = STATUS_BOOKSHELF;
 	statusLabels = STATUS_BOOKSHELF_LABELS;
-	selectedStatus = STATUS_BOOKSHELF[2];
+	selectedStatus = STATUS_BOOKSHELF[0];
 
 	currentStatus: string = '';
 
@@ -53,7 +53,7 @@ export class VistaLibroComponent {
 			this.previewsReview = (book.book as any).review || null
 			this.urlFoto = `http://localhost:8080/books/${this.book.id}/picture`;
 			this.currentStatus = book.status;
-			this.selectedStatus = this.currentStatus ?? STATUS_BOOKSHELF[2];
+			this.selectedStatus = this.currentStatus ?? STATUS_BOOKSHELF[0];
 
 			console.log('STATUS:', this.currentStatus);
 
@@ -100,7 +100,16 @@ export class VistaLibroComponent {
 			this._snackBar.open('This book is already in that state', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			return
 		}
-
+		if (!status) {
+			this.bibliotecaService.removeFromBookshelf(this.book.id).subscribe({
+				next: () => {
+					this._snackBar.open(`Book removed from your bookshelf`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				},
+				error: (error: any) => {
+					this._snackBar.open(`Error removing the book from your bookshelf`, 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
+				}
+			});
+		}
 		if (this.currentStatus == null) {
 			this.bibliotecaService.addToBookshelf(this.book.id, status).subscribe({
 				next: () => {

@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { forkJoin, of, Observable } from 'rxjs';
 import { AmigosService } from '../../services/amigos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-usuarios',
@@ -14,7 +15,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './vista-usuarios.component.css'
 })
 export class VistaUsuariosComponent {
-  constructor(private route: ActivatedRoute, private usuarioService: UsuariosService, private amigosService: AmigosService, private _snackBar: MatSnackBar){}
+  constructor(private route: ActivatedRoute, 
+  	private usuarioService: UsuariosService, 
+  	private amigosService: AmigosService, 
+  	private _snackBar: MatSnackBar,
+  	private router: Router){}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')?? '';
@@ -89,4 +94,8 @@ export class VistaUsuariosComponent {
   defaultImage = './default-profile.png';
   urlFoto = '';
   usuario = new Usuario({});
+
+  goToFriends() {
+  	this.router.navigate(['/user', this.usuario.id, 'friends'])
+  }
 }

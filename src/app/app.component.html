@@ -6,13 +6,17 @@
     </button>
     <span>BetterReads</span>
   </div>
-  <div class="horizontal-container zona-usuario" (click)="linkZonaUsuario()">
+  <div class="horizontal-container zona-usuario" [matMenuTriggerFor]="menuUsuario" (click)="tryLogIn()">
     <div class="img-container-perfil photo">
       <img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil">
     </div>
 
     <p style="font-size: large">{{usuarioActual}}</p>
   </div>
+  <mat-menu #menuUsuario="matMenu">
+    <button mat-menu-item (click)="linkZonaUsuario()"> Ver Perfil</button>
+    <button mat-menu-item *ngIf="usuarioActual !== 'Log In'" (click)="logOut()">Log out</button>
+  </mat-menu>
 
 </mat-toolbar>
 
@@ -25,7 +29,7 @@
       <a mat-list-item *ngIf="esAutor" routerLink="/post-book"> 
         Post a book 
       </a>
-      <a mat-list-item routerLink="/home">
+      <a mat-list-item routerLink="/books">
         Books
       </a>
       <a mat-list-item routerLink="/users">
@@ -39,6 +43,9 @@
       </a>
       <a mat-list-item routerLink="/requests">
         Friend Requests
+      </a>
+      <a mat-list-item routerLink="/communities">
+        Communities
       </a>
     </mat-nav-list>
   </mat-sidenav>

@@ -1,4 +1,4 @@
-.feed {
+.amigos {
 	width: 100%;
 	gap: 1em;
 	display: flex;
@@ -7,8 +7,9 @@
 	height: 100vh;
 }
 
-.noPosts {
-	align-items: center;
+.containerAmigos {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	gap: 1em;
 }

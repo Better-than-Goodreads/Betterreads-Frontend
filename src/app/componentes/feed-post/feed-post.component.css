@@ -1,0 +1,59 @@
+.post-container {
+    height: fit-content; 
+    width: 70vw;
+    border: solid 1px black;
+    padding: 1em;
+    border-radius: 10px;
+    margin-bottom: .5em;
+}
+
+.container-foto {
+    width: 10vh;
+    height: 10vh;
+    margin-right: 1em;
+}
+
+.contenido {
+    margin-left: 2em;
+}
+
+.header {
+    margin-bottom: 1em;
+}
+
+h2 {
+    margin: 0;
+}
+
+.action {
+    margin: 0;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    height: fit-content;
+}
+
+.star-rating i {
+    font-size: 24px;
+    user-select: none;
+}
+
+.star-filled {
+    color: #FFD700;
+}
+
+.star-empty {
+    color: #ddd;
+}
+
+.book-img {
+    height: 100%;
+    object-fit: scale-down;
+}
+
+img {
+    cursor: pointer;
+}

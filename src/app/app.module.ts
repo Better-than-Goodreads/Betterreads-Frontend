@@ -37,6 +37,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -52,6 +53,10 @@ import { LibrosPorAutorComponent } from './pantallas/internas/libros-por-autor/l
 import { ReviewsPorUsuarioComponent } from './pantallas/internas/reviews-por-usuario/reviews-por-usuario.component';
 import { RequestsComponent } from './pantallas/requests/requests.component';
 import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component';
+import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
+import { LibrosComponent } from './pantallas/libros/libros.component';
+import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
+import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-amigos.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -73,7 +78,11 @@ import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component'
 		LibrosPorAutorComponent,
 		ReviewsPorUsuarioComponent,
 		RequestsComponent,
-    BookshelfComponent
+    BookshelfComponent,
+    ComunidadComponent,
+    LibrosComponent,
+    FeedPostComponent,
+    ListaAmigosComponent
 	],
 	imports: [
 		RouterOutlet,
@@ -104,7 +113,8 @@ import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component'
 		MatDatepickerModule,
 		MatSpinner,
 		MatButtonToggleModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		MatMenuModule
 	],
 	providers: [
 		//{ provide: LOCALE_ID, useValue: "en-US" },

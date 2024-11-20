@@ -1,0 +1,79 @@
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 8em;
+}
+
+.communityImage {
+	width: 5em;
+	height: 5em;
+	border-radius: 50%;
+}
+
+.comunidad-container-1 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+}
+
+.comunidad-container-1 > h2 {
+	margin: 0;
+}
+
+.comunidad {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	place-items: center;
+	border: solid 1px grey;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	width: 20vw;
+	min-width: 20em;
+	gap: 1em;
+	padding: 1.3em;
+}
+
+.aceptarBotones  {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1em;
+}
+
+.container1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button {
+  background-color: #4CAF50;
+}
+
+.primary-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-button {
+  background-color: #008CBA;
+}

@@ -4,3 +4,8 @@
 	align-items: center;
 	margin-bottom: 0.5em;
 }
+
+.libros {
+	display: flex;
+	overflow-x: scroll;
+}

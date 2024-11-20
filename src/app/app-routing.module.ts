@@ -10,8 +10,11 @@ import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
 import { RecomendacionesComponent } from "./pantallas/recomendaciones/recomendaciones.component";
 import { LibrosPorAutorComponent } from "./pantallas/internas/libros-por-autor/libros-por-autor.component";
+import { ListaAmigosComponent } from "./pantallas/internas/lista-amigos/lista-amigos.component";
 import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usuario/reviews-por-usuario.component";
 import { RequestsComponent } from "./pantallas/requests/requests.component";
+import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
+import { LibrosComponent } from "./pantallas/libros/libros.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -24,6 +27,7 @@ const routes: Routes = [
     component: InicioSesionComponent,
   },
   { path: "home", component: PrincipalComponent },
+  { path: "books", component: LibrosComponent },
   { path: "post-book", component: PublicarLibroComponent },
   { path: "book/:id", component: VistaLibroComponent },
   { path: "user/:id", component: VistaUsuariosComponent },
@@ -33,6 +37,8 @@ const routes: Routes = [
   { path: "requests", component: RequestsComponent },
   { path: "user/:id/books-published", component: LibrosPorAutorComponent },
   { path: "user/:id/reviews-published", component: ReviewsPorUsuarioComponent },
+  { path: "communities", component: ComunidadComponent },
+  { path: "user/:id/friends", component: ListaAmigosComponent}
 ];
 
 @NgModule({

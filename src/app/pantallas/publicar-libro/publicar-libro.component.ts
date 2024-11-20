@@ -68,7 +68,7 @@ export class PublicarLibroComponent {
 				this._snackBar.open('Book published correctly');
       },
       error: (error) => {
-        this.error = 'There was an error publishing the book.' + error;
+        this.error = 'There was an error publishing the book.' + error.detail;
       }
     });
   }
