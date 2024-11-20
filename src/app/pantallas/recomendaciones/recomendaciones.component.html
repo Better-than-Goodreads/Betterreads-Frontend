@@ -13,9 +13,12 @@
 					
 				</div>
 				
-				@for (book of recomendacion.books; track book.id) {
-					<app-libro [book]="book"></app-libro>
-				}
+				<div class="libros">
+					@for (book of recomendacion.books; track book.id) {
+						<app-libro [book]="book"></app-libro>
+					}
+				</div>
+				
 				@if (recomendacion.books.length === 0) {
 				<h4>No books to recommend 😭</h4>
 				}
