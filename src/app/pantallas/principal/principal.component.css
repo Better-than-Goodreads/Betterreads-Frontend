@@ -6,3 +6,9 @@
 	align-items: center;
 	height: 100vh;
 }
+
+.noPosts {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}

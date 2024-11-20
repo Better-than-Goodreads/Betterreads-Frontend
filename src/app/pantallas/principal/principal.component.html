@@ -1,4 +1,9 @@
 <div class="feed">
 	<h2>Welcome to your feed!</h2>
 	<app-feed-post *ngFor="let post of posts" [post]="post"></app-feed-post>
+
+	<div *ngIf="!posts.length" class="noPosts">
+		<h3 style="margin: 0;">No activity found.😭 </h3>
+		<p style="margin: 0;">Follow users to see what they're up to! </p>
+	</div>
 </div>
