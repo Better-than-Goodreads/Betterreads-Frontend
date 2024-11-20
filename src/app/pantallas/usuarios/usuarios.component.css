@@ -21,3 +21,7 @@
 	align-items: center;
 	min-width: 70vw;
 }
+
+h2 {
+	margin-top: 0;
+}

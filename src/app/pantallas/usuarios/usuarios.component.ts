@@ -11,6 +11,7 @@ import { AmigosService } from '../../services/amigos.service';
 export class UsuariosComponent {
   usuarios: Usuario[] = [];
   loading = true;
+  filtered = false;
   constructor(private usuarioService: UsuariosService, private amigosService: AmigosService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class UsuariosComponent {
 
   searchText = '';
   onSearch() {
+    this.filtered = true;
     this.loading = true;
     this.usuarioService.searchUsers(this.searchText, this.searchAuthor).subscribe({
       next: (usuarios: Usuario[]) => {
