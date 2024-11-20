@@ -17,10 +17,23 @@
     margin-left: 2em;
 }
 
+.header {
+    margin-bottom: 1em;
+}
+
+h2 {
+    margin: 0;
+}
+
+.action {
+    margin: 0;
+}
+
 .star-rating {
     display: flex;
     align-items: center;
     padding-left: 1em;
+    height: fit-content;
 }
 
 .star-rating i {

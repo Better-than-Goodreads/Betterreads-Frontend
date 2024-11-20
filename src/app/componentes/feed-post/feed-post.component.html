@@ -1,26 +1,29 @@
 <div *ngIf="post && post.post" class="horizontal-container post-container">
 
 	<div class="vertical-container contenido">
-
-		<div class="horizontal-container"  style="align-items: center; margin-bottom: 0.5em;">
+		<div  class="horizontal-container header"  style="align-items: center">
 			<div class="img-container-perfil container-foto">
 				<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil" (click)="goToUser()">
 			</div>
-			<div *ngIf="post.type == 'rating'" class="horizontal-container">
+				
+			<div>
+				<h2>{{post.post.username}}</h2>
+				<div *ngIf="post.type == 'rating'" class="horizontal-container" style="align-items:center">
 
-				<h2>{{post.post.username}} rated a book</h2>
-				<div class="star-rating">
-					<i *ngFor="let star of [].constructor(5); let i = index"
-					   class="material-icons"
-					   [ngClass]="{'star-filled': i < post.post.rating, 'star-empty': i >= post.post.rating}">
-					   star
-					</i>
+					<p class="action">rated a book</p>
+					<div class="star-rating">
+						<i *ngFor="let star of [].constructor(5); let i = index"
+						   class="material-icons"
+						   [ngClass]="{'star-filled': i < post.post.rating, 'star-empty': i >= post.post.rating}">
+						   star
+						</i>
+					</div>
 				</div>
-			</div>
 
 
-			<div *ngIf="post.type == 'post'" class="horizontal-container">
-				<h2>{{post.post.username}} published a book</h2>
+				<div *ngIf="post.type == 'post'">
+					<p class="action">published a book</p>
+				</div>
 			</div>
 		</div>
 		<div class="horizontal-container" style="column-gap: 1em;">
