@@ -37,6 +37,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSpinner } from "@angular/material/progress-spinner";
@@ -112,7 +113,8 @@ import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-am
 		MatDatepickerModule,
 		MatSpinner,
 		MatButtonToggleModule,
-		MatSlideToggleModule
+		MatSlideToggleModule,
+		MatMenuModule
 	],
 	providers: [
 		//{ provide: LOCALE_ID, useValue: "en-US" },

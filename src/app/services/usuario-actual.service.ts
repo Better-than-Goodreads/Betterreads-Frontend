@@ -42,4 +42,9 @@ export class UsuarioActualService {
     return this.http.get<any>(url).pipe(map((res: {user: Usuario}) => res.user));
   }
 
+  logOut() {
+    sessionStorage.removeItem('user_id');
+    sessionStorage.removeItem('access_token');
+    this.usuarioActual = new Usuario({});
+  }
 }
