@@ -5,15 +5,35 @@
 	gap: 8em;
 }
 
+.communityImage {
+	width: 5em;
+	height: 5em;
+	border-radius: 50%;
+}
+
+.comunidad-container-1 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+}
+
+.comunidad-container-1 > h2 {
+	margin: 0;
+}
+
 .comunidad {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr;
 	place-items: center;
 	border: solid 1px grey;
 	padding: 0.5em 1em;
 	border-radius: 1em;
 	width: 20vw;
 	min-width: 20em;
+	gap: 1em;
+	padding: 1.3em;
 }
 
 .aceptarBotones  {
