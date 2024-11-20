@@ -55,6 +55,7 @@ import { BookshelfComponent } from './componentes/bookshelf/bookshelf.component'
 import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
 import { LibrosComponent } from './pantallas/libros/libros.component';
 import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
+import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-amigos.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -79,7 +80,8 @@ import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
     BookshelfComponent,
     ComunidadComponent,
     LibrosComponent,
-    FeedPostComponent
+    FeedPostComponent,
+    ListaAmigosComponent
 	],
 	imports: [
 		RouterOutlet,

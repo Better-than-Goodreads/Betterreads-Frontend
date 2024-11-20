@@ -10,6 +10,7 @@ import { UsuariosComponent } from './pantallas/usuarios/usuarios.component';
 import { BibliotecaComponent } from "./pantallas/biblioteca/biblioteca.component";
 import { RecomendacionesComponent } from "./pantallas/recomendaciones/recomendaciones.component";
 import { LibrosPorAutorComponent } from "./pantallas/internas/libros-por-autor/libros-por-autor.component";
+import { ListaAmigosComponent } from "./pantallas/internas/lista-amigos/lista-amigos.component";
 import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usuario/reviews-por-usuario.component";
 import { RequestsComponent } from "./pantallas/requests/requests.component";
 import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: "user/:id/books-published", component: LibrosPorAutorComponent },
   { path: "user/:id/reviews-published", component: ReviewsPorUsuarioComponent },
   { path: "communities", component: ComunidadComponent },
+  { path: "user/:id/friends", component: ListaAmigosComponent}
 ];
 
 @NgModule({

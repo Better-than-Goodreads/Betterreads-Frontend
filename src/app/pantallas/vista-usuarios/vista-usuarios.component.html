@@ -20,7 +20,7 @@
 					<button (click)="sendFriendRequest()" mat-flat-button style="width: 50%;">Add friend</button>
 				}
 			} 
-			<p>{{friends.length}} Friends</p>
+			<p style="cursor: pointer;" (click)="goToFriends()">{{friends.length}} Friends</p>
 		</div>
 		<h2>Details</h2>
 		<div class="horizontal-container" style="width: fit-content; column-gap: 1em;">

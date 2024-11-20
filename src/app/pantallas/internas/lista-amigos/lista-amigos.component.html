@@ -1,0 +1,17 @@
+<div class="amigos">
+	@if (loading) {
+	<mat-spinner></mat-spinner>
+	} @else {
+	<h2>Friends of {{usuario.username}}</h2>
+
+	@if (friends.length === 0) {
+	<h2>No friends yet 😭</h2>
+	}
+
+	<div class="containerAmigos">
+		@for (usuario of friends; track usuario.id) {
+			<app-usuario [usuario]="usuario" [showMyself]="true"></app-usuario>
+		}
+	</div>
+	}
+</div>
