@@ -31,12 +31,12 @@
 		<h2 style="align-self: center">Create a Community</h2>
 		<mat-form-field>
 			<mat-label>Title</mat-label>
-			<input required matInput maxlength=255 [(ngModel)]="comunidadAPublicar.name" placeholder="Harry Potter and the Chamber of Secrets" />
+			<input matInput maxlength=255 [(ngModel)]="comunidadAPublicar.name" placeholder="Harry Potter and the Chamber of Secrets" />
 		</mat-form-field>
 
 		<mat-form-field>
 			<mat-label>Description</mat-label>
-			<textarea required matInput maxlength=255 [(ngModel)]="comunidadAPublicar.description"
+			<textarea matInput maxlength=255 [(ngModel)]="comunidadAPublicar.description"
 				placeholder="The story of the princess..."></textarea>
 		</mat-form-field>
 
