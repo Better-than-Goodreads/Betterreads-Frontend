@@ -24,6 +24,10 @@ export class ComunidadService {
 	return this.http.post(this.apiUrl + id + '/join', {});
   }
 
+  leaveCommunity(id: string): Observable<Comunidad> {
+	return this.http.delete<Comunidad>(this.apiUrl + id + '/leave');
+  }
+
   createCommunity(form: FormData): Observable<Comunidad> {
 	return this.http.post<Comunidad>(this.apiUrl, form);
   }

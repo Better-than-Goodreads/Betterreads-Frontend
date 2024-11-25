@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="community-info">
-	<div>
+	<div class="info">
 	<h1>{{comunidad.name}}</h1>
 	<p>{{comunidad.description}}</p>
 	</div>
 
 	@if (comunidad.joined) {
-		<button (click)="joinCommunity(comunidad.id)" class="secondary-button">Joined</button>
+		<button (click)="leaveCommunity(comunidad.id)" class="secondary-button">Leave</button>
 	} @else {
 		<button (click)="joinCommunity(comunidad.id)" class="primary-button">Join</button>
 	}
@@ -63,7 +63,7 @@
 
 .community-info {
   text-align: center;
-  margin-top: 5em;
+  margin-top: 6em;
   display: flex;
   flex-direction: row;
   gap: 2em;
@@ -72,8 +72,8 @@
 }
 
 .community-info h1 {
-  font-size: 4em;
-  margin: .4em 0 0 0;
+  font-size: 3em;
+  margin: 0;
 }
 
 .community-info p {
@@ -111,6 +111,6 @@ button {
 }
 
 .secondary-button {
-  background-color: #008CBA;
+  background-color: #f44336;
 }
 </style>
