@@ -27,16 +27,59 @@
 		<button class="post-button" (click)="openDialog()">+</button>
 	</div>
 
+	@for (post of postsComunidad; track post.id) {
+		<div class="post">
+			<div class="user-info">
+				<img src="http://localhost:8080/users/{{post.user_id}}/picture"/>
+				<h1>{{post.username}}</h1>	
+				<p>{{post.date}}</p>
+			</div>
+			<h1>{{post.title}}</h1>
+			<p>{{post.content}}</p>
+		</div>
+	}
+
   </div>
 </div>
 
 
 <style>
 
+.post {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ddd;
+	padding: 1em 0em 1em 1em;
+	margin-bottom: 1em;
+}
+
+.post > p {
+	font-size: 1.5em;
+}
+
+.user-info > img {
+	width: 5em;
+	height: 5em;
+	border-radius: 50%;
+}
+
+.user-info {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
+}
+
 .container-posts {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.posts {
+  margin-top: 2em;
+  width: 90%;
+  max-width: 800px;
 }
 
 .main {
@@ -95,11 +138,6 @@
   margin: 0;
 }
 
-.posts {
-  margin-top: 2em;
-  width: 90%;
-  max-width: 800px;
-}
 
 button {
   padding: 10px 20px;

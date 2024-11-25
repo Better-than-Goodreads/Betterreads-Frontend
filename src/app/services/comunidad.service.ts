@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comunidad } from '../entidades/Comunidad';
+import { PostComunidad } from '../entidades/Post';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class ComunidadService {
 
   createPost(id: string, title: string, content: string): Observable<Comunidad> {
 	return this.http.post<Comunidad>(this.apiUrl + id + "/posts", { title, content }); 
+  }
+
+  getPosts(id: string): Observable<PostComunidad[]> {
+	return this.http.get<PostComunidad[]>(this.apiUrl + id + "/posts");
   }
 }

@@ -5,7 +5,8 @@ import { Comunidad } from '../../entidades/Comunidad';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDialogComponent } from '../../componentes/post-dialog/post-dialog.component';
-
+import { PostComunidad } from '../../entidades/Post';
+ 
 @Component({
 	selector: 'app-vista-comunidad',
 	templateUrl: './vista-comunidad.component.html',
@@ -16,8 +17,7 @@ export class VistaComunidadComponent {
 	constructor(private route: ActivatedRoute, private comunidadService: ComunidadService, private _snackBar: MatSnackBar, private dialog: MatDialog) { }
 
 	comunidad: Comunidad = new Comunidad();
-	post = { description: '', title: '', }
-	postError = '';
+	postsComunidad: PostComunidad[] = []
 
 	ngOnInit() {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
@@ -29,6 +29,21 @@ export class VistaComunidadComponent {
 			},
 			(error) => {
 				console.error('Error getting community:', error);
+			}
+		);
+
+		this.comunidadService.getPosts(id).subscribe(
+			(data) => {
+				console.log('Posts:', data);
+				this.postsComunidad = data.map((post) => {
+					let date = new Date(post.date);
+					post.date = date.toLocaleDateString() + " " + date.toLocaleTimeString();
+
+					return post;
+				})
+			},
+			(error) => {
+				console.error('Error getting posts:', error);
 			}
 		);
 	}
@@ -67,18 +82,5 @@ export class VistaComunidadComponent {
 				this._snackBar.open(e.error.error.d || "Error joining community", 'X', {});
 			}
 		});
-	}
-
-	createPost() {
-		if (this.post.description == '') {
-			this.postError = 'Description is required';
-			return
-		}
-		if (this.post.title == '') {
-			this.postError = 'Title is required';
-			return
-		}
-
-		this.postError = '';
 	}
 }
