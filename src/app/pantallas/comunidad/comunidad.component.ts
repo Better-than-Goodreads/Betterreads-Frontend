@@ -13,6 +13,7 @@ export class ComunidadComponent {
 	comunidades: Comunidad[] = [];
 
 	comunidadAPublicar: Comunidad = new Comunidad();
+	selectedFile: File | null = null;
 	error: string = '';
 
 	constructor(
@@ -33,6 +34,14 @@ export class ComunidadComponent {
 		);
 	}
 
+	onFileSelected(event: any) {
+		const file: File = event.target.files[0];
+		if (file) {
+			this.selectedFile = file;
+			console.log('File selected:', file);
+		}
+	}
+
 	joinCommunity(id: string) {
 		this.comunidadService.joinCommunity(id).subscribe({
 			next: () => {
@@ -51,14 +60,17 @@ export class ComunidadComponent {
 	}
 
 	createCommunity() {
-		if (!this.comunidadAPublicar.name || !this.comunidadAPublicar.description) {
+		if (!this.comunidadAPublicar.name || !this.comunidadAPublicar.description || !this.selectedFile) {
 			this._snackBar.open('Complete all required fields.', 'X', {});
+			this.error = 'Complete all fields.';
 			return
 		}
 
-		this.comunidadAPublicar.owner_id = this.usuarioActualService.getId()
+		const form = new FormData()
+		form.append('data', JSON.stringify(this.comunidadAPublicar))
+		form.append('file', this.selectedFile)
 
-		this.comunidadService.createCommunity(this.comunidadAPublicar).subscribe({
+		this.comunidadService.createCommunity(form).subscribe({
 			next: (data) => {
 				this.comunidades = [data, ...this.comunidades];
 				this.comunidadAPublicar = new Comunidad();

@@ -5,7 +5,7 @@
 		<div class="container1">
 		@for (comunidad of comunidades; track comunidad.id) {
 			<div class="comunidad">
-				<img class="communityImage" src="https://media.istockphoto.com/id/502910983/vector/head-library.jpg?s=612x612&w=0&k=20&c=ec6LEcmHoBwtnff1xlOLBOlZ5NnnQWw66PKB7-TqGw8="/>
+				<img class="communityImage" src="http://localhost:8080/communities/{{comunidad.id}}/picture" />
 				<div class="comunidad-container-1">
 					<h2>{{comunidad.name}}</h2>
 					<p>{{comunidad.description}}</p>
@@ -39,6 +39,8 @@
 			<textarea matInput maxlength=255 [(ngModel)]="comunidadAPublicar.description"
 				placeholder="The story of the princess..."></textarea>
 		</mat-form-field>
+
+		<input type="file" (change)="onFileSelected($event)" />
 
 		@if (error) {
 		<p style="color: red">{{ error }}</p>
