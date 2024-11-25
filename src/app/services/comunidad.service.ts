@@ -16,6 +16,10 @@ export class ComunidadService {
     return this.http.get<Comunidad[]>(this.apiUrl);
   }
 
+  getCommunityById(id: string): Observable<Comunidad> {
+	  return this.http.get<Comunidad>(this.apiUrl + id);
+  }
+
   joinCommunity(id: string): Observable<any> {
 	return this.http.post(this.apiUrl + id + '/join', {});
   }

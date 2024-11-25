@@ -57,6 +57,7 @@ import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
 import { LibrosComponent } from './pantallas/libros/libros.component';
 import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
 import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-amigos.component';
+import { VistaComunidadComponent } from "./pantallas/vista-comunidad/vista-comunidad.component";
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -82,7 +83,8 @@ import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-am
     ComunidadComponent,
     LibrosComponent,
     FeedPostComponent,
-    ListaAmigosComponent
+    ListaAmigosComponent,
+    VistaComunidadComponent
 	],
 	imports: [
 		RouterOutlet,
