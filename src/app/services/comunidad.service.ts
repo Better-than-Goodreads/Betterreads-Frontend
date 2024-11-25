@@ -31,4 +31,8 @@ export class ComunidadService {
   createCommunity(form: FormData): Observable<Comunidad> {
 	return this.http.post<Comunidad>(this.apiUrl, form);
   }
+
+  createPost(id: string, title: string, content: string): Observable<Comunidad> {
+	return this.http.post<Comunidad>(this.apiUrl + id + "/posts", { title, content }); 
+  }
 }

@@ -37,6 +37,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -58,6 +59,7 @@ import { LibrosComponent } from './pantallas/libros/libros.component';
 import { FeedPostComponent } from './componentes/feed-post/feed-post.component';
 import { ListaAmigosComponent } from './pantallas/internas/lista-amigos/lista-amigos.component';
 import { VistaComunidadComponent } from "./pantallas/vista-comunidad/vista-comunidad.component";
+import { PostDialogComponent } from './componentes/post-dialog/post-dialog.component';
 
 //registerLocaleData(localeEn, 'en-US');
 
@@ -84,7 +86,8 @@ import { VistaComunidadComponent } from "./pantallas/vista-comunidad/vista-comun
     LibrosComponent,
     FeedPostComponent,
     ListaAmigosComponent,
-    VistaComunidadComponent
+    VistaComunidadComponent,
+    PostDialogComponent
 	],
 	imports: [
 		RouterOutlet,
@@ -116,7 +119,8 @@ import { VistaComunidadComponent } from "./pantallas/vista-comunidad/vista-comun
 		MatSpinner,
 		MatButtonToggleModule,
 		MatSlideToggleModule,
-		MatMenuModule
+		MatMenuModule,
+		MatDialogModule,
 	],
 	providers: [
 		//{ provide: LOCALE_ID, useValue: "en-US" },

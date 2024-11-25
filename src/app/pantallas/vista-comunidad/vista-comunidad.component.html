@@ -21,11 +21,24 @@
 	}
   </div>
 
-  <div class="posts"> </div>
+  <div class="posts"> 
+	<div class="container-posts">
+		<h1>Posts</h1>
+		<button class="post-button" (click)="openDialog()">+</button>
+	</div>
+
+  </div>
 </div>
 
 
 <style>
+
+.container-posts {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -103,6 +116,18 @@ button {
 
 .primary-button {
   background-color: #4CAF50;
+}
+
+.post-button {
+  background-color: #2196F3;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+}
+
+.post-button:hover {
+  background-color: #3dfbf2;
 }
 
 .primary-button:hover {

@@ -1,0 +1,24 @@
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.main {
+	padding: 2.3em;
+}
+
+.title {
+	margin: 0em 0em 1em 0em;
+	padding: 0;
+}
