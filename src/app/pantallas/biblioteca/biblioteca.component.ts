@@ -17,13 +17,13 @@ import { map } from 'rxjs/operators';
 export class BibliotecaComponent {
 	books: Libro[] = [];
 	states = [
-		...STATUS_BOOKSHELF_LABELS,
+		...STATUS_BOOKSHELF_LABELS.slice(1),
 		"All",
 	]
 	userId = '';
 	loading = true;
 
-	statusValues = [...STATUS_BOOKSHELF, "all"];
+	statusValues = [...STATUS_BOOKSHELF.slice(1), "all"];
 
 	selectedState: string = 'read';
 
