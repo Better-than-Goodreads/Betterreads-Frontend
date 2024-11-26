@@ -16,7 +16,8 @@ export class ComunidadComponent {
 	comunidadAPublicar: Comunidad = new Comunidad();
 	selectedFile: File | null = null;
 	error: string = '';
-
+	searchText = '';
+	loading = true;
 	constructor(
 		private comunidadService: ComunidadService,
 		private _snackBar: MatSnackBar,
@@ -24,13 +25,32 @@ export class ComunidadComponent {
 		private router: Router
 	) { }
 
+	onSearch() {
+      this.loading = true;
+      this.comunidadService.searchByName(this.searchText).subscribe({
+        next: (data: any) => {
+          this.loading = false;
+          this.comunidades = data;
+        },
+        error: (error: any) => {
+          console.error('Error fetching communities', error);
+          this.loading = false;
+          this._snackBar.open(`Error getting communities`, 'X');
+        }
+
+      })
+    }
+
 	ngOnInit() {
 		this.comunidadService.getCommunities().subscribe(
 			(data) => {
+				this.loading = false;
 				console.log('Communities:', data);
 				this.comunidades = data;
 			},
 			(error) => {
+				this.loading = false;
+				this._snackBar.open(`Error getting communities`, 'X');
 				console.error('Error getting communities:', error);
 			}
 		);

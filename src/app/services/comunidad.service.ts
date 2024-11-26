@@ -40,4 +40,9 @@ export class ComunidadService {
   getPosts(id: string): Observable<PostComunidad[]> {
 	return this.http.get<PostComunidad[]>(this.apiUrl + id + "/posts");
   }
+
+  searchByName(name: string): Observable<Comunidad[]> {
+    const url = this.apiUrl + "search?name=" + name;
+    return this.http.get<Comunidad[]>(url)
+  }
 }
