@@ -3,6 +3,7 @@ import { ComunidadService } from '../../services/comunidad.service';
 import { Comunidad } from '../../entidades/Comunidad';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioActualService } from '../../services/usuario-actual.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-comunidad',
@@ -20,6 +21,7 @@ export class ComunidadComponent {
 		private comunidadService: ComunidadService,
 		private _snackBar: MatSnackBar,
 		private usuarioActualService: UsuarioActualService,
+		private router: Router
 	) { }
 
 	ngOnInit() {
@@ -81,5 +83,9 @@ export class ComunidadComponent {
 				this._snackBar.open(e.error.error.d || "Error creating community", 'X', {});
 			}
 		});
+	}
+
+	goToCommunity(id: string) {
+		this.router.navigate(['/communities', id])
 	}
 }

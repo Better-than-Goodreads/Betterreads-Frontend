@@ -23,9 +23,16 @@
 	margin: 0;
 }
 
+.comunidadLink {
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+	gap: 1em;
+}
+
 .comunidad {
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-columns: 3fr 1fr;
 	place-items: center;
 	border: solid 1px grey;
 	padding: 0.5em 1em;

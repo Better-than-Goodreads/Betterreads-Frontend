@@ -5,10 +5,12 @@
 		<div class="container1">
 		@for (comunidad of comunidades; track comunidad.id) {
 			<div class="comunidad">
-				<img class="communityImage" src="http://localhost:8080/communities/{{comunidad.id}}/picture" />
-				<div class="comunidad-container-1">
-					<h2>{{comunidad.name}}</h2>
-					<p>{{comunidad.description}}</p>
+				<div class="comunidadLink" (click)="goToCommunity(comunidad.id)">
+					<img class="communityImage" src="http://localhost:8080/communities/{{comunidad.id}}/picture" />
+					<div class="comunidad-container-1">
+						<h2>{{comunidad.name}}</h2>
+						<p>{{comunidad.description}}</p>
+					</div>
 				</div>
 				<div class="aceptarBotones">
 					@if (comunidad.joined) {
