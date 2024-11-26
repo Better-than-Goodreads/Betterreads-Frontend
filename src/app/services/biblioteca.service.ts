@@ -25,7 +25,7 @@ export class BibliotecaService {
 		if (status == '') {
 			status = 'read';
 		}
-		return this.http.get<Libro[]>(this.apiUrl + `/${userId}` + '/shelf', { params: { type: status } });
+		return this.http.get<Libro[]>(this.apiUrl + `/${userId}` + '/shelf', { params: { status: status } });
 	}
 
 	removeFromBookshelf(bookId: string): Observable<any> {
@@ -34,5 +34,15 @@ export class BibliotecaService {
 
 	getAmountOfReadBooks(userId: string) {
 		return this.getBookshelf(userId, 'read').pipe(map(books => books.length));
+	}
+
+	search(id: string, status: string, genre: string, sort: string, order: string) {
+		const params = [];
+		if (status) params.push("status="+status);
+		if (genre) params.push("genre="+genre);
+		if (sort) params.push("sort="+sort);
+		if (sort && order) params.push("direction="+order);
+		const url = `${this.apiUrl}/${id}/shelf/search?${params.join('&')}`;
+		return this.http.get(url);
 	}
 }

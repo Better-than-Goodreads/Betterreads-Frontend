@@ -5,6 +5,18 @@
 	gap: 20px;
 	height: 100%;
 	overflow: hidden;
+	width: fit-content;
+}
+
+
+.tool-tab {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 1em;
+	height: fit-content;
+	margin-top: 1em;
+	align-items: baseline;
 }
 
 .container1 {

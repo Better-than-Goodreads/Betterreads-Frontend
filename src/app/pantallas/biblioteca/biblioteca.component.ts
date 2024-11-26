@@ -8,6 +8,8 @@ import { Libro } from '../../entidades/Libro';
 import { STATUS_BOOKSHELF, STATUS_BOOKSHELF_LABELS } from '../../entidades/StatusBiblioteca';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
+import { GENRES } from '../../entidades/Genres';
+import { SORT_PROPERTIES } from '../../entidades/SortProperties';
 
 @Component({
 	selector: 'app-biblioteca',
@@ -31,20 +33,7 @@ export class BibliotecaComponent {
 
 	selectState(state: string) {
 		this.selectedState = state;
-		this.bibliotecaService.getBookshelf(this.userId, this.selectedState).subscribe({
-			next: (books) => {
-				console.log('Books:', books);
-				this.loading = false
-				this.books = books.map((book: any) => {
-					book.id = book.book_id;
-					return book
-				})
-				console.log('Books:', this.books);
-			},
-			error: (error: any) => {
-				this.loading = false
-			}
-		});
+		this.onSearch();
 	}
 
 	ngOnInit() {
@@ -70,5 +59,35 @@ export class BibliotecaComponent {
 				this._snackBar.open('Error deleting book from bookshelf', 'X', { horizontalPosition: 'center', verticalPosition: 'top', duration: 5000 });
 			}
 		})
+	}
+
+	genres = ['',...GENRES];
+	selectedGenre = '';
+	selectedOrderProp = '';
+	sortProperties = ['',...SORT_PROPERTIES];
+	onSearch() {
+		this.loading = true;
+		this.bibliotecaService.search(this.userId, this.selectedState, this.selectedGenre, this.selectedOrderProp, this.order).subscribe({
+		next: (data: any) => {
+		  this.loading = false;
+		  this.books = data.map((book: any) => {
+				book.id = book.book_id;
+				book.avg_rating = book.avg_ratings;
+				return book
+			})
+		},
+		error: (error: any) => {
+		  console.error('Error getting books from bookshelf', error);
+		  this.loading = false;
+		  this._snackBar.open(`Error getting books from bookshelf`, 'X');
+		}
+
+		});
+	}
+
+	order = 'desc';
+	toggleSort() {
+		this.order = this.order === 'desc' ? 'asc' : 'desc';
+		this.onSearch();
 	}
 }
