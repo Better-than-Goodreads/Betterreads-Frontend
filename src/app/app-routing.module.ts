@@ -15,6 +15,7 @@ import { ReviewsPorUsuarioComponent } from "./pantallas/internas/reviews-por-usu
 import { RequestsComponent } from "./pantallas/requests/requests.component";
 import { ComunidadComponent } from "./pantallas/comunidad/comunidad.component";
 import { LibrosComponent } from "./pantallas/libros/libros.component";
+import { VistaComunidadComponent } from "./pantallas/vista-comunidad/vista-comunidad.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path: "user/:id/books-published", component: LibrosPorAutorComponent },
   { path: "user/:id/reviews-published", component: ReviewsPorUsuarioComponent },
   { path: "communities", component: ComunidadComponent },
-  { path: "user/:id/friends", component: ListaAmigosComponent}
+  { path: "user/:id/friends", component: ListaAmigosComponent},
+  { path: "communities/:id", component: VistaComunidadComponent }
 ];
 
 @NgModule({

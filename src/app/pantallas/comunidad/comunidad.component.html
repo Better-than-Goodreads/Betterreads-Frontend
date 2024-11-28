@@ -1,29 +1,43 @@
 <div class="main">
 	<div>
-	@if (comunidades.length > 0) {
-		<h1>Communities</h1>
-		<div class="container1">
-		@for (comunidad of comunidades; track comunidad.id) {
-			<div class="comunidad">
-				<img class="communityImage" src="https://media.istockphoto.com/id/502910983/vector/head-library.jpg?s=612x612&w=0&k=20&c=ec6LEcmHoBwtnff1xlOLBOlZ5NnnQWw66PKB7-TqGw8="/>
-				<div class="comunidad-container-1">
-					<h2>{{comunidad.name}}</h2>
-					<p>{{comunidad.description}}</p>
+	@if (loading) {
+		<mat-spinner></mat-spinner>
+	} @else {
+		@if (comunidades.length > 0) {
+			<h1>Communities</h1>
+			<div style="width: 100%;">
+				<mat-form-field appearance="outline" class="search-bar">
+					<input matInput placeholder="Search by name..." [(ngModel)]="searchText" (change)="onSearch()" />
+					<button mat-icon-button matSuffix (click)="onSearch()">
+						<mat-icon>search</mat-icon>
+					</button>
+				</mat-form-field>
+			</div>
+			<div class="container1">
+			@for (comunidad of comunidades; track comunidad.id) {
+				<div class="comunidad">
+					<div class="comunidadLink" (click)="goToCommunity(comunidad.id)">
+						<img class="communityImage" src="http://localhost:8080/communities/{{comunidad.id}}/picture" />
+						<div class="comunidad-container-1">
+							<h2>{{comunidad.name}}</h2>
+							<p>{{comunidad.description}}</p>
+						</div>
+					</div>
+					<div class="aceptarBotones">
+						@if (comunidad.joined) {
+							<button (click)="joinCommunity(comunidad.id)" class="secondary-button button">Joined</button>
+						} @else {
+							<button (click)="joinCommunity(comunidad.id)" class="primary-button button">Join</button>
+						}
+					</div>
 				</div>
-				<div class="aceptarBotones">
-					@if (comunidad.joined) {
-						<button (click)="joinCommunity(comunidad.id)" class="secondary-button">Joined</button>
-					} @else {
-						<button (click)="joinCommunity(comunidad.id)" class="primary-button">Join</button>
-					}
-				</div>
+			}
 			</div>
 		}
-		</div>
-	}
 
-	@if (comunidades.length === 0) {
-		<h2>No communities found 😭</h2>
+		@if (comunidades.length === 0) {
+			<h2>No communities found 😭</h2>
+		}
 	}
 	</div>
 
@@ -40,11 +54,13 @@
 				placeholder="The story of the princess..."></textarea>
 		</mat-form-field>
 
+		<input type="file" (change)="onFileSelected($event)" />
+
 		@if (error) {
 		<p style="color: red">{{ error }}</p>
 		}
 
-		<button mat-flat-button (click)="createCommunity()">
+		<button mat-flat-button class="button" (click)="createCommunity()">
 			Create
 		</button>
 	</div>

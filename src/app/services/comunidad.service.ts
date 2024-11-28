@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comunidad } from '../entidades/Comunidad';
+import { PostComunidad } from '../entidades/Post';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,32 @@ export class ComunidadService {
     return this.http.get<Comunidad[]>(this.apiUrl);
   }
 
+  getCommunityById(id: string): Observable<Comunidad> {
+	  return this.http.get<Comunidad>(this.apiUrl + id);
+  }
+
   joinCommunity(id: string): Observable<any> {
 	return this.http.post(this.apiUrl + id + '/join', {});
   }
 
-  createCommunity(comunidad: Comunidad): Observable<Comunidad> {
-	return this.http.post<Comunidad>(this.apiUrl, comunidad);
+  leaveCommunity(id: string): Observable<Comunidad> {
+	return this.http.delete<Comunidad>(this.apiUrl + id + '/leave');
+  }
+
+  createCommunity(form: FormData): Observable<Comunidad> {
+	return this.http.post<Comunidad>(this.apiUrl, form);
+  }
+
+  createPost(id: string, title: string, content: string): Observable<Comunidad> {
+	return this.http.post<Comunidad>(this.apiUrl + id + "/posts", { title, content }); 
+  }
+
+  getPosts(id: string): Observable<PostComunidad[]> {
+	return this.http.get<PostComunidad[]>(this.apiUrl + id + "/posts");
+  }
+
+  searchByName(name: string): Observable<Comunidad[]> {
+    const url = this.apiUrl + "search?name=" + name;
+    return this.http.get<Comunidad[]>(url)
   }
 }

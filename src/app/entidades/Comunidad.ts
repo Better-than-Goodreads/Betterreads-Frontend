@@ -5,4 +5,5 @@ export class Comunidad {
 	description: string = "";
 
 	joined: boolean = false;
+	image: string = "";
 }
