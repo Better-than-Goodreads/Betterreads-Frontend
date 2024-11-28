@@ -24,7 +24,7 @@
   <div class="posts"> 
 	<div class="container-posts">
 		<h1>Posts</h1>
-		<button class="post-button" (click)="openDialog()">+</button>
+		<button *ngIf="comunidad.joined" class="post-button" (click)="openDialog()">+</button>
 	</div>
 
 	@for (post of postsComunidad; track post.id) {
