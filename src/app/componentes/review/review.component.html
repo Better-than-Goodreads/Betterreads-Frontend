@@ -1,16 +1,22 @@
 <div class="main">
-	<div class="container1">
-		<div class="img-container-perfil">
-			<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil button" (click)="goToUser()"/>
+	<div class="container1" style="justify-content: space-between;">
+		<div class="container1">
+			<div class="img-container-perfil">
+				<img [src]="urlFotoPerfil" (error)="urlFotoPerfil = defaultImage" alt="Profile picture" class="imagen-perfil button" (click)="goToUser()"/>
+			</div>
+			<h3>{{review.username}}</h3>
+			<div class="star-rating">
+				<i *ngFor="let star of [].constructor(5); let i = index"
+				   class="material-icons"
+				   [ngClass]="{'star-filled': i < review.rating, 'star-empty': i >= review.rating}">
+				   star
+				</i>
+			</div>
 		</div>
-		<h3>{{review.username}}</h3>
-		<div class="star-rating">
-			<i *ngFor="let star of [].constructor(5); let i = index"
-			   class="material-icons"
-			   [ngClass]="{'star-filled': i < review.rating, 'star-empty': i >= review.rating}">
-			   star
-			</i>
-		</div>
+		<mat-icon
+		*ngIf="showDelete"
+		(click)="borrar()"
+		class="material-icons trash-icon container1">delete</mat-icon>
 	</div>
 	<div class="button" (click)="goToBook()">
 		<p *ngIf="bookTitle && !review.review" class="book-info">Rated: {{bookTitle}}</p>

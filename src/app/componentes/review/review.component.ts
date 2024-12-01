@@ -16,10 +16,15 @@ export class ReviewComponent implements AfterViewInit {
 
 	ngAfterViewInit() {
 		this.urlFotoPerfil = `http://localhost:8080/users/${this.review.user_id}/picture`;
+		this.showDelete = this.review.user_id === sessionStorage.getItem('user_id')?? "";
 	}
+
 	urlFotoPerfil = '';
 	defaultImage = './default-profile.png';
+	showDelete = false;
+	borrar() {
 
+	}
 
 	goToBook() {
 		this.router.navigate(['book', this.bookId]);
