@@ -52,6 +52,10 @@ export class BookService {
 		return this.http.post<String>(this.apiUrl + `${bookId}/reviews`, review);
 	}
 
+	editReview(bookId: string, review: Review): Observable<String> {
+		return this.http.put<String>(this.apiUrl + `${bookId}/reviews`, review);
+	}
+
 	deleteBook(bookId: string): Observable<String> {
 		return this.http.delete<String>(this.apiUrl + `${bookId}`);
 	}

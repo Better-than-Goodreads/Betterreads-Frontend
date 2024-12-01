@@ -41,11 +41,13 @@ export class VistaLibroComponent {
 		this.setUpPantalla();
 	}
 
+	originalReview = new Review();
 	setUpPantalla() {
 		this.currentStatus = STATUS_BOOKSHELF[2];
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
 		this.bookService.getBook(id).subscribe(book => {
 			this.book = book.book;
+			this.originalReview = book.review?? new Review();
 			this.publishReview = book.review?? new Review();
 			this.hoverEstrellas = this.publishReview.rating;
 			this.rating = this.publishReview.rating;
@@ -72,7 +74,27 @@ export class VistaLibroComponent {
 
 	publicarReview() {
 		this.publishReview.rating = this.rating;
-		this.bookService.postReview(this.book.id, this.publishReview).subscribe({
+		if (this.originalReview.rating) {
+			this.bookService.editReview(this.book.id, this.publishReview).subscribe({
+			next: () => {
+				this._snackBar.open('Review edited correctly', 'X', {
+			        horizontalPosition: 'center',
+			        verticalPosition: 'top'
+			      });
+				this.setUpPantalla();
+			},
+			error: (error: any) => {
+				console.log(error);
+				this._snackBar.open('Error editing review: ' + error.error.detail, 'X', {
+			        horizontalPosition: 'center',
+			        verticalPosition: 'top'
+			      });
+				this.setUpPantalla();
+				console.error('Error editing review', error); // Cuando este el edit esto no pasa
+			}
+		});
+		} else {
+			this.bookService.postReview(this.book.id, this.publishReview).subscribe({
 			next: () => {
 				this._snackBar.open('Review published correctly', 'X', {
 			        horizontalPosition: 'center',
@@ -90,6 +112,7 @@ export class VistaLibroComponent {
 				console.error('Error publishing review', error); // Cuando este el edit esto no pasa
 			}
 		});
+		}
 	}
 
 	agregarBiblioteca(event: any) {
