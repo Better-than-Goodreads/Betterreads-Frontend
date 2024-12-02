@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDialogComponent } from '../../componentes/post-dialog/post-dialog.component';
 import { PostComunidad } from '../../entidades/Post';
+import { UsuarioActualService } from '../../services/usuario-actual.service';
  
 @Component({
 	selector: 'app-vista-comunidad',
@@ -14,16 +15,19 @@ import { PostComunidad } from '../../entidades/Post';
 })
 export class VistaComunidadComponent {
 
-	constructor(private route: ActivatedRoute, private comunidadService: ComunidadService, private _snackBar: MatSnackBar, private dialog: MatDialog) { }
+	constructor(private route: ActivatedRoute, private comunidadService: ComunidadService, private _snackBar: MatSnackBar, private dialog: MatDialog, private _usuarioActualService: UsuarioActualService) { }
 
 	comunidad: Comunidad = new Comunidad();
 	postsComunidad: PostComunidad[] = []
+	isOwner = false;
 
 	ngOnInit() {
 		const id = this.route.snapshot.paramMap.get('id') ?? '';
+
 		this.comunidadService.getCommunityById(id).subscribe(
 			(data) => {
 				console.log('Community:', data);
+				this.isOwner = data.owner_id === this._usuarioActualService.getId();
 				this.comunidad = data;
 				this.comunidad.image = "http://localhost:8080/communities/" + this.comunidad.id + "/picture";
 			},
@@ -83,4 +87,18 @@ export class VistaComunidadComponent {
 			}
 		});
 	}
+
+
+	deleteCommunity() {
+		this.comunidadService.deleteCommunity(this.comunidad.id).subscribe({
+			next: () => {
+				this.comunidad.joined = false;
+				window.location.href = '/';
+			},
+			error: (e) => {
+				this._snackBar.open(e.error.error.d || "Error deleting community", 'X', {});
+			}
+		});
+	}
+
 }

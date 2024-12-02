@@ -15,7 +15,11 @@
 	</div>
 
 	@if (comunidad.joined) {
+		@if (isOwner) {
+		<button (click)="deleteCommunity()" class="secondary-button">Delete</button>
+		} @else {
 		<button (click)="leaveCommunity(comunidad.id)" class="secondary-button">Leave</button>
+		}
 	} @else {
 		<button (click)="joinCommunity(comunidad.id)" class="primary-button">Join</button>
 	}
