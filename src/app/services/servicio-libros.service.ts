@@ -59,4 +59,8 @@ export class BookService {
 	deleteBook(bookId: string): Observable<String> {
 		return this.http.delete<String>(this.apiUrl + `${bookId}`);
 	}
+
+	deleteReview(bookId: string): Observable<String> {
+		return this.http.delete<String>(this.apiUrl + `${bookId}/reviews`);
+	}
 }
