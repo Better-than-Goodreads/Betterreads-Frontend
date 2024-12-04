@@ -15,7 +15,11 @@
 	</div>
 
 	@if (comunidad.joined) {
+		@if (isOwner) {
+		<button (click)="deleteCommunity()" class="secondary-button">Delete</button>
+		} @else {
 		<button (click)="leaveCommunity(comunidad.id)" class="secondary-button">Leave</button>
+		}
 	} @else {
 		<button (click)="joinCommunity(comunidad.id)" class="primary-button">Join</button>
 	}
@@ -24,7 +28,7 @@
   <div class="posts"> 
 	<div class="container-posts">
 		<h1>Posts</h1>
-		<button class="post-button" (click)="openDialog()">+</button>
+		<button *ngIf="comunidad.joined" class="post-button" (click)="openDialog()">+</button>
 	</div>
 
 	@for (post of postsComunidad; track post.id) {

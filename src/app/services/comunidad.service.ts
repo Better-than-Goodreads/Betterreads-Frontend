@@ -21,6 +21,10 @@ export class ComunidadService {
 	  return this.http.get<Comunidad>(this.apiUrl + id);
   }
 
+  deleteCommunity(id: string): Observable<Comunidad> {
+	return this.http.delete<Comunidad>(this.apiUrl + id);
+  }
+
   joinCommunity(id: string): Observable<any> {
 	return this.http.post(this.apiUrl + id + '/join', {});
   }

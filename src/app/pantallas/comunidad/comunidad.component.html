@@ -3,16 +3,16 @@
 	@if (loading) {
 		<mat-spinner></mat-spinner>
 	} @else {
+		<h1>Communities</h1>
+		<div style="width: 100%;">
+			<mat-form-field appearance="outline" class="search-bar">
+				<input matInput placeholder="Search by name..." [(ngModel)]="searchText" (change)="onSearch()" />
+				<button mat-icon-button matSuffix (click)="onSearch()">
+					<mat-icon>search</mat-icon>
+				</button>
+			</mat-form-field>
+		</div>
 		@if (comunidades.length > 0) {
-			<h1>Communities</h1>
-			<div style="width: 100%;">
-				<mat-form-field appearance="outline" class="search-bar">
-					<input matInput placeholder="Search by name..." [(ngModel)]="searchText" (change)="onSearch()" />
-					<button mat-icon-button matSuffix (click)="onSearch()">
-						<mat-icon>search</mat-icon>
-					</button>
-				</mat-form-field>
-			</div>
 			<div class="container1">
 			@for (comunidad of comunidades; track comunidad.id) {
 				<div class="comunidad">

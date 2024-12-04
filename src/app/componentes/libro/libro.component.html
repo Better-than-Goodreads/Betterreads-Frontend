@@ -12,9 +12,12 @@
 		<span>
 			<h2>{{book.title}}</h2>
 			<h3 style="color: #666;">by {{book.author_name}}</h3>
-			<p style="color: #333;">
+			<p class="description">
 				{{book.description}}
 			</p>
+			<div class="horizontal-container">
+				<button *ngFor="let genero of book.genres" mat-stroked-button class="genero">{{genero}}</button>
+			</div>
 		</span>
 
 
