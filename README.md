@@ -1,27 +1,42 @@
 # Betterreads-Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 18.2.9.
 
-## Development server
+## Configuración inicial e instalación de Angular CLI
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Si no tienes nada instalado en tu computadora, sigue estos pasos para preparar tu entorno:
 
-## Code scaffolding
+### 1. **Instalar Node.js y npm**
+Angular CLI requiere Node.js y npm. Descárgalos e instálalos desde [Node.js](https://nodejs.org/).  
+* Verifica la instalación ejecutando los siguientes comandos:  
+```bash
+node -v
+npm -v 
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Instalar Angular CLI
 
-## Build
+Una vez que tengas Node.js y npm, instala Angular CLI globalmente con:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install -g @angular/cli
+```
 
-## Running unit tests
+Verifica la instalación de Angular CLI ejecutando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+ng version
+```
 
-## Running end-to-end tests
+## Ejecucción
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Ejecuta `ng serve` para iniciar un servidor de desarrollo. Navega a http://localhost:4200/ en tu navegador. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente. No hace falta la etapa de compilación. 
 
-## Further help
+## Compilación
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ejecuta `ng build` para compilar el proyecto. Los artefactos de compilación se almacenarán en el directorio dist/.
+Ejecución de pruebas unitarias
+
+
+Para más ayuda sobre Angular CLI, ejecuta `ng help` o consulta la Página de referencia de Angular CLI.
+
